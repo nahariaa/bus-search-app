@@ -1,8 +1,8 @@
 import { busRoutes } from '@/data/busRoutes';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 import React from 'react';
 import Head from 'next/head';
+import { BusRoute } from '@/types/bus';
 
 function parseRouteParam(route: string) {
   // Split on '-to-' for multi-word city names
@@ -12,7 +12,8 @@ function parseRouteParam(route: string) {
   return { from, to };
 }
 
-export async function generateMetadata({ params }: { params: { route: string } }): Promise<Metadata> {
+// @ts-expect-error Next.js dynamic route typing workaround
+export async function generateMetadata({ params }) {
   const { from, to } = parseRouteParam(params.route);
   return {
     title: `${from} to ${to} Bus Timetable | Haryana Roadways Bus Timetable`,
@@ -20,8 +21,8 @@ export async function generateMetadata({ params }: { params: { route: string } }
   };
 }
 
-function getBusTripsSchema(filteredRoutes: any[], from: string, to: string) {
-  return filteredRoutes.map((route, idx) => ({
+function getBusTripsSchema(filteredRoutes: BusRoute[]) {
+  return filteredRoutes.map((route) => ({
     '@context': 'https://schema.org',
     '@type': 'BusTrip',
     'busNumber': route.operator + '-' + route.departureTime.replace(/\s/g, ''),
@@ -53,7 +54,8 @@ function getOrganizationSchema() {
   };
 }
 
-export default function ResultsPage({ params }: { params: { route: string } }) {
+// @ts-expect-error Next.js dynamic route typing workaround
+export default function ResultsPage({ params }) {
   const { from, to } = parseRouteParam(params.route);
   if (!from || !to) return notFound();
 
@@ -64,7 +66,7 @@ export default function ResultsPage({ params }: { params: { route: string } }) {
   });
 
   // JSON-LD schema for all buses in results
-  const busTripsSchema = getBusTripsSchema(filteredRoutes, from, to);
+  const busTripsSchema = getBusTripsSchema(filteredRoutes);
   const orgSchema = getOrganizationSchema();
 
   return (

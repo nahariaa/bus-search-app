@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { BusRoute } from '@/types/bus';
 import { busRoutes } from '@/data/busRoutes';
 
 const BusSVG = () => (
@@ -29,15 +28,10 @@ const today = new Date();
 const tomorrow = new Date(today);
 tomorrow.setDate(today.getDate() + 1);
 
-function formatDate(date: Date) {
-  return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-}
 
 export default function Home() {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
-  const [selectedDate, setSelectedDate] = useState<'today' | 'tomorrow' | 'other'>('today');
-  const [customDate, setCustomDate] = useState('');
   const router = useRouter();
 
   const handleFindBuses = (e: React.FormEvent) => {
