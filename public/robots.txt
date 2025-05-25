@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://haryanabus.com/sitemap.xml
+
+# Allow all crawlers
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
