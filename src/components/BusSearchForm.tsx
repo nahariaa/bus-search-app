@@ -5,23 +5,29 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Bus, MapPin, ArrowLeftRight } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-import { busRoutes, BusRoute } from '@/lib/bus-routes';
+import { boardingPoints, cleanLocation, destinationsFrom, locationKey } from '@/lib/route-matching';
 
-const BusSearchForm = () => {
-  const [fromCity, setFromCity] = useState('');
-  const [toCity, setToCity] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+interface BusSearchFormProps {
+  initialFrom?: string;
+  initialTo?: string;
+}
+
+const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps) => {
+  const [fromCity, setFromCity] = useState(initialFrom);
+  const [toCity, setToCity] = useState(initialTo);
   const navigate = useNavigate();
 
-  // Get unique cities from bus routes
-  const uniqueCities = Array.from(new Set(
-    busRoutes.flatMap(route => [route.from, route.via, route.to])
-  )).sort();
+  const origins = boardingPoints();
+  const destinations = destinationsFrom(fromCity);
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    const from = cleanLocation(fromCity);
+    const to = cleanLocation(toCity);
+    setFromCity(from);
+    setToCity(to);
     
-    if (!fromCity || !toCity) {
+    if (!from || !to) {
       toast({
         title: "Missing Information",
         description: "Please fill in both departure and destination cities.",
@@ -30,7 +36,7 @@ const BusSearchForm = () => {
       return;
     }
 
-    if (fromCity.toLowerCase() === toCity.toLowerCase()) {
+    if (locationKey(from) === locationKey(to)) {
       toast({
         title: "Invalid Route",
         description: "Departure and destination cities cannot be the same.",
@@ -39,10 +45,8 @@ const BusSearchForm = () => {
       return;
     }
 
-    setIsLoading(true);
-    
     // Navigate to search results page
-    navigate(`/search?from=${encodeURIComponent(fromCity)}&to=${encodeURIComponent(toCity)}`);
+    navigate(`/search?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
   };
 
   const swapCities = () => {
@@ -74,7 +78,7 @@ const BusSearchForm = () => {
                   list="from-cities"
                 />
                 <datalist id="from-cities">
-                  {uniqueCities.map(city => (
+                  {origins.map(city => (
                     <option key={city} value={city} />
                   ))}
                 </datalist>
@@ -98,7 +102,7 @@ const BusSearchForm = () => {
                   list="to-cities"
                 />
                 <datalist id="to-cities">
-                  {uniqueCities.map(city => (
+                  {destinations.map(city => (
                     <option key={city} value={city} />
                   ))}
                 </datalist>
@@ -124,11 +128,10 @@ const BusSearchForm = () => {
         {/* Search Button */}
         <Button 
           type="submit" 
-          disabled={isLoading}
           className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:ring-4 focus:ring-blue-300 transition-all duration-200"
         >
           <Bus className="mr-3 h-5 w-5" />
-          {isLoading ? 'Searching...' : 'Find Buses'}
+          Find Buses
         </Button>
       </form>
     </div>
