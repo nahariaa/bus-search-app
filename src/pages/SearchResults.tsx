@@ -23,13 +23,13 @@ const SearchResults = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <SEO 
+      <SEO
         fromCity={fromCity}
         toCity={toCity}
         route={matchingRoutes[0]} // Pass the first route for structured data
       />
       <Header />
-      
+
       <main className="container mx-auto px-4 py-8">
         <Card className="max-w-6xl mx-auto">
           <CardContent className="p-6">
@@ -50,4 +50,4 @@ const SearchResults = () => {
   );
 };
 
-export default SearchResults; 
+export default SearchResults;

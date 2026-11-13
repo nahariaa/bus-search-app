@@ -91,4 +91,4 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
   );
 };
 
-export default BusSearchResults; 
+export default BusSearchResults;
