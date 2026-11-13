@@ -10,7 +10,10 @@ import SEO from '@/components/SEO';
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <SEO />
+      <SEO
+        title="Haryana Roadways Bus Timetable & Route Timings"
+        description="Check Haryana Roadways bus timings. Search by origin and destination to see departure times, stops along the route, and operating days."
+      />
       
       {/* Header */}
       <Header />
