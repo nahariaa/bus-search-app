@@ -1,0 +1,3 @@
+# Keep the downloaded inputs byte-for-byte identical on Windows and Linux.
+data/timetable/source/*.csv -text -whitespace
+data/timetable/source-pdfs/*.pdf -text

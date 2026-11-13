@@ -3,6 +3,7 @@ import { BusRoute } from '@/lib/bus-routes';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, MapPin, Bus as BusIcon, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { routeMatchLabel } from '@/lib/route-matching';
 
 interface BusSearchResultsProps {
   routes: BusRoute[];
@@ -44,7 +45,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
 
       <div className="grid gap-4">
         {routes.map((route, index) => (
-          <Card key={index} className="hover:shadow-lg transition-shadow duration-200">
+          <Card key={route.id} data-service-id={route.id} className="hover:shadow-lg transition-shadow duration-200">
             <CardContent className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {/* Departure Time */}
@@ -53,6 +54,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                   <div>
                     <p className="text-sm text-gray-500">Departure</p>
                     <p className="font-semibold">{route.departureTime}</p>
+                    <p className="text-sm text-gray-600">From {route.from}</p>
                   </div>
                 </div>
 
@@ -61,7 +63,8 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                   <MapPin className="h-5 w-5 text-green-500" />
                   <div>
                     <p className="text-sm text-gray-500">Route</p>
-                    <p className="font-semibold">Via {route.via}</p>
+                    <p className="font-semibold">{routeMatchLabel(route)}</p>
+                    {route.via && <p className="text-sm text-gray-600">Via {route.via}</p>}
                   </div>
                 </div>
 
@@ -70,7 +73,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                   <BusIcon className="h-5 w-5 text-purple-500" />
                   <div>
                     <p className="text-sm text-gray-500">Service</p>
-                    <p className="font-semibold">{route.typeOfService}</p>
+                    <p className="font-semibold">{route.typeOfService || 'Not published'}</p>
                   </div>
                 </div>
 
@@ -79,10 +82,16 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                   <Calendar className="h-5 w-5 text-orange-500" />
                   <div>
                     <p className="text-sm text-gray-500">Available</p>
-                    <p className="font-semibold">{route.serviceDays.join(', ')}</p>
+                    <p className="font-semibold">{route.serviceDays.join(', ') || 'Not published'}</p>
                   </div>
                 </div>
               </div>
+              <details className="mt-4 text-sm text-gray-600">
+                <summary className="cursor-pointer">Timetable source</summary>
+                <p>{route.sourceTimetable} · PDF page {route.pdfPage}</p>
+                <p>Operating depot: {route.operatingDepot}{route.depotSource === 'filename' ? ' (from timetable title)' : ''}</p>
+                {route.operator && <p>Operator: {route.operator}</p>}
+              </details>
             </CardContent>
           </Card>
         ))}

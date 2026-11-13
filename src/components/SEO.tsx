@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { BusRoute } from '@/lib/bus-routes';
+import { buildSearchUrl } from '@/lib/route-matching';
 
 interface SEOProps {
   title?: string;
@@ -10,12 +11,12 @@ interface SEOProps {
   toCity?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ 
+const SEO: React.FC<SEOProps> = ({
   title = "Haryana Roadways Bus Timetable | Online Bus Schedule & Timings",
   description = "Find Haryana Roadways bus schedules, timings, and online booking. View departure times, operators, and service days for all routes across Haryana.",
   route,
   fromCity,
-  toCity 
+  toCity
 }) => {
   // Generate structured data for bus routes
   const generateStructuredData = () => {
@@ -94,7 +95,7 @@ const SEO: React.FC<SEOProps> = ({
       ];
 
       const isPopularRoute = popularRoutes.some(
-        route => route.from.toLowerCase() === fromCity.toLowerCase() && 
+        route => route.from.toLowerCase() === fromCity.toLowerCase() &&
                 route.to.toLowerCase() === toCity.toLowerCase()
       );
 
@@ -116,22 +117,22 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={metadata.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <meta name="keywords" content={`Haryana Roadways, bus timetable, ${fromCity || ''} to ${toCity || ''} bus schedule, online bus booking, Haryana bus timings`} />
-      
+
       {/* Open Graph Meta Tags */}
       <meta property="og:title" content={metadata.title} />
       <meta property="og:description" content={metadata.description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={window.location.href} />
       <meta property="og:site_name" content="Haryana Roadways Bus Timetable" />
-      
+
       {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={metadata.title} />
       <meta name="twitter:description" content={metadata.description} />
-      
+
       {/* Canonical URL */}
-      <link rel="canonical" href={window.location.href} />
-      
+      <link rel="canonical" href={fromCity && toCity ? `${window.location.origin}${buildSearchUrl(fromCity, toCity)}` : window.location.href} />
+
       {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify(generateStructuredData())}
@@ -140,4 +141,4 @@ const SEO: React.FC<SEOProps> = ({
   );
 };
 
-export default SEO; 
+export default SEO;

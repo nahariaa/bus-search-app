@@ -1,0 +1,47 @@
+{
+  "snapshotId": "9952d2be0e6e5f6efb3bcc89126e00338aa7b01006bac91ecb330021e2282e33",
+  "previousServices": 1563,
+  "previousRouteLabels": 138,
+  "disappeared": [
+    {
+      "from": "ISBT Delhi",
+      "to": "T.ClosedKhark hoda via Sonipat",
+      "reason": "Original PDF marks this service temporarily closed; retained for review."
+    },
+    {
+      "from": "ISBT Delhi",
+      "to": "Kaithal/T.Closed",
+      "reason": "Original PDF marks this service temporarily closed; retained for review."
+    },
+    {
+      "from": "Charkhi Dadri",
+      "to": "152D",
+      "reason": "Previous data swapped To and Via. 152D is a road label, not a destination; the published endpoint is used."
+    },
+    {
+      "from": "Charkhi Dadri",
+      "to": "M/G",
+      "reason": "Previous data swapped To and Via. Charkhi Dadri.pdf page 8 prints destination Narnaul, via M/G. The abbreviation is retained for review."
+    }
+  ],
+  "acceptance": [
+    {
+      "from": "Delhi",
+      "to": "Ludhiana",
+      "services": 86,
+      "viaMatches": 37
+    },
+    {
+      "from": "Bhiwani",
+      "to": "Delhi",
+      "services": 37,
+      "viaMatches": 1
+    },
+    {
+      "from": "Bhiwani",
+      "to": "Rohtak",
+      "services": 44,
+      "viaMatches": 44
+    }
+  ]
+}

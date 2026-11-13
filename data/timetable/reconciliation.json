@@ -1,0 +1,4003 @@
+{
+  "snapshotId": "9952d2be0e6e5f6efb3bcc89126e00338aa7b01006bac91ecb330021e2282e33",
+  "inputRows": 20195,
+  "files": [
+    {
+      "csv": "ambala_bus_schedule.csv",
+      "imported": 2584,
+      "input": 2629,
+      "review": 45,
+      "confirmedDuplicates": 0,
+      "sha256": "04ee5502da0a3c6f127482d73dc9c04aa03aacefb7f9f1f0a0db43171fd56384"
+    },
+    {
+      "csv": "bhiwani_bus_schedule.csv",
+      "imported": 1006,
+      "input": 1006,
+      "confirmedDuplicates": 0,
+      "sha256": "c28185cd9397af5b22dbbdb5c2a596a326546adbd78590b09b7fdff1355cfc55"
+    },
+    {
+      "csv": "chandigarh_bus_schedule.csv",
+      "imported": 768,
+      "input": 768,
+      "confirmedDuplicates": 0,
+      "sha256": "5edc128e5f29474116200e743630cc25923f74168ed789a36403636bf479f550"
+    },
+    {
+      "csv": "charkhi_dadri_bus_schedule.csv",
+      "imported": 459,
+      "input": 459,
+      "confirmedDuplicates": 0,
+      "sha256": "fc0b34f7710554278be122e6838a53dcd18ede2e95bb36a724a4f2b0094692d8"
+    },
+    {
+      "csv": "delhi_bus_schedule.csv",
+      "imported": 76,
+      "input": 76,
+      "confirmedDuplicates": 0,
+      "sha256": "43131c4ae71060b3aa74895285e1fa736a576f90eaf1080fd1d5967341ca9146"
+    },
+    {
+      "csv": "delhi_isbt_delhi_depot_bus_schedule.csv",
+      "imported": 1104,
+      "input": 1107,
+      "review": 3,
+      "confirmedDuplicates": 0,
+      "sha256": "0ee3e551b4eb9e69322040e3f8a3aef3fe3094763a3c5810d26bfc9bcca7f4cd"
+    },
+    {
+      "csv": "faridabad_bus_schedule.csv",
+      "imported": 177,
+      "input": 177,
+      "confirmedDuplicates": 0,
+      "sha256": "37f678d1826a98f9e52607459e201cc63ed613c10d8acb3f9ddd4fd2315bde24"
+    },
+    {
+      "csv": "fatehabad_bus_schedule.csv",
+      "imported": 863,
+      "input": 863,
+      "confirmedDuplicates": 0,
+      "sha256": "7972626792de8126e2afb5dc0bc59c4bf2c12de65860de80d6e1176e0cab0980"
+    },
+    {
+      "csv": "gurugram_bus_schedule.csv",
+      "imported": 591,
+      "input": 591,
+      "confirmedDuplicates": 0,
+      "sha256": "af8d669f8426d76d86859cda618d67c0661a3172ae8f0a32830242f47081a79d"
+    },
+    {
+      "csv": "hisar_bus_schedule.csv",
+      "imported": 1713,
+      "input": 1713,
+      "confirmedDuplicates": 0,
+      "sha256": "16a7f6a91ecd2335478bf7bef16a50d73ef882ee3de28debadb58d12c9d0d4f4"
+    },
+    {
+      "csv": "jhajjar_bus_schedule.csv",
+      "imported": 2146,
+      "input": 2146,
+      "confirmedDuplicates": 0,
+      "sha256": "9ae012a3ddbd40408f0ef063f9e8c21858b4dc8d227438508ee4bb784335b74a"
+    },
+    {
+      "csv": "jind_bus_schedule.csv",
+      "imported": 1070,
+      "input": 1070,
+      "confirmedDuplicates": 0,
+      "sha256": "31ff4530d67333941b31e94d4768d469de63dcaa74cdc3124ab2949e7c2169b0"
+    },
+    {
+      "csv": "kaithal_bus_schedule.csv",
+      "imported": 634,
+      "input": 635,
+      "review": 1,
+      "confirmedDuplicates": 0,
+      "sha256": "9c98a24a990cdf13282f8fb40760c084559bbbc67cad1ad886040bd282f28b12"
+    },
+    {
+      "csv": "karnal_bus_schedule.csv",
+      "imported": 757,
+      "input": 757,
+      "confirmedDuplicates": 0,
+      "sha256": "499f6d5c7e5a183283bf20c2c37f94a3c84b0ea12bbcac86197b3142dd7363e1"
+    },
+    {
+      "csv": "kurukshetra_bus_schedule.csv",
+      "imported": 660,
+      "input": 660,
+      "confirmedDuplicates": 0,
+      "sha256": "68240938de7af6d0d1ec2b266abadf4c6dce962481df5f03aa440725d213d099"
+    },
+    {
+      "csv": "narnaul_bus_schedule.csv",
+      "imported": 863,
+      "input": 864,
+      "review": 1,
+      "confirmedDuplicates": 0,
+      "sha256": "bc741919d9e391492d2f70dafc008e06c8ed1dcd4b81e5f3c681c3b88c69e6ac"
+    },
+    {
+      "csv": "nuh_bus_schedule.csv",
+      "imported": 90,
+      "input": 90,
+      "confirmedDuplicates": 0,
+      "sha256": "0edcfc5f25ebc6d9dd4a3c6a09ee3ec86accab6fd663d0e57ed62df15edd8a2b"
+    },
+    {
+      "csv": "palwal_bus_schedule.csv",
+      "imported": 236,
+      "input": 236,
+      "confirmedDuplicates": 0,
+      "sha256": "858a8a45b7f0ecddede499ca9808f7a1c96cb47621dd9ac8a95db1b9410f03e0"
+    },
+    {
+      "csv": "panchkula_bus_schedule.csv",
+      "imported": 297,
+      "input": 297,
+      "confirmedDuplicates": 0,
+      "sha256": "1bc2127d40a93ad62b4693c100250dca1c58de19bc0f50de7782ad8b4e859f82"
+    },
+    {
+      "csv": "panipat_bus_schedule.csv",
+      "imported": 402,
+      "input": 403,
+      "review": 1,
+      "confirmedDuplicates": 0,
+      "sha256": "8d2f42a67e793f9cc29c8b4236c1dbede45c29c62394c07ea43bf7a254f5832a"
+    },
+    {
+      "csv": "rewari_bus_schedule.csv",
+      "imported": 331,
+      "input": 332,
+      "review": 1,
+      "confirmedDuplicates": 0,
+      "sha256": "b0d1669e1cbcf36290b365e1493f5e738e4d19c1881b32f9af55f2645d55d5a2"
+    },
+    {
+      "csv": "rohtak_bus_schedule.csv",
+      "imported": 1017,
+      "input": 1017,
+      "confirmedDuplicates": 0,
+      "sha256": "0981a80b49ad73f6e1388ec8df5cb8d5e903f580bff69b2a4c06427d926e93e0"
+    },
+    {
+      "csv": "sirsa_bus_schedule.csv",
+      "imported": 1059,
+      "input": 1060,
+      "review": 1,
+      "confirmedDuplicates": 0,
+      "sha256": "4000ba9575a06fcc783a891ca9141e715c0dad5dcb10c550f8cf84c24e5e7c30"
+    },
+    {
+      "csv": "sonipat_bus_schedule.csv",
+      "imported": 710,
+      "input": 710,
+      "confirmedDuplicates": 0,
+      "sha256": "d46ac981f8c7fdc5d5765cc1f80c246a7f33ca12f6478ff4022dad0ddacf0c19"
+    },
+    {
+      "csv": "yamunanagar_bus_schedule.csv",
+      "imported": 529,
+      "input": 529,
+      "confirmedDuplicates": 0,
+      "sha256": "5ac19cfe3bd72517329fa08760801ef9f21d293dc1b718a4afe58c02aa144949"
+    }
+  ],
+  "pdfs": [
+    {
+      "pdf": "ambala.pdf",
+      "sha256": "9476db6cf9f1cceeffcfc8c4f55206e02bfd8a7bff5038279dda2bd3bd632f9d",
+      "pages": 87,
+      "parsedRows": 2629
+    },
+    {
+      "pdf": "bhiwani.pdf",
+      "sha256": "8e7d272778d99c96c63123ca458bd4e8725b9903698cd457746be972e43341db",
+      "pages": 28,
+      "parsedRows": 1006
+    },
+    {
+      "pdf": "chandigarh.pdf",
+      "sha256": "0fe29972a44f4f2dbd29aa237b625d62e1cfc5916f5f7faf7117f3b18f72896f",
+      "pages": 31,
+      "parsedRows": 768
+    },
+    {
+      "pdf": "Charkhi Dadri.pdf",
+      "sha256": "05ac632b39e8b86ee877ab4bbd6d22187258fcb32187bf369045a3a788893af0",
+      "pages": 13,
+      "parsedRows": 459
+    },
+    {
+      "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+      "sha256": "2885cf872735bc90f0232fe9d4b8ea3f95950eef92835d577fe089c8448ec873",
+      "pages": 121,
+      "parsedRows": 1107
+    },
+    {
+      "pdf": "delhi.pdf",
+      "sha256": "cf6cec8cab5d49e7f955a83ecf8c63a8c75538fc861d59f49e9c5eddf8592907",
+      "pages": 3,
+      "parsedRows": 76
+    },
+    {
+      "pdf": "faridabad.pdf",
+      "sha256": "fdf6dd1d70458d91f2dc20e11a5f568344c089eddf453dd5d0bc8444ea36ee09",
+      "pages": 4,
+      "parsedRows": 177
+    },
+    {
+      "pdf": "Fatehabad .pdf",
+      "sha256": "9eb7855fcc5446f0acdb2420d6071ddc89e74673c66aad48789a67ea3177aa09",
+      "pages": 29,
+      "parsedRows": 863
+    },
+    {
+      "pdf": "Gurugram.pdf",
+      "sha256": "8e34503e4793aa37375bed7dd53e3d692b6ec7202e10c06fbe0aea0966dd9e92",
+      "pages": 23,
+      "parsedRows": 591
+    },
+    {
+      "pdf": "hisar.pdf",
+      "sha256": "b0030c82a625d8380985d59f5f7c45f97a723716e4681c76a07b62671bf3562a",
+      "pages": 46,
+      "parsedRows": 1713
+    },
+    {
+      "pdf": "JHAJJAR.pdf",
+      "sha256": "39b9ff636729f844a38370e519d6c22b7031bf1cc14e47ed8a6bcdc5a66d10bb",
+      "pages": 66,
+      "parsedRows": 2146
+    },
+    {
+      "pdf": "Jind.pdf",
+      "sha256": "171cb67e7efa3d4ff285a1497e19bb7741deeb19d70f191dc8f6d1c7c79f767d",
+      "pages": 30,
+      "parsedRows": 1070
+    },
+    {
+      "pdf": "KAITHAL.pdf",
+      "sha256": "5d789c42bef691792a8affc857d03fb5d7376a28dddaae1c1f6bd97b1fa0ed51",
+      "pages": 27,
+      "parsedRows": 635
+    },
+    {
+      "pdf": "karnal.pdf",
+      "sha256": "1a4d00175fd9d26b8a69f10017f3acfdb8ce90e8b03e17d8ca3b9ee53c0a535d",
+      "pages": 34,
+      "parsedRows": 757
+    },
+    {
+      "pdf": "kurukshetra.pdf",
+      "sha256": "b99774b7c560933ac2dcfb98d697f8371acf884bcc170c5bc2c8c1e7ad731777",
+      "pages": 21,
+      "parsedRows": 660
+    },
+    {
+      "pdf": "Narnaul.pdf",
+      "sha256": "f3f93f4f7f5fb72c07f75a7726e74a2b6fbaef5e6c149d8ebf8a1db9ef82a2a3",
+      "pages": 20,
+      "parsedRows": 864
+    },
+    {
+      "pdf": "Nuh Depot.pdf",
+      "sha256": "f7de2615dc98c36c55153f9022b873bdcf02f919250ca3b4dec12a8baa6be12c",
+      "pages": 4,
+      "parsedRows": 90
+    },
+    {
+      "pdf": "Palwal Depot.pdf",
+      "sha256": "41206c49c28b2d6ced9d93a264df6e82b6f21677ac2515e49905596aa98e0b1e",
+      "pages": 5,
+      "parsedRows": 236
+    },
+    {
+      "pdf": "Panchkula Depot.pdf",
+      "sha256": "06d0c5249bb05c492d50de6dc45c369e3048b3ab1f9ea70b2d144370d45301ff",
+      "pages": 15,
+      "parsedRows": 297
+    },
+    {
+      "pdf": "Panipat Depot.pdf",
+      "sha256": "e05c7a9621e198bb11840901bd302d98c4aa76184b3b9d0d2359995b30e81ff5",
+      "pages": 23,
+      "parsedRows": 403
+    },
+    {
+      "pdf": "Rewari Depot.pdf",
+      "sha256": "c376cc524b8a6d43bb466e3e35c8d7af98e30954a5f05b02c8afe6dbbbea5dbf",
+      "pages": 11,
+      "parsedRows": 332
+    },
+    {
+      "pdf": "Rohtak Depot.pdf",
+      "sha256": "f61ddffa20dd309191bf2d50f4a3120763b569d5195ba08bc72658a212a5a6d9",
+      "pages": 28,
+      "parsedRows": 1017
+    },
+    {
+      "pdf": "Sirsa Depot.pdf",
+      "sha256": "8e335055cafa7220c2082e4d8c892d01ccba5fc1cd254c04f052f865e7e9d539",
+      "pages": 23,
+      "parsedRows": 1060
+    },
+    {
+      "pdf": "Sonipat Depot.pdf",
+      "sha256": "548952c89517d6fcac168dba04c6529631e8b75320c2aac72aabd6b4b513bef9",
+      "pages": 23,
+      "parsedRows": 710
+    },
+    {
+      "pdf": "yamunanagar.pdf",
+      "sha256": "e0ef6f9622ba02c1d1423c2fa717f2c62b6763e9cf30b331a9aac0a8a17c27c9",
+      "pages": 17,
+      "parsedRows": 529
+    }
+  ],
+  "searchableServices": 20142,
+  "unresolvedRows": [
+    {
+      "id": "ambala_bus_schedule:448",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 14,
+        "table": 1,
+        "row": 33
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:449",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:450",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:451",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:453",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:454",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:456",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:459",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:461",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 13
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:463",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:464",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:466",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:467",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:469",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 21
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:470",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:471",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 23
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:472",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 24
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:474",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 26
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:476",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 28
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:478",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 30
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:479",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 31
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:480",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 32
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:481",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 15,
+        "table": 1,
+        "row": 33
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:482",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 16,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:483",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 16,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:484",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 16,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:485",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 16,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: LOCAL"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:832",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 26,
+        "table": 1,
+        "row": 23
+      },
+      "reasons": [
+        "Missing published endpoint in original PDF"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2430",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Missing published endpoint in original PDF"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2431",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Missing published endpoint in original PDF"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2433",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2436",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2439",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2440",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2442",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2444",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2446",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 24
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2447",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 25
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2451",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 29
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2454",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 81,
+        "table": 1,
+        "row": 32
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2456",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 82,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2457",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 82,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2458",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 82,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2459",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 82,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:2460",
+      "sourcePdf": "ambala.pdf",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 82,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: HR"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:700",
+      "sourcePdf": "Delhi (ISBT Delhi) Depot.pdf",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 68,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Source marks service temporarily closed: T. ClosedKhark hoda via Sonipat"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:756",
+      "sourcePdf": "Delhi (ISBT Delhi) Depot.pdf",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 73,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Source marks service temporarily closed: Kaithal/T. Closed"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:1031",
+      "sourcePdf": "Delhi (ISBT Delhi) Depot.pdf",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 108,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "No valid published departure time in original PDF"
+      ]
+    },
+    {
+      "id": "kaithal_bus_schedule:43",
+      "sourcePdf": "KAITHAL.pdf",
+      "pdfRef": {
+        "pdf": "KAITHAL.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: GURUGRAM ONLY MONDAY OTHER DAYS ROHTAK"
+      ]
+    },
+    {
+      "id": "narnaul_bus_schedule:51",
+      "sourcePdf": "Narnaul.pdf",
+      "pdfRef": {
+        "pdf": "Narnaul.pdf",
+        "page": 2,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "No valid published departure time in original PDF"
+      ]
+    },
+    {
+      "id": "panipat_bus_schedule:47",
+      "sourcePdf": "Panipat Depot.pdf",
+      "pdfRef": {
+        "pdf": "Panipat Depot.pdf",
+        "page": 2,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "No valid published departure time in original PDF"
+      ]
+    },
+    {
+      "id": "rewari_bus_schedule:202",
+      "sourcePdf": "Rewari Depot.pdf",
+      "pdfRef": {
+        "pdf": "Rewari Depot.pdf",
+        "page": 7,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Conditional or ambiguous endpoint: DK Delhi"
+      ]
+    },
+    {
+      "id": "sirsa_bus_schedule:217",
+      "sourcePdf": "Sirsa Depot.pdf",
+      "pdfRef": {
+        "pdf": "Sirsa Depot.pdf",
+        "page": 5,
+        "table": 1,
+        "row": 28
+      },
+      "reasons": [
+        "Missing published endpoint in original PDF"
+      ]
+    }
+  ],
+  "pdfRecoveryCandidates": [],
+  "recoveredServices": 0,
+  "unparsedPdfRows": [],
+  "repeatedServiceGroups": 687,
+  "confirmedDuplicateServices": 0,
+  "viaReview": [
+    {
+      "id": "ambala_bus_schedule:1163",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1164",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1165",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1166",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1167",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1168",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 7
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1169",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1170",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1171",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 10
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1172",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1180",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1181",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1183",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1186",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 37,
+        "table": 1,
+        "row": 25
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: AMB"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1243",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 39,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: UGARA-BARA"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1244",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 39,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: UGARA-BARA"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1245",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 39,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: UGARA-BARA"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1246",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 39,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: UGARA-BARA"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1719",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 54,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: UGARA,A/CANTT"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1727",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 54,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: UGARA,A/CANTT"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1747",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1748",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 12
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1749",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 13
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1750",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1751",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1752",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1753",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1754",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1755",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "ambala_bus_schedule:1756",
+      "pdfRef": {
+        "pdf": "ambala.pdf",
+        "page": 55,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: N/NIHARSI"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:242",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 7,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:247",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 7,
+        "table": 1,
+        "row": 25
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:252",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 7,
+        "table": 1,
+        "row": 30
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:253",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 7,
+        "table": 1,
+        "row": 31
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:260",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 7,
+        "table": 1,
+        "row": 38
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:263",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:267",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:270",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:276",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:280",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:284",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 23
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:289",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 28
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:292",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 31
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:294",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 33
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:297",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 36
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:298",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 37
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:300",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 39
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:304",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:308",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:311",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "bhiwani_bus_schedule:316",
+      "pdfRef": {
+        "pdf": "bhiwani.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Jhajjra/Gothra"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:271",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:273",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:274",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:275",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 21
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:276",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:278",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 24
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:280",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 26
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:282",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 28
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:284",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 30
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:285",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 31
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:286",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 32
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:288",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 34
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:290",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 36
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:291",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 8,
+        "table": 1,
+        "row": 37
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:292",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:293",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:294",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:296",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:298",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 7
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:299",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:300",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:302",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:303",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 12
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:304",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 13
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:305",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:306",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:308",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:310",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:311",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:312",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 21
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:313",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:314",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 23
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:315",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 24
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:316",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 25
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:317",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 26
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:318",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 27
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:319",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 28
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:321",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 30
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:322",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 31
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:323",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 32
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:324",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 33
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:325",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 34
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:326",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 35
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:328",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 9,
+        "table": 1,
+        "row": 37
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:330",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:332",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:333",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:334",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:336",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:337",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:338",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 10
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:340",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 12
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:342",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:343",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:344",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:345",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:346",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:347",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:348",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:349",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 21
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "charkhi_dadri_bus_schedule:350",
+      "pdfRef": {
+        "pdf": "Charkhi Dadri.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: M/G"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:574",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:575",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:576",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 7
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:577",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:578",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:579",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 10
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:580",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:581",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 12
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:582",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 13
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:583",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:584",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:585",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:586",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:587",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:588",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:589",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:590",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 21
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:591",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 49,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:592",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:593",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:594",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:595",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:596",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:597",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:598",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 7
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:599",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:600",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:601",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 10
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:602",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:603",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 12
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:604",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 13
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:605",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:606",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Bhi"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:607",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:608",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 50,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Rohtak-Kal"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:681",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 65,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:683",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 65,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:684",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 65,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:685",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 65,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:686",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 65,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:687",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 66,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:688",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 66,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:689",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 66,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:690",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 66,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:691",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 66,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:692",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 67,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:693",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 67,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:694",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 67,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:695",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 67,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:696",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 67,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:697",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 67,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:698",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 68,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:699",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 68,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: KKD"
+      ]
+    },
+    {
+      "id": "delhi_isbt_delhi_depot_bus_schedule:700",
+      "pdfRef": {
+        "pdf": "Delhi (ISBT Delhi) Depot.pdf",
+        "page": 68,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Source marks service temporarily closed: T. ClosedKhark hoda via Sonipat"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:106",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 2,
+        "table": 1,
+        "row": 54
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:107",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 2,
+        "table": 1,
+        "row": 55
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:108",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 2,
+        "table": 1,
+        "row": 56
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:109",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:110",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:111",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:112",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:113",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:114",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:115",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 7
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:116",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:117",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:118",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 10
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:119",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:120",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 12
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:121",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 13
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:122",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:123",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 15
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:124",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 16
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:125",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 17
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:126",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:127",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 19
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:128",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:129",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 21
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:130",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 22
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:131",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 23
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:132",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 24
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:133",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 25
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:134",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 26
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:135",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 27
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:136",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 28
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:137",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 29
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:138",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 30
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:139",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 31
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:140",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 32
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:141",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 33
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:142",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 34
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:143",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 35
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:144",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 36
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:145",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 37
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:146",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 38
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:147",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 39
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:148",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 40
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:149",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 41
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:150",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 42
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:151",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 43
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:152",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 44
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:153",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 45
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:154",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 46
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:155",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 47
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:156",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 48
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:157",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 49
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:158",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 50
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:159",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 51
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:160",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 52
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:161",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 53
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:162",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 54
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:163",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 55
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:164",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 3,
+        "table": 1,
+        "row": 56
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:165",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 4,
+        "table": 1,
+        "row": 1
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:166",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 4,
+        "table": 1,
+        "row": 2
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:167",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 4,
+        "table": 1,
+        "row": 3
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "faridabad_bus_schedule:168",
+      "pdfRef": {
+        "pdf": "faridabad.pdf",
+        "page": 4,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: BK, Manger"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1038",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 4
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: PANIPAT/AMBALA"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1039",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 5
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: ASSANDH/KARNAL"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1040",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 6
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: MUANA/KARNAL"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1041",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 7
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: PANIPAT/MURTHAL"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1042",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 8
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: PANIPAT/MURTHAL"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1043",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 9
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: PANIPAT/MURTHAL"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1044",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 10
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: PANIPAT/MURTHAL"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1045",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 11
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: JIND/HISAR"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1046",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 12
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: JIND/HANSI"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1047",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 13
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: JIND/HANSI"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1052",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 18
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: PANIPAT/SHAMLI"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1054",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 20
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: JIND/HISAR"
+      ]
+    },
+    {
+      "id": "jind_bus_schedule:1055",
+      "pdfRef": {
+        "pdf": "Jind.pdf",
+        "page": 30,
+        "table": 1,
+        "row": 21
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: JIND/HANSI"
+      ]
+    },
+    {
+      "id": "rewari_bus_schedule:302",
+      "pdfRef": {
+        "pdf": "Rewari Depot.pdf",
+        "page": 10,
+        "table": 1,
+        "row": 25
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Kanina, M/Garh"
+      ]
+    },
+    {
+      "id": "rohtak_bus_schedule:126",
+      "pdfRef": {
+        "pdf": "Rohtak Depot.pdf",
+        "page": 5,
+        "table": 1,
+        "row": 14
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: NJF"
+      ]
+    },
+    {
+      "id": "rohtak_bus_schedule:135",
+      "pdfRef": {
+        "pdf": "Rohtak Depot.pdf",
+        "page": 5,
+        "table": 1,
+        "row": 23
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: NJF"
+      ]
+    },
+    {
+      "id": "yamunanagar_bus_schedule:348",
+      "pdfRef": {
+        "pdf": "yamunanagar.pdf",
+        "page": 11,
+        "table": 1,
+        "row": 30
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Harnoul-L.Kheri"
+      ]
+    },
+    {
+      "id": "yamunanagar_bus_schedule:351",
+      "pdfRef": {
+        "pdf": "yamunanagar.pdf",
+        "page": 11,
+        "table": 1,
+        "row": 33
+      },
+      "reasons": [
+        "Ambiguous via abbreviation or alternate path: Harnoul-L.Kheri"
+      ]
+    }
+  ]
+}
