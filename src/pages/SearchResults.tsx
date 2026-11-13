@@ -2,7 +2,8 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import BusSearchResults from '@/components/BusSearchResults';
-import { cleanLocation, matchRoutes } from '@/lib/route-matching';
+import { matchRoutes } from '@/lib/route-matching';
+import { canonicalPlaceName } from '@/lib/timetable';
 import BusSearchForm from '@/components/BusSearchForm';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
@@ -11,8 +12,8 @@ const SearchResults = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
-  const fromCity = cleanLocation(searchParams.get('from') || '');
-  const toCity = cleanLocation(searchParams.get('to') || '');
+  const fromCity = canonicalPlaceName(searchParams.get('from') || '');
+  const toCity = canonicalPlaceName(searchParams.get('to') || '');
 
   // Find matching routes
   const matchingRoutes = matchRoutes(fromCity, toCity);

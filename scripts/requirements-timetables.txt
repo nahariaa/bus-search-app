@@ -1,0 +1,2 @@
+# Needed only to re-extract the original PDFs. The importer itself uses stdlib.
+pdfplumber==0.11.10

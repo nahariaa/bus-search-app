@@ -1,0 +1,25 @@
+{
+  "baseUrl": "http://127.0.0.1:8080",
+  "passed": true,
+  "delhiLudhianaResults": 86,
+  "isbtDelhiTerminals": [
+    "ISBT Anand Vihar, Delhi",
+    "ISBT Kashmiri Gate, Delhi",
+    "ISBT Sarai Kale Khan, Delhi"
+  ],
+  "pageErrors": [],
+  "checks": [
+    "mobile autocomplete",
+    "alias autocomplete",
+    "keyboard selection",
+    "canonical URLs",
+    "legacy URLs",
+    "direct visits",
+    "refresh",
+    "Delhi to Ludhiana terminating and via Katra",
+    "Bhiwani to Delhi",
+    "Bhiwani to Rohtak via",
+    "via-only origin rejected",
+    "mobile overflow"
+  ]
+}

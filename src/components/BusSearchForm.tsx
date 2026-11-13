@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import PlaceInput from './PlaceInput';
 import { Label } from '@/components/ui/label';
 import { Bus, MapPin, ArrowLeftRight } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-import { boardingPoints, cleanLocation, destinationsFrom, locationKey } from '@/lib/route-matching';
+import { boardingPoints, buildSearchUrl, destinationsFrom, locationKey } from '@/lib/route-matching';
+import { canonicalPlaceName } from '@/lib/timetable';
 
 interface BusSearchFormProps {
   initialFrom?: string;
@@ -17,13 +18,13 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
   const [toCity, setToCity] = useState(initialTo);
   const navigate = useNavigate();
 
-  const origins = boardingPoints();
-  const destinations = destinationsFrom(fromCity);
+  const origins = useMemo(() => boardingPoints(), []);
+  const destinations = useMemo(() => destinationsFrom(fromCity), [fromCity]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    const from = cleanLocation(fromCity);
-    const to = cleanLocation(toCity);
+    const from = canonicalPlaceName(fromCity);
+    const to = canonicalPlaceName(toCity);
     setFromCity(from);
     setToCity(to);
     
@@ -46,7 +47,7 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
     }
 
     // Navigate to search results page
-    navigate(`/search?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
+    navigate(buildSearchUrl(from, to));
   };
 
   const swapCities = () => {
@@ -68,20 +69,8 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
               </Label>
               <div className="relative">
                 <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <Input
-                  id="from-city"
-                  type="text"
-                  placeholder="Enter departure city"
-                  value={fromCity}
-                  onChange={(e) => setFromCity(e.target.value)}
-                  className="pl-10 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  list="from-cities"
-                />
-                <datalist id="from-cities">
-                  {origins.map(city => (
-                    <option key={city} value={city} />
-                  ))}
-                </datalist>
+                <PlaceInput id="from-city" value={fromCity} onChange={setFromCity}
+                  available={origins} placeholder="Enter departure city or terminal" />
               </div>
             </div>
 
@@ -92,20 +81,8 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
               </Label>
               <div className="relative">
                 <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <Input
-                  id="to-city"
-                  type="text"
-                  placeholder="Enter destination city"
-                  value={toCity}
-                  onChange={(e) => setToCity(e.target.value)}
-                  className="pl-10 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  list="to-cities"
-                />
-                <datalist id="to-cities">
-                  {destinations.map(city => (
-                    <option key={city} value={city} />
-                  ))}
-                </datalist>
+                <PlaceInput id="to-city" value={toCity} onChange={setToCity}
+                  available={destinations} placeholder="Enter destination city or stop" />
               </div>
             </div>
           </div>
