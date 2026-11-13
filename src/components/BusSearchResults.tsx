@@ -20,9 +20,9 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
   if (routes.length === 0) {
     return (
       <div className="text-center py-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Buses Found</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">No matching timetable found</h2>
         <p className="text-gray-600 mb-6">
-          No direct buses found from {fromCity} to {toCity}
+          Our published timetables do not include a departure from {fromCity || 'this boarding point'} to {toCity || 'this destination'}. Edit either location above and try again.
         </p>
         <Button onClick={onBack} variant="outline">
           Try Another Search
@@ -91,4 +91,4 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
   );
 };
 
-export default BusSearchResults; 
+export default BusSearchResults;
