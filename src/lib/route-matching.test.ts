@@ -39,6 +39,10 @@ test('every suggestion is backed by a published directional departure', () => {
     for (const to of destinationsFrom(from)) assert.ok(matchRoutes(from, to).length > 0);
   }
   assert.ok(!destinationsFrom('ISBT Delhi').includes('ISBT Delhi'));
+  // A published destination elsewhere is not automatically served from Delhi.
+  assert.ok(matchRoutes('Charkhi Dadri', 'Badwana').length > 0);
+  assert.ok(!destinationsFrom('ISBT Delhi').includes('Badwana'));
+  assert.equal(matchRoutes('ISBT Delhi', 'Badwana').length, 0);
   assert.equal(matchRoutes('ISBT Delhi', 'unsupported destination').length, 0);
   assert.equal(matchRoutes('Ludhiana', 'ISBT Delhi').length, 0);
   assert.equal(matchRoutes('Ambala', 'Ludhiana').length, 0);
