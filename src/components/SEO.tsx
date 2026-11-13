@@ -109,6 +109,11 @@ const SEO: React.FC<SEOProps> = ({
   };
 
   const metadata = getDynamicMetadata();
+  const canonicalUrl = window.location.pathname === '/'
+    ? 'https://www.haryanabus.in/'
+    : fromCity && toCity
+      ? `${window.location.origin}${buildSearchUrl(fromCity, toCity)}`
+      : window.location.href;
 
   return (
     <Helmet>
@@ -131,7 +136,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:description" content={metadata.description} />
 
       {/* Canonical URL */}
-      <link rel="canonical" href={fromCity && toCity ? `${window.location.origin}${buildSearchUrl(fromCity, toCity)}` : window.location.href} />
+      <link rel="canonical" href={canonicalUrl} />
 
       {/* Structured Data */}
       <script type="application/ld+json">
