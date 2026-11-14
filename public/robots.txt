@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://haryanabus.com/sitemap.xml
+Sitemap: https://www.haryanabus.in/sitemap.xml
 
 # Allow all crawlers
 Disallow: /api/

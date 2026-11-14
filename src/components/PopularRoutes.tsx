@@ -1,13 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { buildSearchUrl, matchRoutes } from '@/lib/route-matching';
+import { routePages } from '@/lib/route-pages';
 
-const routes = [
-  { from: 'Chandigarh', to: 'Delhi' },
-  { from: 'Delhi', to: 'Ludhiana' },
-  { from: 'Gurugram', to: 'Hisar' },
-  { from: 'Bhiwani', to: 'Delhi' },
-].filter(({ from, to }) => matchRoutes(from, to).length > 0);
+const routes = routePages.filter(route => ['chandigarh-to-delhi', 'delhi-to-ludhiana', 'gurugram-to-hisar', 'bhiwani-to-delhi'].includes(route.slug));
 
 const PopularRoutes = () => (
   <section className="mt-8 sm:mt-10" aria-labelledby="explore-routes-heading">
@@ -15,8 +10,8 @@ const PopularRoutes = () => (
       Explore routes
     </h2>
     <ul className="grid gap-2 sm:grid-cols-2 sm:gap-3">
-      {routes.map(({ from, to }) => {
-        const url = buildSearchUrl(from, to);
+      {routes.map(({ from, to, path }) => {
+        const url = path;
         return (
           <li key={url}>
             <Link
@@ -30,6 +25,7 @@ const PopularRoutes = () => (
         );
       })}
     </ul>
+    <Link to="/routes" className="mt-3 inline-block py-2 text-blue-700 underline underline-offset-4">Browse all route timetables</Link>
   </section>
 );
 

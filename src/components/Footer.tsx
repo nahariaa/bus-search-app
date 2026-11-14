@@ -10,6 +10,7 @@ const Footer = () => (
       <nav aria-label="Footer navigation">
         <ul className="flex flex-wrap gap-x-5 gap-y-3 text-sm">
           <li><Link to="/" className={linkClass}>Timetable search</Link></li>
+          <li><Link to="/routes" className={linkClass}>Routes</Link></li>
           <li><Link to="/about" className={linkClass}>About</Link></li>
           <li><Link to="/privacy" className={linkClass}>Privacy</Link></li>
         </ul>
