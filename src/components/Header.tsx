@@ -12,6 +12,7 @@ const Header = () => (
       </Link>
       <nav aria-label="Main navigation" className="-ml-2 flex flex-wrap gap-x-1 sm:ml-0">
         <NavLink to="/" end className={navLinkClass}>Timetable search</NavLink>
+        <NavLink to="/routes" className={navLinkClass}>Routes</NavLink>
         <NavLink to="/about" className={navLinkClass}>About</NavLink>
         <NavLink to="/privacy" className={navLinkClass}>Privacy</NavLink>
       </nav>

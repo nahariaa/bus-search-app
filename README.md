@@ -71,3 +71,7 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Public static pages
+
+See [static generation and route selection](docs/static-generation.md) for the rendering approach, selected journeys, source-update workflow, routing and acceptance checks.

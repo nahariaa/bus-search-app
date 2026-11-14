@@ -15,7 +15,7 @@ const SEO = ({ title, description, path, noIndex }: SEOProps) => {
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      {noIndex && <meta name="robots" content="noindex" />}
+      <meta name="robots" content={noIndex ? 'noindex' : 'index, follow'} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}

@@ -42,7 +42,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
             <CardContent className="p-4 sm:p-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {/* Departure Time */}
-                <div className="flex items-center space-x-2">
+                <div className="flex min-w-0 items-center space-x-2 break-words [&>svg]:shrink-0">
                   <Clock className="h-5 w-5 text-blue-500" />
                   <div>
                     <p className="text-sm text-gray-500">Departure</p>
@@ -52,7 +52,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                 </div>
 
                 {/* Route Info */}
-                <div className="flex items-center space-x-2">
+                <div className="flex min-w-0 items-center space-x-2 break-words [&>svg]:shrink-0">
                   <MapPin className="h-5 w-5 text-green-500" />
                   <div>
                     <p className="text-sm text-gray-500">Route</p>
@@ -62,7 +62,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                 </div>
 
                 {/* Service Type */}
-                <div className="flex items-center space-x-2">
+                <div className="flex min-w-0 items-center space-x-2 break-words [&>svg]:shrink-0">
                   <BusIcon className="h-5 w-5 text-purple-500" />
                   <div>
                     <p className="text-sm text-gray-500">Service</p>
@@ -71,7 +71,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                 </div>
 
                 {/* Service Days */}
-                <div className="flex items-center space-x-2">
+                <div className="flex min-w-0 items-center space-x-2 break-words [&>svg]:shrink-0">
                   <Calendar className="h-5 w-5 text-orange-500" />
                   <div>
                     <p className="text-sm text-gray-500">Service days</p>
@@ -82,8 +82,9 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
               <details className="mt-4 text-sm text-gray-600">
                 <summary className="cursor-pointer">Timetable source</summary>
                 <p>{route.sourceTimetable} · PDF page {route.pdfPage}</p>
-                <p>Operating depot: {route.operatingDepot}{route.depotSource === 'filename' ? ' (from timetable title)' : ''}</p>
-                {route.operator && <p>Operator: {route.operator}</p>}
+                <p>Operating depot: {route.operatingDepot || 'Not published'}{route.depotSource === 'filename' ? ' (from timetable title)' : ''}</p>
+                <p>Operator: {route.operator || 'Not published'}</p>
+                <p className="break-words">Source references: {route.sourceRefs.join(', ') || 'Not published'}</p>
               </details>
             </CardContent>
           </Card>
