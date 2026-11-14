@@ -98,4 +98,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  :where(a, summary):focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-blue-500;
+  }
 }

@@ -2,51 +2,44 @@ import React from 'react';
 import { BusRoute } from '@/lib/bus-routes';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, MapPin, Bus as BusIcon, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { routeMatchLabel } from '@/lib/route-matching';
+import { BUS_STAND_ENQUIRIES_URL } from '@/lib/site';
 
 interface BusSearchResultsProps {
   routes: BusRoute[];
   fromCity: string;
   toCity: string;
-  onBack: () => void;
 }
 
 const BusSearchResults: React.FC<BusSearchResultsProps> = ({
   routes,
   fromCity,
   toCity,
-  onBack,
 }) => {
-  if (routes.length === 0) {
-    return (
-      <div className="text-center py-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">No matching timetable found</h2>
-        <p className="text-gray-600 mb-6">
-          Our published timetables do not include a departure from {fromCity || 'this boarding point'} to {toCity || 'this destination'}. Edit either location above and try again.
-        </p>
-        <Button onClick={onBack} variant="outline">
-          Try Another Search
-        </Button>
-      </div>
-    );
-  }
+  const hasMatches = routes.length > 0;
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-semibold text-gray-900">
-          Buses from {fromCity} to {toCity}
+    <section className="space-y-4" aria-labelledby="results-heading">
+      <div className="space-y-2 break-words">
+        <h2 id="results-heading" className="text-xl font-semibold text-slate-900">
+          {hasMatches ? 'Published departures' : 'No matching timetable found'}
         </h2>
-        <Button onClick={onBack} variant="outline">
-          Back to Search
-        </Button>
+        {!hasMatches && (
+          <p className="text-sm text-slate-700">
+            This timetable collection has no matching departure from {fromCity} to {toCity}.
+            Try a different boarding point or destination, or ask the departure bus stand about service.
+          </p>
+        )}
+        <p className="text-sm text-slate-700">
+          Service can change. Confirm journey details with the operator or departure bus stand.
+          {' '}<a href={BUS_STAND_ENQUIRIES_URL} className="text-blue-700 underline underline-offset-4">Haryana Roadways bus stand enquiries</a>
+        </p>
       </div>
 
       <div className="grid gap-4">
-        {routes.map((route, index) => (
+        {routes.map(route => (
           <Card key={route.id} data-service-id={route.id} className="hover:shadow-lg transition-shadow duration-200">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {/* Departure Time */}
                 <div className="flex items-center space-x-2">
@@ -81,7 +74,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                 <div className="flex items-center space-x-2">
                   <Calendar className="h-5 w-5 text-orange-500" />
                   <div>
-                    <p className="text-sm text-gray-500">Available</p>
+                    <p className="text-sm text-gray-500">Service days</p>
                     <p className="font-semibold">{route.serviceDays.join(', ') || 'Not published'}</p>
                   </div>
                 </div>
@@ -96,7 +89,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
           </Card>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
