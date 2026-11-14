@@ -1,8 +1,8 @@
 import React from 'react';
-import { BusRoute } from '@/lib/bus-routes';
+import type { BusRoute } from '@/lib/bus-routes';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, MapPin, Bus as BusIcon, Calendar } from 'lucide-react';
-import { routeMatchLabel } from '@/lib/route-matching';
+import { routeMatchLabel } from '@/lib/route-label';
 import { BUS_STAND_ENQUIRIES_URL } from '@/lib/site';
 
 interface BusSearchResultsProps {

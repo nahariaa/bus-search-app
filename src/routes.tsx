@@ -3,7 +3,7 @@ import About from './pages/About';
 import Privacy from './pages/Privacy';
 import RouteDirectory from './pages/RouteDirectory';
 import RouteTimetable from './pages/RouteTimetable';
-import { routePages } from './lib/route-pages';
+import { routeSummaries } from './lib/public-timetables';
 
 // The router and build consume this same list of indexable pages.
 export const publicRoutes = [
@@ -11,5 +11,5 @@ export const publicRoutes = [
   { path: '/about', element: <About /> },
   { path: '/privacy', element: <Privacy /> },
   { path: '/routes', element: <RouteDirectory /> },
-  ...routePages.map(journey => ({ path: journey.path, element: <RouteTimetable journey={journey} /> })),
+  ...routeSummaries.map(journey => ({ path: journey.path, element: <RouteTimetable summary={journey} /> })),
 ];

@@ -14,6 +14,7 @@ def verify(base_url):
         page.goto(base_url, wait_until='networkidle')
         origin = page.get_by_role('combobox', name='Boarding From')
         origin.fill('isbt')
+        page.get_by_role('option', name='ISBT Kashmiri Gate, Delhi', exact=True).wait_for()
         options = page.get_by_role('option').all_text_contents()
         delhi = sorted(name for name in options if name.endswith(', Delhi'))
         assert delhi == ['ISBT Anand Vihar, Delhi', 'ISBT Kashmiri Gate, Delhi', 'ISBT Sarai Kale Khan, Delhi'], options

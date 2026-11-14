@@ -1,6 +1,5 @@
 import { useId, useState } from 'react';
 import { Input } from '@/components/ui/input';
-import { placeSuggestions } from '@/lib/route-matching';
 
 interface PlaceInputProps {
   id: string;
@@ -8,17 +7,20 @@ interface PlaceInputProps {
   onChange: (value: string) => void;
   available: string[];
   placeholder: string;
+  suggest?: (query: string, available: string[]) => string[];
+  statusId: string;
 }
 
-export default function PlaceInput({ id, value, onChange, available, placeholder }: PlaceInputProps) {
+export default function PlaceInput({ id, value, onChange, available, placeholder, suggest, statusId }: PlaceInputProps) {
   const listId = useId();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
-  const suggestions = placeSuggestions(value, available).slice(0, 30);
+  const suggestions = suggest?.(value, available).slice(0, 30) ?? [];
   const choose = (name: string) => { onChange(name); setOpen(false); setActive(-1); };
   return (
     <>
       <Input id={id} role="combobox" autoComplete="off" aria-autocomplete="list"
+        aria-describedby={statusId}
         aria-expanded={open && suggestions.length > 0} aria-controls={listId}
         aria-activedescendant={open && active >= 0 ? `${listId}-${active}` : undefined}
         placeholder={placeholder} value={value} className="pl-10 h-12 border-gray-300"

@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { routePages } from '@/lib/route-pages';
+import { routeSummaries } from '@/lib/public-timetables';
 
-const routes = routePages.filter(route => ['chandigarh-to-delhi', 'delhi-to-ludhiana', 'gurugram-to-hisar', 'bhiwani-to-delhi'].includes(route.slug));
+const routes = routeSummaries.filter(route => ['chandigarh-to-delhi', 'delhi-to-ludhiana', 'gurugram-to-hisar', 'bhiwani-to-delhi'].includes(route.slug));
 
 const PopularRoutes = () => (
   <section className="mt-8 sm:mt-10" aria-labelledby="explore-routes-heading">
