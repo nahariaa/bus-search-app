@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import BusSearchResults from '@/components/BusSearchResults';
-import { routePages, type RoutePage } from '@/lib/route-pages';
-import { buildSearchUrl } from '@/lib/route-matching';
-import { snapshotId } from '@/lib/timetable';
+import { routeSummaries, publicSnapshotId as snapshotId, usePublicJourney } from '@/lib/public-timetables';
 
-export default function RouteTimetable({ journey }: { journey: RoutePage }) {
-  const { from, to, fromId, toId, path, services } = journey;
-  const related = routePages.filter(route => route.path !== path &&
+export default function RouteTimetable({ summary }: { summary: typeof routeSummaries[number] }) {
+  const { from, to, fromId, toId, path } = summary;
+  const { journey, failed, retry } = usePublicJourney(summary.slug);
+  const related = routeSummaries.filter(route => route.path !== path &&
     (route.fromId === fromId || route.toId === toId || (route.fromId === toId && route.toId === fromId)));
   return <div className="mx-auto max-w-6xl space-y-6 px-4 py-7 sm:px-6 sm:py-10">
     <SEO title={`${from} to ${to} bus timetable | HaryanaBus`}
@@ -25,10 +24,12 @@ export default function RouteTimetable({ journey }: { journey: RoutePage }) {
         </div>
       </details>
     </div>
-    <Link to={buildSearchUrl(fromId, toId)} className="inline-flex min-h-12 items-center rounded-md bg-blue-700 px-4 py-3 font-semibold text-white hover:bg-blue-800">
+    <Link to={`/search?${new URLSearchParams({ from: fromId, to: toId })}`} className="inline-flex min-h-12 items-center rounded-md bg-blue-700 px-4 py-3 font-semibold text-white hover:bg-blue-800">
       Search {from} to {to}
     </Link>
-    <BusSearchResults routes={services} fromCity={from} toCity={to} />
+    {journey ? <BusSearchResults routes={journey.services} fromCity={from} toCity={to} />
+      : failed ? <div role="alert">Could not load this timetable. <button className="underline" onClick={retry}>Try again</button> or <a className="underline" href={path}>open the complete page</a>.</div>
+      : <p role="status">Loading timetable…</p>}
     {related.length > 0 && <nav aria-label="Related route timetables" className="space-y-3 border-t pt-6">
       <h2 className="text-xl font-semibold">Related timetables</h2>
       <ul className="flex flex-wrap gap-x-6 gap-y-3">{related.map(route => <li key={route.path}>

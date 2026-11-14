@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { matchRoutes, buildSearchUrl, routeMatchLabel } from '../src/lib/route-matching';
 import { routePages, routeManifest, validateRouteManifest } from '../src/lib/route-pages';
 import { snapshotId } from '../src/lib/timetable';
@@ -50,4 +50,20 @@ test('Delhi to Ludhiana static regression retains 00:40 at Kashmiri Gate towards
   assert.equal(katra.fromId, 'isbt-kashmiri-gate-delhi');
   assert.equal(katra.toId, 'katra');
   assert.equal(katra.matchedVia, 'Ludhiana');
+});
+
+test('hydration payloads are exactly the build matcher output and startup excludes search data', () => {
+  for (const journey of routePages) {
+    const html = readFileSync(`dist${journey.path}.html`, 'utf8');
+    const payload = html.match(/<script id="page-journey" type="application\/json">(.*?)<\/script>/s)![1];
+    assert.deepEqual(JSON.parse(payload), journey);
+    assert.deepEqual(JSON.parse(readFileSync(`.tools/generated/routes/${journey.slug}.json`, 'utf8')), journey);
+  }
+  const main = readdirSync('dist/assets').find(name => /^index-.*\.js$/.test(name))!;
+  const code = readFileSync(`dist/assets/${main}`, 'utf8');
+  assert.ok(!code.includes('ambala_bus_schedule:1'), 'full snapshot leaked into startup');
+  assert.ok(!code.includes('Invalid static journey selection'), 'build validation leaked into startup');
+  for (const file of ['index.html', 'about.html', 'privacy.html', 'routes.html']) {
+    assert.ok(!readFileSync(`dist/${file}`, 'utf8').includes('page-journey'));
+  }
 });

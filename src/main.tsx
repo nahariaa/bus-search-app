@@ -5,6 +5,7 @@ import App from './App';
 import './index.css';
 
 const root = document.getElementById('root')!;
-const app = <HelmetProvider><BrowserRouter><App /></BrowserRouter></HelmetProvider>;
+const data = document.getElementById('page-journey')?.textContent;
+const app = <HelmetProvider><BrowserRouter><App initialJourney={data ? JSON.parse(data) : undefined} /></BrowserRouter></HelmetProvider>;
 if (root.dataset.rendered === 'true') hydrateRoot(root, app);
 else createRoot(root).render(app);

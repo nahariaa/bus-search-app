@@ -55,8 +55,7 @@ export function buildSearchUrl(from: string, to: string): string {
   return `/search?${new URLSearchParams({ from: locationKey(from), to: locationKey(to) })}`;
 }
 
-export const routeMatchLabel = (route: BusRoute): string =>
-  route.matchedVia ? `Towards ${route.to} · via ${route.matchedVia}` : `To ${route.to}`;
+export { routeMatchLabel } from './route-label';
 
 // Future static timetable pages must consume this shared matcher and snapshot.
 export function timetablePairs(records: BusRoute[] = busRoutes): { from: string; to: string }[] {

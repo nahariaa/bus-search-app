@@ -1,12 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React, { useId, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import PlaceInput from './PlaceInput';
 import { Label } from '@/components/ui/label';
 import { Bus, MapPin, ArrowLeftRight } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-import { boardingPoints, buildSearchUrl, destinationsFrom, locationKey } from '@/lib/route-matching';
-import { canonicalPlaceName } from '@/lib/timetable';
+import { useSearchData } from '@/hooks/use-search-data';
 
 interface BusSearchFormProps {
   initialFrom?: string;
@@ -17,14 +16,18 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
   const [fromCity, setFromCity] = useState(initialFrom);
   const [toCity, setToCity] = useState(initialTo);
   const navigate = useNavigate();
+  const { data, loading, failed, start } = useSearchData();
+  const statusId = useId();
 
-  const origins = useMemo(() => boardingPoints(), []);
-  const destinations = useMemo(() => destinationsFrom(fromCity), [fromCity]);
+  const origins = useMemo(() => data?.boardingPoints() ?? [], [data]);
+  const destinations = useMemo(() => data?.destinationsFrom(fromCity) ?? [], [data, fromCity]);
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    const from = canonicalPlaceName(fromCity);
-    const to = canonicalPlaceName(toCity);
+    const engine = data ?? await start();
+    if (!engine) return;
+    const from = engine.canonicalPlaceName(fromCity);
+    const to = engine.canonicalPlaceName(toCity);
     setFromCity(from);
     setToCity(to);
 
@@ -37,7 +40,7 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
       return;
     }
 
-    if (locationKey(from) === locationKey(to)) {
+    if (engine.locationKey(from) === engine.locationKey(to)) {
       toast({
         title: "Invalid Route",
         description: "Choose a different boarding point or destination.",
@@ -46,7 +49,7 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
       return;
     }
 
-    navigate(buildSearchUrl(from, to));
+    navigate(engine.buildSearchUrl(from, to));
   };
 
   const swapCities = () => {
@@ -57,7 +60,7 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <form onSubmit={handleSearch} className="space-y-6">
+      <form onSubmit={handleSearch} onFocusCapture={() => { if (!data && !loading && !failed) void start(); }} className="space-y-6">
         <div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-end md:gap-3">
           <div className="space-y-2">
             <Label htmlFor="from-city" className="text-sm font-medium text-gray-700">
@@ -66,7 +69,7 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
             <div className="relative">
               <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <PlaceInput id="from-city" value={fromCity} onChange={setFromCity}
-                available={origins} placeholder="Enter departure city or terminal" />
+                available={origins} suggest={data?.placeSuggestions} statusId={statusId} placeholder="Enter departure city or terminal" />
             </div>
           </div>
 
@@ -88,7 +91,7 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
             <div className="relative">
               <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <PlaceInput id="to-city" value={toCity} onChange={setToCity}
-                available={destinations} placeholder="Enter destination city or stop" />
+                available={destinations} suggest={data?.placeSuggestions} statusId={statusId} placeholder="Enter destination city or stop" />
             </div>
           </div>
         </div>
@@ -101,6 +104,10 @@ const BusSearchForm = ({ initialFrom = '', initialTo = '' }: BusSearchFormProps)
           Find Buses
         </Button>
       </form>
+      <div id={statusId} aria-live="polite" aria-atomic="true" className="text-sm text-slate-700">
+        {loading && <p role="status">Loading search timetables. You can keep typing.</p>}
+        {failed && <p role="alert">Could not load search timetables. <button type="button" className="min-h-11 underline" onClick={() => void start()}>Try again</button> or <a href="/routes" className="underline">browse published routes</a>.</p>}
+      </div>
     </div>
   );
 };
