@@ -5,10 +5,15 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 
-def verify(base, output):
+def verify(base, output, access_url=None):
     with sync_playwright() as p:
         browser = p.chromium.launch(channel='chrome', headless=True)
-        context = browser.new_context(viewport={'width': 390, 'height': 844})
+        bootstrap = browser.new_context()
+        if access_url:
+            bootstrap.new_page().goto(access_url, wait_until='networkidle')
+        storage = bootstrap.storage_state()
+        bootstrap.close()
+        context = browser.new_context(viewport={'width': 390, 'height': 844}, storage_state=storage)
         page = context.new_page()
         requests, errors = [], []
         page.on('request', lambda request: requests.append(request.url))
@@ -52,7 +57,7 @@ def verify(base, output):
         assert not errors, errors
         context.close()
         # Fresh document/module cache: a failed chunk shows an accessible recovery path.
-        context = browser.new_context()
+        context = browser.new_context(storage_state=storage)
         page = context.new_page()
         page.route('**/search-engine-*.js', lambda route: route.abort())
         page.goto(base, wait_until='networkidle')
@@ -66,7 +71,7 @@ def verify(base, output):
         assert page.get_by_role('combobox', name='Boarding From').input_value() == 'delhi'
         context.close()
         # Direct search needs the engine immediately, with no false empty-result state.
-        context = browser.new_context()
+        context = browser.new_context(storage_state=storage)
         page = context.new_page()
         held = []
         page.route('**/search-engine-*.js', lambda route: held.append(route))
