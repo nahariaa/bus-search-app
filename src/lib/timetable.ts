@@ -15,6 +15,8 @@ export interface BusRoute {
   from: string;
   to: string;
   via: string;
+  viaSource: string;
+  roadTags: string[];
   departureTime: string;
   typeOfService: string;
   operator: string;
@@ -44,14 +46,16 @@ export const placeName = (id: string) => placesById.get(id)?.name ?? id;
 export const placeIncludes = (queryId: string, actualId: string) =>
   queryId === actualId || !!placesById.get(queryId)?.members.includes(actualId);
 
-type PackedService = [string, string, string, string[], string, string, string, string[], string, string, string, number, string[]];
+type PackedService = [string, string, string, string[], string, string, string, string[], string, string, string, number, string[], number?];
+const descriptions = snapshot.viaDescriptions as [string, string[]][];
 
 // A single versioned snapshot supplies the app and future static page generation.
 // Column tuples avoid shipping the same field names and display names 20,000 times.
 export const busRoutes: BusRoute[] = (snapshot.services as PackedService[]).map(row => {
   const [id, fromId, toId, viaIds, departureTime, typeOfService, operator, serviceDays,
-    sourceTimetable, operatingDepot, depotSource, pdfPage, sourceRefs] = row;
+    sourceTimetable, operatingDepot, depotSource, pdfPage, sourceRefs, viaDescriptionId] = row;
+  const [viaSource, roadTags] = descriptions?.[viaDescriptionId ?? 0] ?? ['', []];
   return { id, fromId, toId, viaIds, from: placeName(fromId), to: placeName(toId),
-    via: viaIds.map(placeName).join(' · '), departureTime, typeOfService, operator, serviceDays,
+    via: [...viaIds.map(placeName), ...roadTags].join(' · '), viaSource, roadTags, departureTime, typeOfService, operator, serviceDays,
     sourceTimetable, operatingDepot, depotSource, pdfPage, sourceRefs };
 });

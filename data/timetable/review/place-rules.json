@@ -207,6 +207,18 @@
     "NH 152D",
     "NH-152D"
   ],
+  "roadTags": {
+    "KMPE": "KMPE",
+    "KMP": "KMP",
+    "KMP EXPRESSWAY": "KMP Expressway",
+    "KGP": "KGP",
+    "VIA 152 D": "152D",
+    "152 D": "152D",
+    "152D": "152D",
+    "NH152D": "NH 152D",
+    "NH 152D": "NH 152D",
+    "NH-152D": "NH 152D"
+  },
   "unresolvedVia": [
     "M/G",
     "BK, Manger",

@@ -173,6 +173,11 @@ def main():
     args = parser.parse_args()
     rules = json.loads((DATA / 'review/place-rules.json').read_text(encoding='utf-8'))
     aliases = {key(k): v for k, v in rules['aliases'].items()}
+    road_labels = {key(k): v for k, v in rules['roadTags'].items()}
+    non_stop_via = {key(value) for value in rules['nonStopVia']}
+    assert road_labels.keys() <= non_stop_via, 'Reviewed road tags must stay outside the place matcher'
+    road_pattern = '|'.join(re.escape(label) for label in sorted(road_labels, key=len, reverse=True))
+    road_tokens = re.compile(r'(?:^|[,;-])\s*(' + road_pattern + r')\s*(?=$|[,;-])', re.I)
     registry = {}
 
     def place(value):
@@ -198,7 +203,7 @@ def main():
 
     def via_places(value):
         value = clean(value)
-        if key(value) in {key(v) for v in rules['nonStopVia']}:
+        if key(value) in non_stop_via:
             return [], ''
         if key(value) in {key(v) for v in rules['unresolvedVia']} or '/' in value:
             partial = next((v for k, v in rules.get('viaPartial', {}).items() if key(k) == key(value)), [])
@@ -210,7 +215,7 @@ def main():
             return [place(value)], ''
         protected = re.sub(r'((?:sec|sector))-\s*(\d+)', r'\1~\2', value, flags=re.I)
         stops = override or [s.replace('~', '-') for s in re.split(r'\s*[,;-]\s*', re.sub(r'^via\s+', '', protected, flags=re.I)) if s]
-        stops = [s for s in stops if key(s) not in {key(v) for v in rules['nonStopVia']}]
+        stops = [s for s in stops if key(s) not in non_stop_via]
         ambiguous = [s for s in stops if key(s) in {key(v) for v in rules['unresolvedVia']}]
         if ambiguous:
             return [place(s) for s in stops if s not in ambiguous], 'Ambiguous via abbreviation or alternate path: ' + ', '.join(ambiguous)
@@ -313,6 +318,9 @@ def main():
             unresolved.append({'id': audit['id'], 'sourcePdf': source_pdf, 'pdfRef': audit.get('pdfRef'), 'reasons': issues})
             return None
         audit['status'] = 'imported'
+        # Keep the source wording for display/provenance, independently of reviewed place IDs.
+        via_source = ', '.join(value for value in [pdf_row['fields'].get('via', verified.get('via', '')), *inline_via] if value)
+        road_tags = list(dict.fromkeys(road_labels[key(token)] for token in road_tokens.findall(via_source)))
         return {
             'id': audit['id'], 'fromId': origin_id, 'toId': destination_id, 'viaIds': via_ids,
             'from': registry[origin_id]['name'], 'to': registry[destination_id]['name'],
@@ -322,6 +330,7 @@ def main():
             'sourceTimetable': source_pdf, 'operatingDepot': depot,
             'depotSource': 'row' if depot_raw else 'filename', 'boardingPoint': registry[origin_id]['name'],
             'sourceRefs': [audit['id']], 'pdfPage': audit['pdfRef']['page'],
+            'viaSource': via_source, 'roadTags': road_tags,
         }
 
     for path in sorted(args.csv_dir.glob('*.csv')):
@@ -407,9 +416,15 @@ def main():
     alias_evidence = [{'alias': alias, 'canonical': canonical, 'sourceRows': evidence_index[alias]}
                       for alias, canonical in aliases.items()]
     write_json(DATA / 'review/alias-evidence.json', alias_evidence, True)
+    # Route wording repeats across departures. Keep one copy of each wording/tag pair.
+    via_descriptions = {('', ()): 0}
+    for service in services:
+        descriptor = (service['viaSource'], tuple(service['roadTags']))
+        service['viaDescriptionId'] = via_descriptions.setdefault(descriptor, len(via_descriptions))
     columns = ['id', 'fromId', 'toId', 'viaIds', 'departureTime', 'typeOfService', 'operator', 'serviceDays',
-               'sourceTimetable', 'operatingDepot', 'depotSource', 'pdfPage', 'sourceRefs']
-    snapshot = {'version': 1, 'places': sorted(registry.values(), key=lambda p: p['id']),
+               'sourceTimetable', 'operatingDepot', 'depotSource', 'pdfPage', 'sourceRefs', 'viaDescriptionId']
+    snapshot = {'version': 2, 'places': sorted(registry.values(), key=lambda p: p['id']),
+                'viaDescriptions': list(via_descriptions),
                 'columns': columns, 'services': [[s[c] for c in columns] for s in services]}
     snapshot_hash = hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()
     snapshot['id'] = snapshot_hash
