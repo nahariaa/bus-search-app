@@ -46,7 +46,7 @@ def verify():
             assert [tag['content'] for tag in page.attrs('meta', 'property', 'og:url')] == [ORIGIN + item['path']]
         assert page.attrs('meta', 'name', 'author')[0]['content'] == 'Tushar Naharia'
         assert 'haryanabus.com' not in html
-        if item['indexable']:
+        if item['path'] not in ('/search', '/404'):
             assert len(page.attrs('h1')) == 1
             assert len(' '.join(page.text)) > 500
             assert page.attrs('meta', 'property', 'og:title')

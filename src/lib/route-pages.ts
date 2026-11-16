@@ -9,10 +9,11 @@ export interface RoutePageSelection {
   toId: string;
   reason: string;
   newPage?: true;
+  depotConnection?: true;
 }
 
-// Selection and presentation only. Services always come from the shared matcher.
-export const routeManifest: RoutePageSelection[] = [
+// Preserve published paths and editorial notes. All services still come from the shared matcher.
+const existingSelections: RoutePageSelection[] = [
   { slug: 'delhi-to-chandigarh', fromId: 'delhi', toId: 'chandigarh', reason: 'Search Console candidate with published Delhi terminal departures.' },
   { slug: 'gurugram-to-haridwar', fromId: 'gurugram', toId: 'haridwar', reason: 'Search Console candidate with published inter-state services.' },
   { slug: 'delhi-to-yamunanagar', fromId: 'delhi', toId: 'yamunanagar', reason: 'Search Console candidate with verified timetable coverage.' },
@@ -24,13 +25,36 @@ export const routeManifest: RoutePageSelection[] = [
   { slug: 'chandigarh-to-delhi', fromId: 'chandigarh', toId: 'delhi', reason: 'Existing homepage shortcut; independently supported reverse journey.' },
   { slug: 'bhiwani-to-delhi', fromId: 'bhiwani', toId: 'delhi', reason: 'Existing homepage shortcut backed by reviewed Delhi departures.' },
   { slug: 'sarai-kale-khan-delhi-to-jaipur', fromId: 'isbt-sarai-kale-khan-delhi', toId: 'jaipur', reason: 'Terminal-specific boarding coverage, distinct from Kashmiri Gate and Anand Vihar.' },
-  { slug: 'jind-to-chandigarh', fromId: 'jind', toId: 'chandigarh', newPage: true, reason: 'Jind depot PDF publishes departures from Jind, including HR and CTU. Retain Kaithal for the three rows in the route conflict queue.' },
-  { slug: 'chandigarh-to-jind', fromId: 'chandigarh', toId: 'jind', newPage: true, reason: 'Independent Chandigarh and Ambala publications support reverse travel, including named Chandigarh terminals.' },
-  { slug: 'jind-to-delhi', fromId: 'jind', toId: 'delhi', newPage: true, reason: 'Jind depot PDF documents boarding in Jind and distinct Rohtak and Bahadurgarh variants.' },
-  { slug: 'hisar-to-chandigarh', fromId: 'hisar', toId: 'chandigarh', newPage: true, reason: 'Hisar depot PDF records boarding in Hisar and distinguishes published operators.' },
-  { slug: 'rohtak-to-chandigarh', fromId: 'rohtak', toId: 'chandigarh', newPage: true, reason: 'Rohtak depot PDF records local boarding and multiple published operators.' },
-  { slug: 'gurugram-to-chandigarh', fromId: 'gurugram', toId: 'chandigarh', newPage: true, reason: 'Gurugram depot PDF records published Gurugram departures and service days.' },
-  { slug: 'sirsa-to-chandigarh', fromId: 'sirsa', toId: 'chandigarh', newPage: true, reason: 'Sirsa depot archive records departures from Sirsa. The current official download has a different hash with identical extracted page text, so archive references stay separate.' },
+  { slug: 'jind-to-chandigarh', fromId: 'jind', toId: 'chandigarh', reason: 'Jind depot PDF publishes departures from Jind, including HR and CTU. Retain Kaithal for the three rows in the route conflict queue.' },
+  { slug: 'chandigarh-to-jind', fromId: 'chandigarh', toId: 'jind', reason: 'Independent Chandigarh and Ambala publications support reverse travel, including named Chandigarh terminals.' },
+  { slug: 'jind-to-delhi', fromId: 'jind', toId: 'delhi', reason: 'Jind depot PDF documents boarding in Jind and distinct Rohtak and Bahadurgarh variants.' },
+  { slug: 'hisar-to-chandigarh', fromId: 'hisar', toId: 'chandigarh', reason: 'Hisar depot PDF records boarding in Hisar and distinguishes published operators.' },
+  { slug: 'rohtak-to-chandigarh', fromId: 'rohtak', toId: 'chandigarh', reason: 'Rohtak depot PDF records local boarding and multiple published operators.' },
+  { slug: 'gurugram-to-chandigarh', fromId: 'gurugram', toId: 'chandigarh', reason: 'Gurugram depot PDF records published Gurugram departures and service days.' },
+  { slug: 'sirsa-to-chandigarh', fromId: 'sirsa', toId: 'chandigarh', reason: 'Sirsa depot archive records departures from Sirsa. The current official download has a different hash with identical extracted page text, so archive references stay separate.' },
+];
+
+// Both pages of the official depot-wise timetable directory. The two Delhi publications
+// share one departure area. See docs/static-generation.md for the reviewed terminal groupings.
+export const depotPlaceIds = [
+  'ambala', 'bhiwani', 'chandigarh', 'charkhi-dadri', 'delhi', 'faridabad', 'fatehabad',
+  'gurugram', 'hisar', 'jhajjar', 'jind', 'kaithal', 'karnal', 'kurukshetra', 'narnaul',
+  'nuh', 'palwal', 'panchkula', 'panipat', 'rewari', 'rohtak', 'sirsa', 'sonipat', 'yamunanagar',
+];
+const depotIds = new Set(depotPlaceIds);
+const isDepotPair = (fromId: string, toId: string) => depotIds.has(fromId) && depotIds.has(toId) && fromId !== toId;
+const existingPairs = new Set(existingSelections.map(({ fromId, toId }) => `${fromId}:${toId}`));
+
+export const routeManifest: RoutePageSelection[] = [
+  ...existingSelections.map(selection => ({
+    ...selection, ...(isDepotPair(selection.fromId, selection.toId) ? { depotConnection: true as const } : {}),
+  })),
+  ...depotPlaceIds.flatMap(fromId => depotPlaceIds
+    .filter(toId => fromId !== toId && !existingPairs.has(`${fromId}:${toId}`))
+    .map(toId => ({
+      slug: `${fromId}-to-${toId}`, fromId, toId, newPage: true as const, depotConnection: true as const,
+      reason: 'Directional connection between two places in the official depot-wise timetable directory.',
+    }))),
 ];
 
 export function meaningfulPair(fromId: string, toId: string): boolean {
@@ -48,13 +72,16 @@ export function validateRouteManifest(selections: RoutePageSelection[] = routeMa
     const { slug, fromId, toId } = selection;
     const pair = `${fromId}:${toId}`;
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slugs.has(slug) || pairs.has(pair)
-      || !selection.reason.trim() || !meaningfulPair(fromId, toId)) {
+      || !selection.reason.trim() || !meaningfulPair(fromId, toId)
+      || (selection.depotConnection && !isDepotPair(fromId, toId))) {
       throw new Error(`Invalid static journey selection: ${slug} (${pair})`);
     }
     slugs.add(slug);
     pairs.add(pair);
     const services = matchRoutes(fromId, toId);
-    if (!services.length) throw new Error(`Static journey ${slug} has no supported departures; review routeManifest.`);
+    if (!services.length && !selection.depotConnection) {
+      throw new Error(`Static journey ${slug} has no supported departures; review routeManifest.`);
+    }
     const sources = documentSources(services);
     const conflict = routeConflicts.get(pair);
     if (conflict && conflict.serviceIds.some((id, i) => !services.some(service => service.id === id
@@ -72,10 +99,9 @@ export function validateRouteManifest(selections: RoutePageSelection[] = routeMa
 export const routePages = validateRouteManifest();
 export type RoutePage = typeof routePages[number];
 
-const hubPlaceIds = ['jind', 'chandigarh'];
-export const cityHubs = hubPlaceIds.map(id => {
-  const journeys = routePages.filter(route => route.fromId === id);
-  if (journeys.length < 2) throw new Error(`Departure hub ${id} needs at least two published journeys.`);
+export const cityHubs = depotPlaceIds.map(id => {
+  const journeys = routePages.filter(route => route.fromId === id && route.services.length);
+  if (journeys.length === 0) throw new Error(`Departure hub ${id} needs a published boarding point.`);
   const boardingPoints = [...new Set(journeys.flatMap(route => route.services.map(service => service.from)))].sort();
   return { id, name: journeys[0].from, path: `/cities/${id}`, boardingPoints };
 });

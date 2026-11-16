@@ -4,7 +4,7 @@ import { useSearchData } from '@/hooks/use-search-data';
 import BusSearchForm from '@/components/BusSearchForm';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
-import { routeSummaries } from '@/lib/public-timetables';
+import { connectionFrom } from '@/lib/public-timetables';
 
 const SearchResults = () => {
   const { search } = useLocation();
@@ -22,7 +22,7 @@ const SearchResults = () => {
   const fromCity = canonicalPlaceName(searchParams.get('from') || '');
   const toCity = canonicalPlaceName(searchParams.get('to') || '');
   const matchingRoutes = matchRoutes(fromCity, toCity);
-  const published = routeSummaries.find(route => route.fromId === locationKey(fromCity) && route.toId === locationKey(toCity));
+  const connection = connectionFrom(locationKey(fromCity), locationKey(toCity));
   const hasRoute = Boolean(fromCity && toCity);
   const heading = hasRoute ? `${fromCity} to ${toCity} bus timetable` : 'Search bus timetables';
 
@@ -45,9 +45,11 @@ const SearchResults = () => {
             <BusSearchForm key={search} initialFrom={fromCity} initialTo={toCity} />
           </CardContent>
         </Card>
-        {published && <p className="mb-4 text-sm">
-          <Link to={published.path} className="text-blue-700 underline underline-offset-4">
-            Published {published.from} to {published.to} timetable and sources
+        {connection && <p className="mb-4 text-sm">
+          <Link to={connection.path} className="text-blue-700 underline underline-offset-4">
+            {connection.hasPublishedDepartures
+              ? `Published ${connection.from} to ${connection.to} timetable and sources`
+              : `${connection.from} to ${connection.to} connection and enquiries`}
           </Link>
         </p>}
         {hasRoute && <BusSearchResults routes={matchingRoutes} fromCity={fromCity} toCity={toCity} />}

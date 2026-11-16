@@ -141,6 +141,10 @@
     "sub depot gohana": "Gohana"
   },
   "cityMembers": {
+    "Ambala": [
+      "Ambala City",
+      "Ambala Cantt"
+    ],
     "Delhi": [
       "ISBT Kashmiri Gate, Delhi",
       "ISBT Anand Vihar, Delhi",
@@ -149,6 +153,10 @@
     "Chandigarh": [
       "ISBT Sector 17, Chandigarh",
       "ISBT Sector 43, Chandigarh"
+    ],
+    "Faridabad": [
+      "Ballabgarh",
+      "Faridabad (NIT)"
     ]
   },
   "viaOverrides": {

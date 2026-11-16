@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { readFileSync, readdirSync } from 'node:fs';
 import { matchRoutes, buildSearchUrl, routeMatchLabel } from '../src/lib/route-matching';
-import { routePages, routeManifest, validateRouteManifest } from '../src/lib/route-pages';
+import { cityHubs, depotPlaceIds, routePages, routeManifest, validateRouteManifest } from '../src/lib/route-pages';
 import { snapshotId } from '../src/lib/timetable';
 import { operatorLabel } from '../src/lib/route-label';
 import { routeInventory } from './route-inventory';
@@ -22,6 +22,8 @@ test('every static journey has exactly the shared matcher records and displayed 
     const html = readFileSync(`dist${journey.path}.html`, 'utf8');
     assert.deepEqual([...html.matchAll(/data-service-id="([^"]+)"/g)].map(match => match[1]), matched.map(service => service.id));
     assert.ok(html.includes(escape(buildSearchUrl(journey.fromId, journey.toId))));
+    assert.equal(report.pages.find(page => page.path === journey.path).indexable, matched.length > 0);
+    if (!matched.length) assert.match(html, /No published through departure/);
     const cards = html.split('data-service-id="').slice(1);
     matched.forEach((service, index) => {
       // React may insert comment boundaries between text nodes.
@@ -46,6 +48,8 @@ test('selection fails clearly for unsupported journeys, invalid IDs and duplicat
   const first = routeManifest[0];
   for (const selections of [
     [{ ...first, fromId: 'yamunanagar', toId: 'shahabad' }],
+    [{ ...first, fromId: 'nuh', toId: 'panchkula', depotConnection: undefined }],
+    [{ ...first, toId: 'ludhiana', depotConnection: true }],
     [{ ...first, fromId: 'not-a-place' }],
     [{ ...first, fromId: 'singhu-border' }],
     [{ ...first, fromId: 'ISBTDelhi' }],
@@ -58,20 +62,37 @@ test('selection fails clearly for unsupported journeys, invalid IDs and duplicat
   ]) assert.throws(() => validateRouteManifest(selections), /Invalid static journey|no supported departures/);
 });
 
-test('inventory keeps an explicit allowlist and records review status for other matcher pairs', () => {
+test('inventory distinguishes indexable timetables, connection-only pages and withheld candidates', () => {
   const inventory = routeInventory();
   assert.deepEqual(JSON.parse(readFileSync('.tools/generated/route-inventory.json', 'utf8')), inventory);
   const selected = inventory.candidates.filter(candidate => candidate.publication !== 'withheld');
-  assert.equal(selected.filter(candidate => candidate.publication === 'existing').length, 11);
-  assert.deepEqual(selected.filter(candidate => candidate.publication === 'selected-for-release').map(row => row.id), [
-    'chandigarh:jind', 'gurugram:chandigarh', 'hisar:chandigarh', 'jind:chandigarh', 'jind:delhi',
-    'rohtak:chandigarh', 'sirsa:chandigarh',
-  ]);
+  assert.equal(selected.filter(candidate => candidate.publication === 'existing').length, 18);
   assert.ok(inventory.candidates.some(row => row.recordCount > 0 && row.publication === 'withheld'));
   assert.ok(inventory.candidates.some(row => row.recordCount === 0 && row.reviewStatus === 'withheld'));
+  assert.ok(selected.some(row => row.recordCount === 0 && row.reviewStatus === 'connection-only'));
   for (const row of selected) {
     assert.equal(row.recordCount, matchRoutes(row.fromId, row.toId).length);
     assert.equal(row.distinctDocumentCount, row.documents.length);
+    assert.equal(row.indexable, row.recordCount > 0);
+  }
+});
+
+test('every distinct depot pair has one page linked from the directory, origin hub and reverse', () => {
+  const connections = routePages.filter(route => route.depotConnection);
+  const paths = new Map(connections.map(route => [`${route.fromId}:${route.toId}`, route.path]));
+  const directory = readFileSync('dist/routes.html', 'utf8');
+  assert.equal(connections.length, depotPlaceIds.length * (depotPlaceIds.length - 1));
+  assert.equal(paths.size, connections.length);
+  for (const hub of cityHubs) {
+    const hubHtml = readFileSync(`dist${hub.path}.html`, 'utf8');
+    for (const to of depotPlaceIds.filter(id => id !== hub.id)) {
+      const path = paths.get(`${hub.id}:${to}`);
+      assert.ok(path, `Missing connection for ${hub.id} to ${to}`);
+      assert.ok(directory.includes(`href="${path}"`));
+      assert.ok(hubHtml.includes(`href="${path}"`));
+      const html = readFileSync(`dist${path}.html`, 'utf8');
+      assert.ok(html.includes(`href="${paths.get(`${to}:${hub.id}`)}"`));
+    }
   }
 });
 
@@ -112,7 +133,12 @@ test('Delhi to Ludhiana static regression retains 00:40 at Kashmiri Gate towards
 test('hydration payloads are exactly the build matcher output and startup excludes search data', () => {
   for (const journey of routePages) {
     const html = readFileSync(`dist${journey.path}.html`, 'utf8');
-    const payload = html.match(/<script id="page-journey" type="application\/json">(.*?)<\/script>/s)![1];
+    const match = html.match(/<script id="page-journey" type="application\/json">(.*?)<\/script>/s);
+    if (!journey.services.length) {
+      assert.equal(match, null);
+      continue;
+    }
+    const payload = match![1];
     assert.deepEqual(JSON.parse(payload), journey);
     assert.deepEqual(JSON.parse(readFileSync(`.tools/generated/routes/${journey.slug}.json`, 'utf8')), journey);
   }

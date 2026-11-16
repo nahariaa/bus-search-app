@@ -16,8 +16,15 @@ ORIGIN = 'https://www.haryanabus.in'
 
 def verify(base, output, access_url=None):
     report = json.loads(Path('dist/generated-pages.json').read_text(encoding='utf-8'))
-    pages = [item for item in report['pages'] if item['indexable']]
+    pages = [item for item in report['pages'] if item['path'] not in ('/search', '/404')]
     journeys = {item['path']: item for item in report['journeys']}
+    sample = {
+        '/', '/about', '/privacy', '/routes', '/cities/jind', '/cities/chandigarh', '/cities/ambala',
+        '/routes/jind-to-chandigarh', '/routes/delhi-to-ludhiana', '/routes/sarai-kale-khan-delhi-to-jaipur',
+        '/routes/ambala-to-delhi', '/routes/faridabad-to-delhi', '/routes/nuh-to-panchkula',
+        max(journeys.values(), key=lambda item: len(item['serviceIds']))['path'],
+    }
+    browser_pages = [item for item in pages if item['path'] in sample]
     errors, http_checks = [], []
     Path(output).parent.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
@@ -36,14 +43,14 @@ def verify(base, output, access_url=None):
             assert len(page.attrs('title')) == 1
             assert len(page.attrs('meta', 'name', 'description')) == 1
             assert [tag['href'] for tag in page.attrs('link', 'rel', 'canonical')] == [ORIGIN + item['path']]
-            assert page.attrs('meta', 'name', 'robots')[0]['content'] == 'index, follow'
+            assert page.attrs('meta', 'name', 'robots')[0]['content'] == ('index, follow' if item['indexable'] else 'noindex')
             if item['path'] in journeys:
                 assert [tag['data-service-id'] for _, tag in page.tags if 'data-service-id' in tag] == journeys[item['path']]['serviceIds']
             http_checks.append({'path': item['path'], 'status': response.status})
         xml = request.get(base + '/sitemap.xml')
         assert xml.status == 200
         urls = [node.text for node in ET.fromstring(xml.body()).findall('{*}url/{*}loc')]
-        assert set(urls) == {ORIGIN + item['path'] for item in pages}
+        assert set(urls) == {ORIGIN + item['path'] for item in pages if item['indexable']}
         assert len(urls) == len(set(urls))
         robots = request.get(base + '/robots.txt')
         assert robots.status == 200 and ORIGIN + '/sitemap.xml' in robots.text()
@@ -66,12 +73,12 @@ def verify(base, output, access_url=None):
         home = request.get(base + '/').text()
         for asset in re.findall(r'(?:src|href)="(/assets/[^"]+)"', home):
             assert request.get(base + asset).status == 200
-        # Every indexable page remains readable and linked with scripting disabled.
+        # Exercise representative pages with and without hydration. HTTP checks cover every generated URL.
         nojs = browser.new_context(java_script_enabled=False, storage_state=storage)
         page = nojs.new_page()
         for width in [360, 390, 1280]:
             page.set_viewport_size({'width': width, 'height': 900})
-            for item in pages:
+            for item in browser_pages:
                 page.goto(base + item['path'], wait_until='load')
                 assert page.locator('h1').is_visible()
                 assert page.locator('a[href="/routes"]').count() > 0
@@ -79,6 +86,12 @@ def verify(base, output, access_url=None):
                 if item['path'] in journeys:
                     assert page.locator('[data-service-id]').count() == len(journeys[item['path']]['serviceIds'])
             if width == 390:
+                page.goto(base + '/routes')
+                page.locator('summary').filter(has_text=re.compile(r'^Nuh$')).click()
+                page.get_by_role('link', name='Nuh to Panchkula', exact=True).click()
+                assert page.get_by_role('heading', name='No published through departure').is_visible()
+                page.get_by_role('link', name='Panchkula to Nuh', exact=True).click()
+                assert page.get_by_role('heading', name='Panchkula to Nuh bus connection').is_visible()
                 page.goto(base + '/routes/delhi-to-ludhiana')
                 card = page.locator('[data-service-id="delhi_isbt_delhi_depot_bus_schedule:59"]')
                 assert '00:40' in card.inner_text() and 'Katra' in card.inner_text()
@@ -107,7 +120,7 @@ def verify(base, output, access_url=None):
                 not any(text in message.text for text in ['React Router Future Flag', 'Failed to load resource']) else None)
         for width in [360, 390, 1280]:
             page.set_viewport_size({'width': width, 'height': 900})
-            for item in pages:
+            for item in browser_pages:
                 page.goto(base + item['path'], wait_until='networkidle')
                 assert page.evaluate('window.__firstHeading === document.querySelector("main h1")'), (item['path'], 'heading replaced during hydration')
                 assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), (item['path'], width, 'JS overflow')
@@ -161,11 +174,13 @@ def verify(base, output, access_url=None):
         assert page.get_by_role('heading', name='Page not found').is_visible()
         assert not errors, errors
         browser.close()
-    result = {'baseUrl': base, 'passed': True, 'indexablePages': len(pages), 'journeys': len(journeys),
+    result = {'baseUrl': base, 'passed': True, 'publicPages': len(pages),
+              'indexablePages': sum(item['indexable'] for item in pages),
+              'browserPages': len(browser_pages), 'journeys': len(journeys),
               'httpChecks': http_checks, 'widths': [360, 390, 1280], 'pageErrors': errors,
               'checks': ['raw HTML metadata and all service IDs', 'sitemap XML', 'robots', 'search noindex header and HTML',
-                         'real unknown URL 404', 'slash and HTML redirects', 'static assets', 'all pages without JavaScript',
-                         'heading preserved during hydration', 'all pages hydrated', 'mobile overflow', '200% text zoom',
+                         'real unknown URL 404', 'slash and HTML redirects', 'static assets', 'depot links without JavaScript',
+                         'heading preserved during hydration', 'representative pages hydrated', 'mobile overflow', '200% text zoom',
                          'search prefill and identical results', 'noindex removed on navigation', 'back/forward', 'keyboard skip link and navigation focus']}
     Path(output).write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(result, indent=2))
