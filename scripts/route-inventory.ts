@@ -20,6 +20,7 @@ export function routeInventory() {
     if (meaningfulPair(fromId, toId)) pairs.set(`${fromId}:${toId}`, { fromId, toId });
   }
   for (const pair of reviewedWithheld) pairs.set(`${pair.fromId}:${pair.toId}`, pair);
+  for (const [id, { fromId, toId }] of published) pairs.set(id, { fromId, toId });
 
   const candidates = Array.from(pairs.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([id, pair]) => {
     const { fromId, toId } = pair;
@@ -33,9 +34,14 @@ export function routeInventory() {
       distinctDocumentCount: sources.length,
       documents: sources.map(({ file, sha256, versionStatus }) => ({ file, sha256, versionStatus })),
       evidence: services.length ? 'reviewed-snapshot-records' : 'no-supported-departures',
-      reviewStatus: conflict ? 'unresolved-route-conflict' : selection ? 'reviewed-for-publication' : services.length ? 'editorial-review-pending' : 'withheld',
+      reviewStatus: conflict ? 'unresolved-route-conflict' : selection
+        ? (services.length ? 'reviewed-for-publication' : 'connection-only')
+        : (services.length ? 'editorial-review-pending' : 'withheld'),
+      indexable: Boolean(selection && services.length),
       publication: selection ? (selection.newPage ? 'selected-for-release' : 'existing') : 'withheld',
-      reason: selection?.reason ?? (services.length ? 'Outside the publication allowlist. Review passenger usefulness and sources before selecting.' : 'No supported departure in the reviewed snapshot.'),
+      reason: selection
+        ? (services.length ? selection.reason : 'Depot connection page without a supported through departure in the reviewed snapshot.')
+        : (services.length ? 'Outside the publication scope. Review passenger usefulness and sources before selecting.' : 'No supported departure in the reviewed snapshot.'),
     };
   });
   return { snapshotId, prioritization: 'Provisional. No Search Console export was supplied.', candidates };

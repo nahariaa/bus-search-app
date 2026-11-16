@@ -61,6 +61,7 @@ def verify(base, output, access_url=None):
         page = context.new_page()
         page.route('**/jind-to-chandigarh-*.js', lambda route: route.abort())
         page.goto(base + '/routes', wait_until='networkidle')
+        page.locator('summary').filter(has_text='Jind').click()
         page.get_by_role('link', name='Jind to Chandigarh', exact=True).click()
         page.get_by_role('alert').filter(has_text='Could not load this timetable').wait_for()
         assert page.locator('[data-service-id]').count() == 0

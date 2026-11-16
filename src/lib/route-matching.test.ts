@@ -86,6 +86,17 @@ test('reviewed road descriptors remain visible while matching only actual place 
   assert.ok(!places.some(place => ['152d', 'nh152d', 'nh-152d', 'kmp', 'kgp'].includes(place.id)));
 });
 
+test('Ambala and Faridabad include their published boarding areas while exact places stay distinct', () => {
+  const ambala = matchRoutes('Ambala', 'Delhi');
+  assert.ok(ambala.some(route => route.fromId === 'ambala-city'));
+  assert.ok(ambala.some(route => route.fromId === 'ambala-cantt'));
+  assert.deepEqual(matchRoutes('Ambala Cantt', 'Delhi'), ambala.filter(route => route.fromId === 'ambala-cantt'));
+  const faridabad = matchRoutes('Faridabad', 'Delhi');
+  assert.ok(faridabad.some(route => route.fromId === 'ballabgarh'));
+  assert.deepEqual(matchRoutes('Ballabgarh', 'Delhi'), faridabad.filter(route => route.fromId === 'ballabgarh'));
+  assert.ok(!matchRoutes('Ambala').some(route => route.fromId === 'naraingarh'));
+});
+
 test('every dropdown destination and future timetable pair is backed by the shared matcher', () => {
   const pairs = timetablePairs();
   assert.ok(pairs.length > 1000);

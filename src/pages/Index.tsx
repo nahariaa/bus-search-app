@@ -30,11 +30,12 @@ const Index = () => (
       <section className="mt-6 space-y-2" aria-labelledby="browse-cities">
         <h2 id="browse-cities" className="text-xl font-semibold">Browse by departure city</h2>
         <ul className="flex flex-wrap gap-2">
-          {cityHubs.map(city => <li key={city.id}>
+          {cityHubs.filter(city => ['jind', 'chandigarh'].includes(city.id)).map(city => <li key={city.id}>
             <Link to={city.path} className="inline-block rounded-lg border bg-white px-4 py-2 text-blue-700 underline underline-offset-4">
               Departures from {city.name}
             </Link>
           </li>)}
+          <li><Link to="/routes" className="inline-block rounded-lg border bg-white px-4 py-2 text-blue-700 underline underline-offset-4">All depot connections</Link></li>
         </ul>
       </section>
       <PopularRoutes />
