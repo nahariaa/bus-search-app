@@ -1,59 +1,39 @@
 # Static public timetables
 
-`npm ci && npm run build` creates the deployable `dist/` directory. No new dependencies, live API, network timetable fetch, or browser installation are needed for a build.
+`npm ci && npm run build` creates `dist/` from the committed, reviewed timetable snapshot. The build needs no timetable downloads, account settings, browser, or Search Console export.
 
-Vite builds the browser assets and a temporary Node SSR bundle in ignored `.tools/ssr/`. `scripts/build.mjs` renders the shared `App` with React `renderToString`, React Router `StaticRouter`, and a fresh Helmet context per page. The browser uses `BrowserRouter` and `hydrateRoot` for pre-rendered roots. Browser-only effects run after loading. The query-dependent `/search` uses a small client-rendered shell with initial noindex metadata, an HTTP `X-Robots-Tag: noindex` header, and a no-JavaScript directory link. Search queries, aliases and matching are unchanged.
+`scripts/prepare-public-timetables.ts` runs the shared matcher against the reviewed snapshot for each explicit entry in `src/lib/route-pages.ts`. It derives a small route and city registry, per-journey data and a private candidate inventory under `.tools/generated/`. The application and build use the same public route registry. City hubs have at least two selected journeys and are grouped by actual boarding city. The allowed city queries include named terminals when the place registry defines membership.
 
-`src/routes.tsx` supplies the indexable paths to both React Router and the build. `src/lib/route-pages.ts` contains only stable place IDs, slugs and selection rationale. Its validation calls the existing `matchRoutes` against `src/data/timetable.json` through `timetable.ts`; it rejects unknown IDs, duplicate slugs/pairs, invalid slugs, identical endpoints and empty journeys. Route details reuse `BusSearchResults`, including missing-information states, actual boarding points, final destinations, via match labels, operating days and source references. No service data is copied into the manifest.
+Vite builds the browser assets and a temporary Node SSR bundle. `scripts/build.mjs` renders the shared App with React, React Router and Helmet. Each timetable ships all departure rows in its initial HTML. An escaped JSON script contains that journey's data for hydration. Client navigation loads the corresponding generated journey chunk, with an in-memory cache and a full-page recovery link. The interactive search data and matcher stay in the import triggered by search. Source review, selection and inventory code stay on the build side.
 
-HTML and the XML sitemap are generated from the same validated page output. `generated-pages.json` records the snapshot ID, paths and service IDs for regression evidence. No lastmod, update date, or claim of recently checking a timetable is invented. The snapshot hash identifies the data revision; original source names, PDF pages and row references remain on each service. Published days vary and source records can overlap, so pages avoid daily service counts and first/last-bus claims.
+The build writes the canonical XML sitemap from its indexable outputs. Homepage, About, Privacy, routes, hubs and journeys are indexable. `/search` preserves query aliases and returns noindex in its HTML and HTTP headers. Robots rules allow crawlers to read that directive. Search results offer direct links to matching public timetables. The 404 shell also has noindex and is served with HTTP 404. The sitemap omits search, error pages and speculative `lastmod` dates.
 
-## Selected journeys
+## Add or review a journey
 
-The Search Console candidates are leads, not proof of demand or availability. Counts below are matching **source records in snapshot `9952d2be0e6e`**, not distinct or daily operating buses. All pages use the canonical origin `https://www.haryanabus.in`.
+Run `npm run timetable:inventory` and read `.tools/generated/route-inventory.json`. The inventory lists supported place-ID pairs, candidate canonical URLs, source-record counts, distinct document hashes, version-check outcomes, publication decisions and reasons. It includes a small explicit set of previously reviewed empty candidates. The report lives outside `dist/`. See the [release review and measurement plan](discovery-release.md) for the selected journeys and withheld examples.
 
-| Path | Records | Selection rationale |
-| --- | ---: | --- |
-| `/routes/delhi-to-chandigarh` | 226 | Search Console candidate; verified city-wide Delhi includes published terminal departures. |
-| `/routes/gurugram-to-haridwar` | 2 | Search Console candidate with published inter-state coverage. |
-| `/routes/delhi-to-yamunanagar` | 53 | Search Console candidate with verified timetable coverage. |
-| `/routes/fatehabad-to-delhi` | 51 | Search Console candidate connecting western Haryana to Delhi. |
-| `/routes/rohtak-to-gurugram` | 39 | Search Console candidate with regional departures. |
-| `/routes/sirsa-to-delhi` | 38 | Search Console candidate with long-distance coverage. |
-| `/routes/gurugram-to-hisar` | 15 | Existing homepage shortcut and Search Console candidate. |
-| `/routes/delhi-to-ludhiana` | 86 | Existing shortcut; 37 via matches include the 00:40 Kashmiri Gate departure towards Katra. |
-| `/routes/chandigarh-to-delhi` | 244 | Existing shortcut and independently verified reverse journey. |
-| `/routes/bhiwani-to-delhi` | 37 | Existing shortcut with reviewed Delhi coverage. |
-| `/routes/sarai-kale-khan-delhi-to-jaipur` | 71 | Distinct physical terminal; includes final-destination and verified via matches. |
+Select only a passenger-useful journey supported by specific source evidence. Use canonical place IDs and one stable URL per pair. Document the selection reason in the allowlist. The build checks slug and pair uniqueness, endpoint identity and membership, nonempty matched departures and source page bounds. Mark newly selected routes with `newPage: true` until their production publication has been confirmed. Keep existing paths if spelling or common search wording changes. To add a hub, select a reviewed boarding city with multiple substantive published journeys. When updating the data, follow the [timetable review workflow](../data/timetable/REVIEW.md).
 
-Yamunanagar to Shahabad, Faridabad to Yamunanagar, and Karnal to Gurugram returned no matches and were excluded. Anand Vihar to Haridwar was also checked and unsupported. No inference of service absence outside this collection is intended. No unverified reverse pages are generated.
-
-## Updating timetables or selections
-
-Follow `data/timetable/REVIEW.md` and run `npm run timetable:import` for a reviewed source update. Commit the regenerated snapshot and reconciliation artifacts. Every normal build regenerates all public pages and the sitemap from that snapshot. If a selected journey loses supported services, the build fails with its slug; review the data or explicitly remove the selection. Add or change a journey only in `routeManifest`, preserving existing URLs where possible. Aliases remain in the reviewed place data, never in per-page matching rules.
-
-## Routing and release
-
-Vercel's existing Git integration builds feature branches as previews and `main` as production. `cleanUrls: true` serves generated `.html` files at extensionless URLs; `trailingSlash: false` redirects trailing slashes with 308. Search is a real generated `search.html` shell, so no SPA rewrite is required. There is no catch-all homepage fallback. Unknown paths use `404.html` with HTTP 404. `/search` remains noindex with all query strings. Assets, robots and sitemap are served as files. All internal links and canonicals follow the slashless policy except `/`.
-
-The former `sitemap-generator.ts` had only the obsolete Next-style sitemap page as a caller; both were removed. The new build writes `dist/sitemap.xml`; robots points to the `.in` www origin.
-
-## Verification
+## Verify and review release routing
 
 ```sh
 npm test
+npm run build
 npx tsc --noEmit -p tsconfig.app.json
 npx tsc --noEmit -p tsconfig.node.json
-npm run build
 npm run test:static
 python scripts/serve-static.py
-# In another terminal, with the existing Playwright/Chrome tooling:
-python scripts/verify-static-browser.py
-npm run test:browser
 ```
 
-The static regressions compare every service ID and displayed timetable fact with the shared matcher, exercise invalid selections, parse every page's initial metadata and the XML sitemap, and verify internal links. Browser acceptance checks raw HTTP, direct visits, redirects, genuine 404s, search noindex, assets, all 15 public pages with JavaScript off and on at 360/390/1280 widths, retained heading nodes during hydration, source disclosures, 200% text zoom, navigation focus, search prefill, and back/forward metadata. The original browser suite covers autocomplete, keyboard selection, mixed-case/whitespace/legacy URLs, refreshes, unsupported origins and Delhi to Ludhiana.
+With the static server running, execute these in separate commands.
 
-Pass `--base-url URL --output .tools/preview-static.json` (or production) to the static browser checker. Protected previews can use `--access-url` with a temporary share URL kept only in ignored local tooling; reports exclude that URL. The local static server models clean URLs but does not substitute for checks against actual Vercel responses.
+```sh
+python scripts/verify-static-browser.py
+npm run test:browser
+python scripts/verify-loading-browser.py
+python scripts/verify-ads-browser.py
+```
 
-Baseline at main `11c9c7b`: existing 3 Python and 8 matcher tests and both TypeScript checks pass. Repository-wide lint has three pre-existing errors in `ui/command.tsx`, `ui/textarea.tsx`, and `tailwind.config.ts`, plus eight warnings. Removing the obsolete sitemap page removes one warning; changed TypeScript files pass lint. The existing full snapshot still produces a large browser bundle; static HTML removes its load/execute time from access to public timetable content. Source revision dates and some service details are missing in the dataset and are explicitly described as unavailable.
+The static tests compare ordered service IDs, facts and serialized hydration data with the matcher. They also check each canonical, the sitemap, breadcrumb markup, link targets, and the link distance from Home. Browser checks cover clean URL responses, actual 404s, 360/390/1280 widths, JavaScript disabled, hydration, 200% text zoom, keyboard navigation, aliases and direct/search/client navigation. The loading suite covers failure and retry with the full snapshot deferred.
+
+Vercel clean URLs serve generated HTML at extensionless paths. The slashless policy uses a permanent redirect for the trailing slash, and the 404 shell needs no catch-all rewrite. Use `--base-url` for preauthorized preview verification. Protected previews can pass a temporary share URL to the static browser checker with `--access-url` and keep it outside commits and reports. Repeat checks for HTTPS, the www origin, search noindex and the sitemap on the actual release after an authorized deployment.

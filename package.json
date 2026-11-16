@@ -6,6 +6,8 @@
   "scripts": {
     "timetable:import": "tsx scripts/run-timetable-import.ts",
     "timetable:extract": "python scripts/extract-timetable-pdfs.py",
+    "timetable:inventory": "tsx scripts/prepare-public-timetables.ts",
+    "timetable:review": "npm run timetable:inventory && python scripts/review-timetable-sources.py",
     "test:browser": "python scripts/verify-timetable-browser.py",
     "test": "python -m unittest discover -s scripts -p test_*.py && tsx --test src/lib/route-matching.test.ts",
     "dev": "vite",

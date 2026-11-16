@@ -69,6 +69,23 @@ test('road labels and ambiguous abbreviations do not become places, and hyphenat
   assert.ok(!boardingPoints().some(name => ['Private Bus', 'Electric Bus', 'Hr', 'Local'].includes(name)));
 });
 
+test('reviewed road descriptors remain visible while matching only actual place IDs', () => {
+  for (const [from, to, id, wording, label] of [
+    ['charkhi-dadri', 'chandigarh', 'charkhi_dadri_bus_schedule:169', '152D', '152D'],
+    ['narnaul', 'kurukshetra', 'narnaul_bus_schedule:203', 'NH152D', 'NH 152D'],
+  ]) {
+    const row = matchRoutes(from, to).find(route => route.id === id);
+    assert.ok(row);
+    assert.equal(row.viaSource, wording);
+    assert.equal(row.via, label);
+    assert.deepEqual(row.roadTags, [label]);
+    assert.deepEqual(row.viaIds, []);
+    assert.deepEqual(matchRoutes(from, wording), []);
+    assert.deepEqual(matchRoutes(label, to), []);
+  }
+  assert.ok(!places.some(place => ['152d', 'nh152d', 'nh-152d', 'kmp', 'kgp'].includes(place.id)));
+});
+
 test('every dropdown destination and future timetable pair is backed by the shared matcher', () => {
   const pairs = timetablePairs();
   assert.ok(pairs.length > 1000);
@@ -84,6 +101,9 @@ test('all 20,195 source records are accounted for and searchable services retain
   assert.equal(new Set(audit.map(row => row.id)).size, 20195);
   assert.equal(report.files.reduce((sum, file) => sum + file.input, 0), 20195);
   assert.equal(report.files.reduce((sum, file) => sum + (file.imported ?? 0) + (file.review ?? 0) + file.confirmedDuplicates, 0), 20195);
+  assert.equal(busRoutes.length, report.searchableServices);
+  assert.deepEqual(new Set(busRoutes.flatMap(route => route.sourceRefs)),
+    new Set(audit.filter(row => row.status === 'imported').map(row => row.id)));
   const refs = new Map<string, { status: string }>(audit.map(row => [row.id, row]));
   for (const route of busRoutes) {
     assert.ok(route.operatingDepot && route.sourceTimetable && route.pdfPage);

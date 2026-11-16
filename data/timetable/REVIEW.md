@@ -41,6 +41,8 @@ For changed originals, replace the corresponding committed PDF as well: the impo
 - `legacy-coverage.json`: comparisons against the previous 1,563 app records. All four disappearing labels are explained: two marked temporarily closed and two old To/Via column errors. The old row with a blank destination was never a valid searchable route and is excluded from that route-label comparison.
 - `review/place-rules.json`: reviewed aliases, city membership, via overrides and unresolved tokens. `review/alias-evidence.json` supplies local source references for occurrences of the reviewed spellings. Canonical IDs are stable slugs; preserve an existing ID and its aliases when evolving a place's display name.
 - `src/data/timetable.json`: one versioned runtime snapshot, using column tuples to keep repeated labels out of the browser payload. `src/lib/timetable.ts` decodes it. The full audit and extraction are excluded from the browser bundle.
+- `review/documents.json`: provenance keyed by the SHA-256 of the archived PDF. The official index and download, download checksum, date and check method are recorded separately from publication/effective dates and operational confirmation. Row-level PDF page and table references stay in the audit and snapshot. A date without evidence stays null.
+- `review/route-conflicts.json`: unresolved claims, affected source IDs, PDF evidence and the decision needed before changing the schedule. Jind's reported 152D routing remains open.
 
 ## Source conventions reviewed
 
@@ -65,7 +67,16 @@ Display names, URL IDs, autocomplete and result labels share the registry. Case 
 
 Comma-separated and reviewed hyphen-separated via chains become exact place IDs. Multiword names stay intact; no substring or space-based splitting is used. Known single hyphenated places such as Kala-Amb, Raipur-Rani and Kheri-Chopta are handled as single places, and Sector-43 is protected during parsing. Ambiguous slash expressions/abbreviations are retained in the review queue. Only separately reviewed clear segments are exposed from ambiguous strings. Via stops never create origins or arrival times without a corresponding source departure record.
 
+Snapshot v2 appends the `viaDescriptionId` column. It indexes a deduplicated list of source route wording and reviewed road tags. The matcher continues to use `viaIds` alone. The original source cells and reconciliation history remain in the audit. Charkhi Dadri record 169 now displays 152D and Narnaul record 203 displays NH 152D.
+
 Matching route/time/operator descriptions do not establish duplicate services. Repeated descriptions remain separately traceable; no duplicates have been confirmed or merged. No extra PDF service rows were recovered after the complete CSV/PDF reconciliation. Future recoveries and duplicate confirmations must preserve every source reference and appear separately from CSV-input accounting.
+
+## Review official changes and corrections
+
+1. Run `npm run timetable:review` to fetch approved official index entries and compare download URLs and SHA-256 hashes against the recorded versions. Add `-- --stage` to retain differing PDFs under `.tools/source-review/`. The report in that directory lists the check timestamp and affected journeys. Network checks are separate from production builds.
+2. For a changed document, review the archived and current PDFs and record their hashes, date/method of retrieval, and any actual publication or effective date from the document. Review changes at the PDF page and row level. Only byte-identical download links get the archived page fragment. Treat the different Sirsa version as a separate link.
+3. For a submitted correction, retain the row ID, existing fields and PDF reference, the proposed correction, and its evidence. Use an official schedule or dated depot/operator confirmation to establish what changed. Record operational confirmation separately as a date, method and evidence. Keep conflicting evidence in the review queue until it is resolved.
+4. After reviewing a source replacement, regenerate its PDF extraction and reconcile every CSV/PDF record before running the importer. Retain the previous source hash and review decision across the change. Review the per-document totals, unresolved rows, legacy coverage and the affected public journeys. Run the static and browser suites before authorizing any release.
 
 ## Verification
 

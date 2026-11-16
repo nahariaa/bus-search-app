@@ -6,9 +6,9 @@ import json
 import runpy
 import re
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 import xml.etree.ElementTree as ET
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import expect, sync_playwright
 
 Page = runpy.run_path('scripts/verify-static-output.py')['Page']
 ORIGIN = 'https://www.haryanabus.in'
@@ -57,7 +57,7 @@ def verify(base, output, access_url=None):
             assert response.status == 404, (path, response.status)
             assert 'Page not found' in response.text()
             http_checks.append({'path': path, 'status': response.status})
-        for path in ['/about/', '/routes/delhi-to-ludhiana/', '/about.html']:
+        for path in ['/about/', '/routes/delhi-to-ludhiana/', '/about.html', '/cities/jind/', '/routes/jind-to-chandigarh.html']:
             response = request.get(base + path, max_redirects=0)
             assert response.status == 308, (path, response.status)
             http_checks.append({'path': path, 'status': response.status})
@@ -83,8 +83,19 @@ def verify(base, output, access_url=None):
                 card = page.locator('[data-service-id="delhi_isbt_delhi_depot_bus_schedule:59"]')
                 assert '00:40' in card.inner_text() and 'Katra' in card.inner_text()
                 card.locator('summary').click()
-                assert 'Source references:' in card.inner_text()
+                assert 'Source references' in card.inner_text()
                 page.screenshot(path=str(Path(output).with_name('route-no-js-390.png')))
+                page.goto(base + '/routes/jind-to-chandigarh')
+                source = page.locator('[data-service-id="jind_bus_schedule:209"]')
+                source.locator('summary').focus()
+                page.keyboard.press('Enter')
+                assert source.get_by_role('link', name='Official PDF, page 8').is_visible()
+                assert 'Kaithal' in source.inner_text()
+                correction = urlsplit(page.get_by_role('link', name='Report a timetable issue').get_attribute('href'))
+                assert correction.scheme == 'mailto' and correction.path == 'haryanabusinfo@gmail.com'
+                body = parse_qs(correction.query)['body'][0]
+                assert ORIGIN + '/routes/jind-to-chandigarh' in body and 'Jind.pdf' in body
+                page.screenshot(path=str(Path(output).with_name('jind-no-js-390.png')))
         nojs.close()
         context = browser.new_context(storage_state=storage)
         context.add_init_script("""window.__firstHeading = null;
@@ -116,6 +127,7 @@ def verify(base, output, access_url=None):
         assert page.get_by_role('combobox', name='Boarding From').input_value() == 'Delhi'
         assert page.get_by_role('combobox', name='Where are you going?').input_value() == 'Ludhiana'
         assert page.locator('[data-service-id]').evaluate_all('(nodes) => nodes.map(node => node.dataset.serviceId)') == journeys['/routes/delhi-to-ludhiana']['serviceIds']
+        assert page.get_by_role('link', name='Published Delhi to Ludhiana timetable and sources').is_visible()
         page.wait_for_function("document.querySelector('meta[name=robots]').content === 'noindex'")
         page.get_by_role('navigation', name='Main navigation').get_by_role('link', name='About', exact=True).click()
         page.wait_for_function("document.querySelector('meta[name=robots]').content === 'index, follow'")
@@ -132,10 +144,19 @@ def verify(base, output, access_url=None):
         assert page.get_by_role('link', name='Skip to main content').evaluate('(node) => node === document.activeElement')
         page.keyboard.press('Enter')
         assert page.locator('#main-content').evaluate('(node) => node === document.activeElement')
-        for path in ['/', '/routes', '/routes/sarai-kale-khan-delhi-to-jaipur', '/routes/delhi-to-ludhiana']:
+        for path in ['/', '/routes', '/cities/jind', '/cities/chandigarh', '/routes/jind-to-chandigarh',
+                     '/routes/chandigarh-to-jind', '/routes/sarai-kale-khan-delhi-to-jaipur', '/routes/delhi-to-ludhiana']:
             page.goto(base + path, wait_until='networkidle')
             page.evaluate('document.documentElement.style.fontSize = "200%"')
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), (path, '200% text zoom')
+        page.goto(base + '/cities/jind', wait_until='networkidle')
+        page.get_by_role('link', name='Jind to Chandigarh bus timetable', exact=True).click()
+        page.get_by_role('link', name='Chandigarh to Jind', exact=True).click()
+        expect(page.locator('link[rel="canonical"]')).to_have_attribute('href', ORIGIN + '/routes/chandigarh-to-jind')
+        page.go_back(wait_until='networkidle')
+        expect(page.locator('link[rel="canonical"]')).to_have_attribute('href', ORIGIN + '/routes/jind-to-chandigarh')
+        page.go_forward(wait_until='networkidle')
+        expect(page.locator('link[rel="canonical"]')).to_have_attribute('href', ORIGIN + '/routes/chandigarh-to-jind')
         page.goto(base + '/routes/unsupported-route', wait_until='networkidle')
         assert page.get_by_role('heading', name='Page not found').is_visible()
         assert not errors, errors

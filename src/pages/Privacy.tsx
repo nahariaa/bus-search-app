@@ -1,5 +1,6 @@
 import InformationPage from '@/components/InformationPage';
 import { CONTACT_EMAIL, CONTACT_EMAIL_LINK } from '@/lib/site';
+import { adsConfig } from '@/lib/ads';
 
 const Privacy = () => (
   <InformationPage
@@ -7,7 +8,7 @@ const Privacy = () => (
     title="Privacy | HaryanaBus"
     description="How HaryanaBus handles timetable searches, hosting requests, browser storage, and enquiries sent by email."
     path="/privacy"
-    revised="2026-11-15"
+    revised="2026-11-17"
   >
     <h2>Timetable searches and browser history</h2>
     <p>
@@ -26,11 +27,17 @@ const Privacy = () => (
     </p>
 
     <h2>Cookies, analytics and ads</h2>
-    <p>
+    {adsConfig ? <p>
+      Selected timetable pages can show Google AdSense ads after the site receives advertising consent through
+      its consent manager. Google and its partners may use cookies and process device and request information
+      to select, deliver and measure ads. Use the site’s consent controls to change your choices.
+      See <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from partner sites</a>.
+      HaryanaBus uses no visitor analytics or third-party error reporting.
+    </p> : <p>
       The HaryanaBus application uses no cookies or persistent browser storage. Your browser may cache site files.
       HaryanaBus currently runs without ads, visitor analytics scripts or third-party error reporting. The site
       serves its own assets. If you follow an external link, the destination handles your visit under its own privacy practices.
-    </p>
+    </p>}
 
     <h2>Privacy enquiries</h2>
     <p>

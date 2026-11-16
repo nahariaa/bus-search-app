@@ -1,0 +1,20 @@
+{
+  "jind:chandigarh": {
+    "status": "unresolved",
+    "source": "Jind.pdf",
+    "page": 8,
+    "serviceIds": ["jind_bus_schedule:209", "jind_bus_schedule:212", "jind_bus_schedule:214"],
+    "departures": ["06:40", "07:20", "07:50"],
+    "publishedVia": "Kaithal",
+    "reportedVia": "152D",
+    "reportedBy": "https://www.roadwaysbustime.com/2019/04/jind-to-chandigarh-bus-service.html",
+    "corroboration": {
+      "url": "https://cdnbbsr.s3waas.gov.in/s314ea0d5b0cf49525d1866cb1e95ada5d/uploads/2024/12/20241209209126286.pdf",
+      "page": 5,
+      "printedSerials": [162, 165, 167],
+      "checkedOn": "2026-11-17",
+      "finding": "This separate official schedule also lists Kaithal for all three departure times."
+    },
+    "reviewNotes": "The third-party claim was supplied in the release brief. The site returned a bot challenge during review. The official PDFs corroborate the published wording. Seek a dated operational confirmation before changing the three records."
+  }
+}

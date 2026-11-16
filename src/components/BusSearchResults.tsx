@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Clock, MapPin, Bus as BusIcon, Calendar } from 'lucide-react';
 import { routeMatchLabel } from '@/lib/route-label';
 import { BUS_STAND_ENQUIRIES_URL } from '@/lib/site';
+import TimetableSource from './TimetableSource';
 
 interface BusSearchResultsProps {
   routes: BusRoute[];
@@ -79,13 +80,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                   </div>
                 </div>
               </div>
-              <details className="mt-4 text-sm text-gray-600">
-                <summary className="cursor-pointer">Timetable source</summary>
-                <p>{route.sourceTimetable} · PDF page {route.pdfPage}</p>
-                <p>Operating depot: {route.operatingDepot || 'Not published'}{route.depotSource === 'filename' ? ' (from timetable title)' : ''}</p>
-                <p>Operator: {route.operator || 'Not published'}</p>
-                <p className="break-words">Source references: {route.sourceRefs.join(', ') || 'Not published'}</p>
-              </details>
+              <TimetableSource route={route} className="mt-4 text-sm text-gray-600" />
             </CardContent>
           </Card>
         ))}
