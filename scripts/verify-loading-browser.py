@@ -56,6 +56,19 @@ def verify(base, output, access_url=None):
         assert not any('search-engine-' in url for url in requests)
         assert not errors, errors
         context.close()
+        # A failed journey transition retains the right page metadata and recovers its own rows.
+        context = browser.new_context(storage_state=storage)
+        page = context.new_page()
+        page.route('**/jind-to-chandigarh-*.js', lambda route: route.abort())
+        page.goto(base + '/routes', wait_until='networkidle')
+        page.get_by_role('link', name='Jind to Chandigarh', exact=True).click()
+        page.get_by_role('alert').filter(has_text='Could not load this timetable').wait_for()
+        assert page.locator('[data-service-id]').count() == 0
+        assert page.locator('link[rel="canonical"]').get_attribute('href').endswith('/routes/jind-to-chandigarh')
+        page.unroute('**/jind-to-chandigarh-*.js')
+        page.get_by_role('button', name='Try again').click()
+        page.locator('[data-service-id="jind_bus_schedule:209"]').wait_for()
+        context.close()
         # Fresh document/module cache: a failed chunk shows an accessible recovery path.
         context = browser.new_context(storage_state=storage)
         page = context.new_page()
@@ -84,7 +97,7 @@ def verify(base, output, access_url=None):
         assert page.locator('meta[name="robots"]').get_attribute('content') == 'noindex'
         context.close()
         browser.close()
-    result = {'baseUrl': base, 'passed': True, 'checks': ['no search data on public pages', 'no extra initial route fetch', 'typing during slow load', 'deduplicated engine import', 'alias keyboard autocomplete', '00:40 Katra result', 'client route chunk isolation', 'failed import and retry preserves input', 'direct search loading and noindex']}
+    result = {'baseUrl': base, 'passed': True, 'checks': ['no search data on public pages', 'no extra initial route fetch', 'typing during slow load', 'deduplicated engine import', 'alias keyboard autocomplete', '00:40 Katra result', 'client route chunk isolation', 'failed journey and retry', 'failed import and retry preserves input', 'direct search loading and noindex']}
     Path(output).parent.mkdir(parents=True, exist_ok=True)
     Path(output).write_text(json.dumps(result, indent=2), encoding='utf-8')
     print(json.dumps(result, indent=2))

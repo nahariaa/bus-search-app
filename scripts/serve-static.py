@@ -41,5 +41,6 @@ class Handler(SimpleHTTPRequestHandler):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, default=8080)
+    parser.add_argument('--directory', default='dist')
     args = parser.parse_args()
-    ThreadingHTTPServer(('127.0.0.1', args.port), partial(Handler, directory='dist')).serve_forever()
+    ThreadingHTTPServer(('127.0.0.1', args.port), partial(Handler, directory=args.directory)).serve_forever()

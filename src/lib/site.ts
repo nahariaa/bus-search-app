@@ -4,3 +4,4 @@ export const PUBLISHER_NAME = 'Tushar Naharia';
 export const CONTACT_EMAIL = 'haryanabusinfo@gmail.com';
 export const CONTACT_EMAIL_LINK = `mailto:${CONTACT_EMAIL}`;
 export const BUS_STAND_ENQUIRIES_URL = 'https://hartrans.gov.in/bus-stand-enquiry-numbers/';
+export const OFFICIAL_TIMETABLE_DIRECTORY_URL = 'https://hartrans.gov.in/bus-time-table-depot-wise/';

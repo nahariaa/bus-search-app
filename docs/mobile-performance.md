@@ -49,3 +49,15 @@ Run `npm ci`, `npm run build`, both `npx tsc --noEmit -p tsconfig.*.json` checks
 With `python scripts/serve-static.py` serving the production output, run `scripts/verify-static-browser.py`, `scripts/verify-timetable-browser.py`, and `scripts/verify-loading-browser.py`. The static suite covers all 15 indexable pages without/with JavaScript at 360/390/1280, metadata, raw HTML, exact service IDs, hydration node retention, source details, real 404/redirects, zoom and history. New checks cover payload/matcher equality, exclusion from startup, delayed import with live typing, deduplication, failure/retry, route navigation isolation and direct search loading. The 00:40 Kashmiri Gate departure **towards Katra via Ludhiana** remains in all 86 Delhi–Ludhiana matches.
 
 The existing Git integration builds the feature branch as a preview; verify the intended `bus-search-app` Vite project and preview before merging to `main`, then verify its production deployment and repeat the same mobile measurements. The eight duplicate Vercel projects already failed on the baseline commit; the inspected duplicate uses an erroneous Next.js configuration. They are outside this performance change.
+
+## Timetable discovery release comparison
+
+November 17, 2026 laboratory comparison using the current deferred-loading baseline, `c5f801b2d72b`. Both builds used Node 20.16.0, Chrome 157.0.8103.79 and the local static server. Each cell is the median of three fresh contexts per page with a disabled cache, 390 × 844 viewport, touch, DPR 1, 4× CPU slowdown, 150 ms added latency, 1.6 Mbit/s down and 0.75 Mbit/s up. Run `python scripts/measure-mobile.py` against each served build to reproduce. The local server uses uncompressed responses. The separate gzip asset comparison uses the same Python gzip settings for both builds.
+
+| Page | Transferred bytes, before → after | JS execution, before → after | LCP, before → after | CLS, before → after |
+| --- | ---: | ---: | ---: | ---: |
+| `/` | 358,915 → 373,482 | 95.5 → 112.8 ms | 1.460 → 1.196 s | 0 → 0 |
+| `/routes` | 353,871 → 370,080 | 81.8 → 107.0 ms | 1.480 → 1.184 s | 0 → 0 |
+| `/routes/delhi-to-ludhiana` | 660,912 → 550,871 | 120.5 → 128.9 ms | 1.816 → 1.516 s | 0 → 0 |
+
+Startup JavaScript increased from 264,266 to 275,782 bytes, or 84,621 to 87,087 bytes in the controlled gzip comparison. The deferred search chunk increased from 243,950 to 248,749 gzip bytes. The search engine and other journeys remain absent from the initial requests. Delhi → Ludhiana HTML including hydration data decreased from 315,847 to 192,498 bytes while retaining all 86 records and their source details. The site has no field measurements for this release.
