@@ -6,6 +6,7 @@ import { DocumentLink } from '@/components/TimetableSource';
 import { cityHubs, connectionFrom, routeSummaries, routesBySlug, publicSnapshotId, usePublicJourney, type RouteSummary } from '@/lib/public-timetables';
 import { BUS_STAND_ENQUIRIES_URL, CONTACT_EMAIL_LINK, OFFICIAL_TIMETABLE_DIRECTORY_URL, SITE_URL } from '@/lib/site';
 import Advertisement from '@/components/Advertisement';
+import { ANDROID_TIMETABLE_APP_URL, ANDROID_TIMETABLE_NAME } from '@/lib/android-source';
 import NotFound from './NotFound';
 
 export default function RouteTimetable() {
@@ -25,16 +26,17 @@ function JourneyPage({ summary }: { summary: RouteSummary }) {
   const label = `${from} to ${to}`;
   const pageType = hasPublishedDepartures ? 'bus timetable' : 'bus connection';
   const searchUrl = `/search?${new URLSearchParams({ from: fromId, to: toId })}`;
+  const android = journey?.services.find(service => service.android)?.android;
   const issueSubject = encodeURIComponent(`Timetable issue: ${label}`);
   const issueBody = encodeURIComponent([
     `Page: ${SITE_URL}${path}`,
-    `Timetable sources: ${journey?.sources.map(source => source.file).join(', ') ?? ''}`,
-    '', 'Boarding point and listed departure:', 'PDF page or row reference:', 'Correction and supporting evidence:',
+    `Timetable sources: ${[...(journey?.sources.map(source => source.file) ?? []), ...(android ? [ANDROID_TIMETABLE_NAME] : [])].join(', ')}`,
+    '', 'Boarding point and listed departure:', 'PDF page or app trip reference:', 'Correction and supporting evidence:',
   ].join('\r\n'));
   return <article className="mx-auto max-w-5xl space-y-5 px-4 py-6 sm:px-6 sm:py-9">
     <SEO title={`${label} ${hasPublishedDepartures ? 'Bus Timetable' : 'Bus Connection'} | ${hasHaryanaRoadways ? 'Haryana Roadways' : 'HaryanaBus'}`}
       description={hasPublishedDepartures
-        ? `Find published ${label} bus departures with boarding points, operators, service days, and original depot timetable references.`
+        ? `Find ${label} bus departures with boarding points, operators, service days, and timetable sources.`
         : `Check published bus coverage for ${label}, the reverse connection, and official bus stand enquiries.`}
       path={path} noIndex={!hasPublishedDepartures} />
     <Breadcrumbs trail={[{ path: '/routes', name: 'Routes' },
@@ -67,9 +69,11 @@ function JourneyPage({ summary }: { summary: RouteSummary }) {
         <summary className="cursor-pointer py-2 font-medium text-slate-950">Schedule and source notes</summary>
         <div className="space-y-2 pb-3">
           <p>{hasPublishedDepartures
-            ? 'These records describe published schedules. Times at intermediate stops and current operation require separate confirmation.'
+            ? 'These records describe published schedules. Open a departure’s source to see any listed stop times. Confirm current operation with the bus stand.'
             : 'The depot directory is one source of schedule information. Check with the bus stand for service beyond this collection.'}</p>
           <p><a href={OFFICIAL_TIMETABLE_DIRECTORY_URL} className="text-blue-700 underline underline-offset-4">Haryana Roadways depot timetable directory</a></p>
+          {android && <p><a href={ANDROID_TIMETABLE_APP_URL} className="text-blue-700 underline underline-offset-4">{ANDROID_TIMETABLE_NAME}</a>
+            {' · Android timetable version '}{android.version}</p>}
           {journey && <ul className="space-y-3">
             {journey.sources.map(source => <li key={source.sha256} className="border-t pt-2">
               <p className="font-medium">{source.file}</p>

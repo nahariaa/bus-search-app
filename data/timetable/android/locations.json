@@ -1,0 +1,2138 @@
+[
+  {
+    "location": "Abohar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Agra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Agroha",
+    "helpline": "",
+    "aliases": ["Agroa", "Mor"],
+    "address": ""
+  },
+  {
+    "location": "Khanauri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ajmer",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Uklana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mussoorie",
+    "helpline": "",
+    "aliases": ["Massurie", "Mussurie"],
+    "address": ""
+  },
+  {
+    "location": "Surewala Chowk",
+    "helpline": "",
+    "aliases": ["Mor", "Surewala Mor", "Surewala Mod", "Mod"],
+    "address": ""
+  },
+  {
+    "location": "Aligarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Najafgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Alwar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Amb",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bahal",
+    "helpline": "",
+    "aliases": [""],
+    "address": ""
+  },
+  {
+    "location": "Bhoda Hoshnak",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chandigarh",
+    "helpline": "0172-2704014",
+    "aliases": ["17", "CHN", "Chndigrh"],
+    "address": ""
+  },
+  {
+    "location": "Chandigarh 43",
+    "officialName": "Chandigarh Sec 43",
+    "helpline": "",
+    "aliases": ["43", "CHN", "Chndigrh"],
+    "address": ""
+  },
+  {
+    "location": "Gurugram",
+    "helpline": "0124-2320222",
+    "officialName": "Gurgaon",
+    "aliases": ["Gurgaon", "Gudgaon", "NCR", "GGN", "GGM"],
+    "address": ""
+  },
+  {
+    "location": "Ganganagar",
+    "helpline": "",
+    "aliases": ["Gngangr"],
+    "address": ""
+  },
+  {
+    "location": "Gohana",
+    "helpline": "01263-252140",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "MET City",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nainital",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Landhari",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Khara Kheri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dhand",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bhattu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ramnagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kashipur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kathgodam",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Gopalwas",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kadma",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Singhana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Gogamedi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nohar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Lalgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Amarpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Akshardham",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Cheeka",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ambala",
+    "helpline": "0171-2556388",
+    "aliases": ["AMB"],
+    "address": ""
+  },
+  {
+    "location": "Ambala Cantt",
+    "helpline": "0171-2640821",
+    "aliases": ["AMB"],
+    "address": ""
+  },
+  {
+    "location": "Amritsar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "IGI Airport",
+    "helpline": "",
+    "aliases": ["Delhi", "ISBT", "Gurugram", "DL"],
+    "address": ""
+  },
+  {
+    "location": "Anand Vihar",
+    "helpline": "",
+    "aliases": ["Delhi", "ISBT", "DL"],
+    "address": ""
+  },
+  {
+    "location": "Shahtalai",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Anandpur Sahab",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Anoopgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Assandh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ateli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Auraiya",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ayodhya",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Hisar",
+    "helpline": "01662-233285",
+    "aliases": ["Hissar", "HSR", "GJU"],
+    "address": ""
+  },
+  {
+    "location": "Dabwali",
+    "helpline": "01668-226015",
+    "aliases": ["Dabawali"],
+    "address": ""
+  },
+  {
+    "location": "Sirsa",
+    "helpline": "01666-220866",
+    "aliases": ["Sarsa", "SRS"],
+    "address": ""
+  },
+  {
+    "location": "Badarpur",
+    "helpline": "",
+    "aliases": ["Faridabad"],
+    "address": ""
+  },
+  {
+    "location": "Jodhpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Fatehabad",
+    "helpline": "01667-220617",
+    "aliases": ["FTD"],
+    "address": ""
+  },
+  {
+    "location": "Murthal",
+    "helpline": "",
+    "aliases": ["Sonipat"],
+    "address": ""
+  },
+  {
+    "location": "Samalkha",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sujangarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bhiwani",
+    "helpline": "01664-242230",
+    "aliases": ["BWN", "Bhwni"],
+    "address": ""
+  },
+  {
+    "location": "Mathura",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kosi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Hodal",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Palwal",
+    "helpline": "01275-252203",
+    "aliases": ["PWL", "PW", "Plwl"],
+    "address": ""
+  },
+  {
+    "location": "Sohna",
+    "helpline": "",
+    "aliases": ["Gurugram", "Gurgaon"],
+    "address": ""
+  },
+  {
+    "location": "Jhajjar",
+    "helpline": "01251-256357",
+    "aliases": ["Jajjar", "Jajhar", "Jhajar", "JJR"],
+    "address": ""
+  },
+  {
+    "location": "Faridabad",
+    "helpline": "0129-2244953",
+    "aliases": ["FBD", "NCR"],
+    "address": ""
+  },
+  {
+    "location": "Delhi",
+    "helpline": "011-23861262",
+    "aliases": ["ISBT", "Delhi ISBT", "NCR", "DL", "Dilli"],
+    "address": ""
+  },
+  {
+    "location": "Beri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Meham",
+    "helpline": "",
+    "aliases": ["Mhm"],
+    "address": ""
+  },
+  {
+    "location": "Hansi",
+    "helpline": "01663-254081",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Narnaul",
+    "helpline": "01282-251947",
+    "aliases": ["NNL"],
+    "address": ""
+  },
+  {
+    "location": "Rewari",
+    "helpline": "01274-256751",
+    "aliases": ["RWI", "Rwri"],
+    "address": ""
+  },
+  {
+    "location": "Rohtak",
+    "helpline": "01262-276641",
+    "aliases": ["RTK"],
+    "address": ""
+  },
+  {
+    "location": "Bahadurgarh",
+    "helpline": "01276-641834",
+    "aliases": ["NCR", "Bhdrgrh"],
+    "address": ""
+  },
+  {
+    "location": "Jaipur",
+    "helpline": "",
+    "aliases": ["Pink City"],
+    "address": ""
+  },
+  {
+    "location": "Deroli Ahir",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mahendergarh",
+    "helpline": "01285-222100",
+    "aliases": ["MGH"],
+    "address": ""
+  },
+  {
+    "location": "Charkhi Dadri",
+    "helpline": "01250-220144",
+    "aliases": ["DDRI", "CDI", "Chrki Ddri"],
+    "address": ""
+  },
+  {
+    "location": "Nathusari Chopta",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kotputli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dharuhera",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sujanpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Batala",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Manesar",
+    "helpline": "",
+    "aliases": ["Mnsr"],
+    "address": ""
+  },
+  {
+    "location": "Sangrur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Panipat",
+    "helpline": "0180-2646544",
+    "aliases": ["PPT", "Pnipt"],
+    "address": ""
+  },
+  {
+    "location": "Mahaveer Ji",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sonipat",
+    "helpline": "0130-2201101",
+    "aliases": ["SPT"],
+    "address": ""
+  },
+  {
+    "location": "Kheda",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jattari",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tappal",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nagaur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ballabgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Khair",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jewar",
+    "helpline": "",
+    "aliases": ["JWR"],
+    "address": ""
+  },
+  {
+    "location": "Noida",
+    "helpline": "",
+    "aliases": ["NCR"],
+    "address": "Uttar Pradesh"
+  },
+  {
+    "location": "Farukhnagar",
+    "helpline": "",
+    "aliases": ["Frkhngr"],
+    "address": ""
+  },
+  {
+    "location": "Behror",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kishangarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tijara",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bhiwadi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tiraya",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ramgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nogava",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Firozpur Jhirka",
+    "helpline": "",
+    "aliases": ["Jhirka", "Jirka", "Firojpur", "Jhirkha"],
+    "address": ""
+  },
+  {
+    "location": "Badkali",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nuh",
+    "helpline": "01267-274710",
+    "aliases": ["Mewat"],
+    "address": ""
+  },
+  {
+    "location": "Rewali",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Pundari",
+    "officialName": "Pundri",
+    "helpline": "",
+    "aliases": ["Pundri"],
+    "address": ""
+  },
+  {
+    "location": "Punhana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kotkasim",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rajpura",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ludhiana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Phagwara",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jalandhar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bareilly",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Muzaffarnagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dulhera",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bijnor",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Moradabad",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Vrindavan",
+    "helpline": "",
+    "aliases": ["Vrindawan"],
+    "address": ""
+  },
+  {
+    "location": "Dadri Toye",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chandu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tonk",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ladnu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Zirakpur",
+    "helpline": "",
+    "aliases": ["Chandigarh"],
+    "address": ""
+  },
+  {
+    "location": "Dehradun",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Yamunanagar",
+    "helpline": "01732-227717",
+    "aliases": ["YMN"],
+    "address": ""
+  },
+  {
+    "location": "Pipli",
+    "helpline": "",
+    "aliases": ["Kurukshetra", "Kurushetra", "KKR"],
+    "address": ""
+  },
+  {
+    "location": "Bhadani",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Karanpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Karnal",
+    "helpline": "0184-2251158",
+    "aliases": ["KNL", "Krnl"],
+    "address": ""
+  },
+  {
+    "location": "Sri Dungargarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Hoshiarpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nalwa",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Haridwar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sarsawa",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Roorkee",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kaithal",
+    "helpline": "01746-269360",
+    "aliases": ["Kathal", "Kthl"],
+    "address": ""
+  },
+  {
+    "location": "Kairu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Neem Ka Thana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Neemrana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Shahpura",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kullu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ropar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bilaspur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sundarnagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sultanpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mandi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bundi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Lucknow",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Uchana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rampur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Meerganj",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Shahjahanpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sitapur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Siwan",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ringus",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Siwani",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Berthin",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Singhauli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Meerut",
+    "helpline": "",
+    "aliases": ["Meruth", "Merut"],
+    "address": ""
+  },
+  {
+    "location": "Fazilka",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Khatauli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Narwana",
+    "helpline": "01684-240104",
+    "aliases": ["Nrwna"],
+    "address": ""
+  },
+  {
+    "location": "Pehowa",
+    "helpline": "01741-220102",
+    "aliases": ["Pehwa", "Phwa"],
+    "address": ""
+  },
+  {
+    "location": "Sardulgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nangal",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Pataudi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Renuka Ji",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kalayat",
+    "helpline": "",
+    "aliases": ["Klyt"],
+    "address": ""
+  },
+  {
+    "location": "Kala Amb",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nahan",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Shahbad",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Una",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kiratpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nangal",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nangthala",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nangal Choudhary",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mehrda",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Udaipur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dudu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Maler Kotla",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Patran",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tohana",
+    "helpline": "01692-220036",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Khanna",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sirhind",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Panchkula",
+    "helpline": "0172-2562200",
+    "aliases": ["PKL", "Punchkula"],
+    "address": ""
+  },
+  {
+    "location": "Banga",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nawanshahr",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nawabganj",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Unnao",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Paonta",
+    "helpline": "",
+    "aliases": ["Sahib", "Poanta"],
+    "address": ""
+  },
+  {
+    "location": "Beas",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mulana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Khijrabad",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Raisingh Nagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Padmpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Garh Ganga",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tanakpur",
+    "helpline": "",
+    "aliases": ["Nepal"],
+    "address": ""
+  },
+  {
+    "location": "Vijaynagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Suratgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Pilibanga",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kotdwar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Hanumangarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ellenabad",
+    "helpline": "",
+    "aliases": ["Elenabad", "Elnabad"],
+    "address": ""
+  },
+  {
+    "location": "Safidon",
+    "helpline": "01686-262235",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Baddi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Pinjore",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Badhra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tauru",
+    "helpline": "",
+    "aliases": ["Tawdu"],
+    "address": ""
+  },
+  {
+    "location": "Bathinda",
+    "officialName": "Bhatinda",
+    "helpline": "",
+    "aliases": ["Bhatinda"],
+    "address": ""
+  },
+  {
+    "location": "Mandothi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Matanhel",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chara",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dujara",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Churu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sampla",
+    "helpline": "",
+    "aliases": ["Smpla"],
+    "address": ""
+  },
+  {
+    "location": "Kalanaur",
+    "helpline": "",
+    "aliases": ["Klnr", "Kalanor"],
+    "address": ""
+  },
+  {
+    "location": "Loharu",
+    "helpline": "01252-258207",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Pilani",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jhunjhunu",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jind",
+    "helpline": "01681-245370",
+    "aliases": ["JND"],
+    "address": ""
+  },
+  {
+    "location": "Baijnath",
+    "helpline": "",
+    "aliases": ["Bajnath"],
+    "address": ""
+  },
+  {
+    "location": "Kangra",
+    "helpline": "",
+    "aliases": ["Kngra"],
+    "address": ""
+  },
+  {
+    "location": "Palampur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nangrota Bhagwan",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dehra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Etawah",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kartarpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kanpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bahu Jholri",
+    "officialName": "Bahu Jholari",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kurukshetra",
+    "helpline": "01744-220468",
+    "aliases": ["Kurushetra", "KUK", "KKR"],
+    "address": ""
+  },
+  {
+    "location": "Balaji",
+    "helpline": "",
+    "aliases": ["Mehandipur Balaji", "Mahandipur Balaji"],
+    "address": ""
+  },
+  {
+    "location": "Sikar",
+    "helpline": "",
+    "aliases": ["SKR"],
+    "address": ""
+  },
+  {
+    "location": "Sikandra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bandikui",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rajound",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rajgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bharatpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jwalapur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bulandshahr",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Khurza",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dharamshala",
+    "helpline": "",
+    "aliases": ["Dhrmshla"],
+    "address": ""
+  },
+  {
+    "location": "Haldwani",
+    "helpline": "",
+    "aliases": ["Nainital", "Hldwni"],
+    "address": ""
+  },
+  {
+    "location": "Hapur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dalhousie",
+    "helpline": "",
+    "aliases": ["Himachal"],
+    "address": ""
+  },
+  {
+    "location": "Chamba",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Garh",
+    "helpline": "",
+    "aliases": ["Garh Ganga"],
+    "address": ""
+  },
+  {
+    "location": "Ganaur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Gajraula",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rudrapur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Hamirpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Moonak",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mohan Nagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Modinagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Badsa",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ismailbad",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Badli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bawal",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Lakhan Majra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Majra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Julana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Katra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Salasar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sajuma",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Pathankot",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jammu",
+    "helpline": "",
+    "aliases": ["Kashmir"],
+    "address": ""
+  },
+  {
+    "location": "Khatu Shyam",
+    "helpline": "",
+    "aliases": ["Khatoo"],
+    "address": ""
+  },
+  {
+    "location": "Khandela",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Palsana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Lakhanpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kanina",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Shimla",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Solan",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Tosham",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sarai Kale Khan",
+    "helpline": "",
+    "aliases": ["Delhi", "ISBT", "DL"],
+    "address": ""
+  },
+  {
+    "location": "Indri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ladwa",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Adampur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Radaur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Shamli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Noorpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bijnor",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Barwala",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Badopal",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ding Mor",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Moriwala",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bijorawas",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rawla",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bhadra",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dabdi",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Balsamand",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rawatsar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ralwas",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chaupta",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Narnaund",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Deeg",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dhaula Kuan",
+    "officialName": "Dhola Kuan",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nagar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sikri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Farah",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chirawa",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bagar",
+    "helpline": "",
+    "aliases": ["Bagad"],
+    "address": ""
+  },
+  {
+    "location": "Khera",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kulana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dhanana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mundhal",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bass",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Khanda Kheri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Igrah",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bibipur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ghimana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Balrod",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Siana",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sehlang",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jui",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Nawalgarh",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kota",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Pushkar",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chirya",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Baghot",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dahina",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Satnali",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Miranpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Dera Bassi",
+    "helpline": "",
+    "aliases": ["Derabasi"],
+    "address": ""
+  },
+  {
+    "location": "Dera Beas",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bikaner",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Ratia",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chintpurni",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Patiala",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sunam",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Mansa",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kalanwali",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Raipur Rani",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jawalaji",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bhuna",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Bhota",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Deoli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Fatehpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "IFFCO Chowk",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kosli",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Manali",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Jagadhri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Deoband",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Rishikesh",
+    "helpline": "",
+    "aliases": ["Risikesh", "Risikes", "Rishikes"],
+    "address": ""
+  },
+  {
+    "location": "Saharanpur",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sadhaura",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Naraingarh",
+    "helpline": "01734-284038",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kalka",
+    "helpline": "01733-220021",
+    "aliases": ["KLKA", "KLK"],
+    "address": ""
+  },
+  {
+    "location": "Nilokheri",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Kheri Chopta",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Taraori",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Sangaria",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  },
+  {
+    "location": "Chautala",
+    "helpline": "",
+    "aliases": [],
+    "address": ""
+  }
+]

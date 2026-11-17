@@ -49,6 +49,8 @@ export const routeManifest: RoutePageSelection[] = [
   ...existingSelections.map(selection => ({
     ...selection, ...(isDepotPair(selection.fromId, selection.toId) ? { depotConnection: true as const } : {}),
   })),
+  { slug: 'bhiwani-to-mathura', fromId: 'bhiwani', toId: 'mathura', newPage: true,
+    reason: 'The 04:30 Bhiwani departure has complementary depot and Android stop evidence.' },
   ...depotPlaceIds.flatMap(fromId => depotPlaceIds
     .filter(toId => fromId !== toId && !existingPairs.has(`${fromId}:${toId}`))
     .map(toId => ({

@@ -51,6 +51,16 @@ def verify(base_url):
         assert page.get_by_text('05:00', exact=True).count() > 0
         page.goto(base_url + '/search?from=bhiwani&to=rohtak', wait_until='networkidle')
         assert page.get_by_text('Towards Delhi · via Rohtak', exact=True).count() > 0
+        page.goto(base_url + '/search?from=bhiwani&to=faridabad', wait_until='networkidle')
+        mathura = page.locator('[data-service-id="bhiwani_bus_schedule:329"]')
+        assert mathura.get_by_text('04:30', exact=True).first.is_visible()
+        assert mathura.get_by_text('Towards Mathura · via Ballabgarh', exact=True).is_visible()
+        mathura.locator('summary').click()
+        assert mathura.get_by_role('list', name='Stops in travel order').get_by_text('08:30', exact=True).is_visible()
+        page.goto(base_url + '/search?from=ballabgarh&to=mathura', wait_until='networkidle')
+        intermediate = page.locator('[data-service-id="android:410:7"]')
+        assert intermediate.get_by_text('08:30', exact=True).first.is_visible()
+        assert intermediate.get_by_text('Android timetable', exact=True).is_visible()
         page.goto(base_url + '/search?from=Singhu%20Border&to=Samalkha', wait_until='networkidle')
         assert page.get_by_text('No matching timetable found', exact=True).count() == 1
         assert page.locator('[data-service-id]').count() == 0
@@ -61,7 +71,8 @@ def verify(base_url):
                 'isbtDelhiTerminals': delhi, 'pageErrors': errors,
                 'checks': ['mobile autocomplete', 'alias autocomplete', 'keyboard selection', 'canonical URLs', 'legacy URLs',
                            'direct visits', 'refresh', 'Delhi to Ludhiana terminating and via Katra',
-                           'Bhiwani to Delhi', 'Bhiwani to Rohtak via', 'via-only origin rejected', 'mobile overflow']}
+                           'Bhiwani to Delhi', 'Bhiwani to Rohtak via', 'Bhiwani to Faridabad via Ballabgarh',
+                           'timed Android boarding at Ballabgarh', 'via-only origin rejected', 'mobile overflow']}
 
 
 if __name__ == '__main__':

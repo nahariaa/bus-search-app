@@ -1,3 +1,6 @@
 # Keep the downloaded inputs byte-for-byte identical on Windows and Linux.
 data/timetable/source/*.csv -text -whitespace
 data/timetable/source-pdfs/*.pdf -text
+data/timetable/android/busData.json -text -whitespace
+data/timetable/android/locations.json -text -whitespace
+data/timetable/android/version.json -text -whitespace

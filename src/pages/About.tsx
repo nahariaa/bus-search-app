@@ -1,4 +1,5 @@
 import InformationPage from '@/components/InformationPage';
+import { ANDROID_TIMETABLE_APP_URL, ANDROID_TIMETABLE_NAME } from '@/lib/android-source';
 import { BUS_STAND_ENQUIRIES_URL, CONTACT_EMAIL, CONTACT_EMAIL_LINK, PUBLISHER_NAME, SITE_DESCRIPTION } from '@/lib/site';
 
 const About = () => (
@@ -7,7 +8,7 @@ const About = () => (
     title="About HaryanaBus | Independent Haryana Roadways Timetable Guide"
     description={`Learn how ${PUBLISHER_NAME} independently publishes HaryanaBus, where its timetables come from, and how to report a correction.`}
     path="/about"
-    revised="2026-11-15"
+    revised="2026-11-17"
   >
     <p>{SITE_DESCRIPTION} It helps travellers find published departures, boarding points, stops along the route and service days where the timetable lists them.</p>
 
@@ -18,9 +19,9 @@ const About = () => (
 
     <h2>Where the timetables come from</h2>
     <p>
-      HaryanaBus uses a saved copy of published depot timetable PDFs. The “Timetable source” under each result
-      gives the PDF name and page number and lists the operating depot separately from the boarding point.
-      The Department of State Transport also publishes a <a href="https://hartrans.gov.in/bus-time-table-depot-wise/">depot-wise timetable directory</a>.
+      HaryanaBus uses archived <a href="https://hartrans.gov.in/bus-time-table-depot-wise/">depot timetable PDFs</a> and
+      the <a href={ANDROID_TIMETABLE_APP_URL}>{ANDROID_TIMETABLE_NAME}</a> Android timetable.
+      Open “Timetable source” on a departure to see its references, boarding point details and any available stop list.
     </p>
 
     <h2>Confirm a departure</h2>

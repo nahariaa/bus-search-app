@@ -21,6 +21,7 @@ def verify(base, output, access_url=None):
     sample = {
         '/', '/about', '/privacy', '/routes', '/cities/jind', '/cities/chandigarh', '/cities/ambala',
         '/routes/jind-to-chandigarh', '/routes/delhi-to-ludhiana', '/routes/sarai-kale-khan-delhi-to-jaipur',
+        '/routes/bhiwani-to-faridabad', '/routes/bhiwani-to-mathura',
         '/routes/ambala-to-delhi', '/routes/faridabad-to-delhi', '/routes/nuh-to-panchkula',
         max(journeys.values(), key=lambda item: len(item['serviceIds']))['path'],
     }
@@ -88,10 +89,17 @@ def verify(base, output, access_url=None):
             if width == 390:
                 page.goto(base + '/routes')
                 page.locator('summary').filter(has_text=re.compile(r'^Nuh$')).click()
-                page.get_by_role('link', name='Nuh to Panchkula', exact=True).click()
+                page.get_by_role('link', name='Nuh to Sonipat', exact=True).click()
                 assert page.get_by_role('heading', name='No published through departure').is_visible()
-                page.get_by_role('link', name='Panchkula to Nuh', exact=True).click()
-                assert page.get_by_role('heading', name='Panchkula to Nuh bus connection').is_visible()
+                page.get_by_role('link', name='Sonipat to Nuh', exact=True).click()
+                assert page.get_by_role('heading', name='Sonipat to Nuh bus connection').is_visible()
+                page.goto(base + '/routes/bhiwani-to-faridabad')
+                card = page.locator('[data-service-id="bhiwani_bus_schedule:329"]')
+                assert card.get_by_text('Towards Mathura · via Ballabgarh', exact=True).is_visible()
+                card.locator('summary').click()
+                stops = card.get_by_role('list', name='Stops in travel order')
+                assert 'Ballabgarh08:30' in stops.text_content()
+                assert stops.get_by_text('Hodal', exact=True).is_visible()
                 page.goto(base + '/routes/delhi-to-ludhiana')
                 card = page.locator('[data-service-id="delhi_isbt_delhi_depot_bus_schedule:59"]')
                 assert '00:40' in card.inner_text() and 'Katra' in card.inner_text()
