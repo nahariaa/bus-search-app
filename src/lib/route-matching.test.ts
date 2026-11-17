@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { busRoutes, type BusRoute } from './bus-routes';
 import { boardingPoints, buildSearchUrl, destinationsFrom, locationKey, matchRoutes, placeSuggestions, routeMatchLabel, timetablePairs } from './route-matching';
@@ -19,7 +20,7 @@ test('Delhi to Ludhiana includes terminating services and the 00:40 Katra servic
 test('Bhiwani imports verified Delhi departures and offers Rohtak via services', () => {
   const delhi = matchRoutes('Bhiwani', 'Delhi');
   assert.ok(delhi.some(route => route.departureTime === '05:00' && route.sourceTimetable === 'bhiwani.pdf'));
-  assert.ok(delhi.every(route => route.operatingDepot));
+  assert.ok(delhi.filter(route => route.pdfPage).every(route => route.operatingDepot));
   assert.ok(matchRoutes('Bhiwani', 'Rohtak').some(route => route.to === 'Delhi' && route.matchedVia === 'Rohtak'));
   assert.ok(destinationsFrom('Bhiwani').includes('Rohtak'));
 });
@@ -113,10 +114,12 @@ test('all 20,195 source records are accounted for and searchable services retain
   assert.equal(report.files.reduce((sum, file) => sum + file.input, 0), 20195);
   assert.equal(report.files.reduce((sum, file) => sum + (file.imported ?? 0) + (file.review ?? 0) + file.confirmedDuplicates, 0), 20195);
   assert.equal(busRoutes.length, report.searchableServices);
-  assert.deepEqual(new Set(busRoutes.flatMap(route => route.sourceRefs)),
+  const officialRoutes = busRoutes.filter(route => route.pdfPage);
+  assert.equal(officialRoutes.length, report.officialServices);
+  assert.deepEqual(new Set(officialRoutes.flatMap(route => route.sourceRefs)),
     new Set(audit.filter(row => row.status === 'imported').map(row => row.id)));
   const refs = new Map<string, { status: string }>(audit.map(row => [row.id, row]));
-  for (const route of busRoutes) {
+  for (const route of officialRoutes) {
     assert.ok(route.operatingDepot && route.sourceTimetable && route.pdfPage);
     assert.match(route.departureTime, /^([01]\d|2[0-3]):[0-5]\d$/);
     for (const ref of route.sourceRefs) assert.equal(refs.get(ref)?.status, 'imported');
@@ -124,4 +127,51 @@ test('all 20,195 source records are accounted for and searchable services retain
   assert.ok(busRoutes.some(route => route.sourceTimetable === 'Gurugram.pdf' && route.depotSource === 'filename' && route.operatingDepot === 'Gurugram'));
   assert.ok(busRoutes.some(route => route.sourceTimetable === 'bhiwani.pdf' && route.depotSource === 'filename' && route.operatingDepot === 'Bhiwani'));
   assert.ok(audit.every(row => row.raw && row.rawValues && (row.status !== 'review' || row.issues.length)));
+});
+
+test('Android trip 410 augments the original Bhiwani–Mathura bus and only serves downstream stops', () => {
+  const trips = matchRoutes('Bhiwani', 'Faridabad').filter(route => route.android?.tripNumber === 410);
+  assert.equal(trips.length, 1);
+  const [trip] = trips;
+  assert.equal(trip.id, 'bhiwani_bus_schedule:329');
+  assert.equal(trip.departureTime, '04:30');
+  assert.equal(trip.pdfPage, 9);
+  assert.deepEqual(trip.serviceDays, ['All Days']);
+  assert.equal(routeMatchLabel(trip), 'Towards Mathura · via Ballabgarh');
+  assert.deepEqual(trip.android?.stops.find(stop => stop.name === 'Ballabgarh'), { name: 'Ballabgarh', time: '08:30' });
+  assert.deepEqual(trip.android?.stops.find(stop => stop.name === 'Hodal'), { name: 'Hodal', time: '' });
+  assert.ok(destinationsFrom('Bhiwani').includes('Faridabad'));
+  assert.ok(matchRoutes('Ballabgarh', 'Mathura').some(route => route.id === 'android:410:7' && route.departureTime === '08:30'));
+  assert.ok(!matchRoutes('Ballabgarh', 'Rohtak').some(route => route.android?.tripNumber === 410));
+  assert.ok(!matchRoutes('Hodal', 'Mathura').some(route => route.android?.tripNumber === 410));
+});
+
+test('every Android trip is accounted for and its searchable departures use published stop clocks', () => {
+  const file = readFileSync('data/timetable/android/busData.json');
+  const raw = JSON.parse(file.toString('utf8'));
+  const report = JSON.parse(readFileSync('data/timetable/android/reconciliation.json', 'utf8'));
+  assert.equal(createHash('sha256').update(file).digest('hex'), report.source.sha256);
+  assert.equal(raw.length, report.inputTrips);
+  assert.equal(raw.reduce((total, trip) => total + trip.stations.length, 0), report.inputStops);
+  assert.equal(report.linkedStarts + report.standaloneStarts + report.withheldTrips, report.inputTrips);
+  const linked = busRoutes.filter(route => route.pdfPage && route.android);
+  const standalone = busRoutes.filter(route => !route.pdfPage);
+  assert.equal(linked.length, report.linkedStarts);
+  assert.equal(standalone.length, report.standaloneStarts + report.intermediateDepartures);
+  for (const route of linked) assert.equal(report.officialLinksByTrip[route.android!.tripNumber], route.id);
+  const reviewed = new Set(report.review.filter(entry => !entry.stopNumbers).map(entry => entry.trip));
+  assert.equal(reviewed.size, report.withheldTrips);
+  const represented = new Set([...linked, ...standalone].map(route => route.android!.tripNumber));
+  assert.equal(represented.size, report.inputTrips - report.withheldTrips);
+  for (const route of standalone) {
+    const trip = route.android!;
+    const [sourceId, number, position] = route.id.split(':');
+    assert.equal(sourceId, 'android');
+    assert.equal(Number(number), trip.tripNumber);
+    assert.equal(trip.stops.length, raw[trip.tripNumber - 1].stations.length);
+    assert.deepEqual(trip.stops[Number(position) - 1], { name: route.from, time: route.departureTime });
+    assert.equal(trip.stops[trip.stops.length - 1]?.name, route.to);
+    assert.ok(!reviewed.has(trip.tripNumber));
+    assert.equal(route.operatingDepot, '');
+  }
 });

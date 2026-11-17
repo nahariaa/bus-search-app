@@ -59,6 +59,7 @@ const BusSearchResults: React.FC<BusSearchResultsProps> = ({
                     <p className="text-sm text-gray-500">Route</p>
                     <p className="font-semibold">{routeMatchLabel(route)}</p>
                     {route.via && <p className="text-sm text-gray-600">Via {route.via}</p>}
+                    {route.android && !route.pdfPage && <p className="text-xs text-gray-600">Android timetable</p>}
                   </div>
                 </div>
 

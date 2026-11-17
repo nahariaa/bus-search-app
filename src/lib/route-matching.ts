@@ -22,7 +22,8 @@ export function matchRoutes(from: string, to?: string, records: BusRoute[] = bus
     if (toId === undefined || placeIncludes(toId, route.toId)) return [route];
     const via = route.viaIds.find(id => placeIncludes(toId, id));
     return via ? [{ ...route, matchedVia: placeName(via) }] : [];
-  }).sort((a, b) => a.departureTime.localeCompare(b.departureTime) || a.id.localeCompare(b.id));
+  }).sort((a, b) => a.departureTime.localeCompare(b.departureTime)
+    || Number(!a.pdfPage) - Number(!b.pdfPage) || a.id.localeCompare(b.id));
 }
 
 function publishedNames(ids: string[]): string[] {

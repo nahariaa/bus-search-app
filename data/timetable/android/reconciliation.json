@@ -1,0 +1,1221 @@
+{
+  "source": {
+    "name": "Haryana Roadways & Metro Info",
+    "version": "1.1.6",
+    "sha256": "a8015ff4cd6738acbc0056391f177f3b623e4306a9c407c6a88b6eefcfad785d",
+    "url": "https://haryanaroadwaysapp.web.app/busData.json"
+  },
+  "inputTrips": 4022,
+  "inputStops": 29444,
+  "standaloneStarts": 3629,
+  "intermediateDepartures": 7986,
+  "linkedStarts": 369,
+  "withheldTrips": 24,
+  "timingReviewTrips": 62,
+  "officialLinksByTrip": {
+    "214": "faridabad_bus_schedule:16",
+    "215": "faridabad_bus_schedule:2",
+    "222": "faridabad_bus_schedule:37",
+    "223": "faridabad_bus_schedule:40",
+    "237": "faridabad_bus_schedule:3",
+    "241": "faridabad_bus_schedule:6",
+    "242": "faridabad_bus_schedule:4",
+    "268": "faridabad_bus_schedule:36",
+    "269": "faridabad_bus_schedule:59",
+    "270": "faridabad_bus_schedule:101",
+    "272": "faridabad_bus_schedule:55",
+    "337": "bhiwani_bus_schedule:484",
+    "343": "bhiwani_bus_schedule:551",
+    "346": "bhiwani_bus_schedule:554",
+    "348": "bhiwani_bus_schedule:573",
+    "351": "bhiwani_bus_schedule:376",
+    "353": "bhiwani_bus_schedule:378",
+    "355": "bhiwani_bus_schedule:370",
+    "391": "bhiwani_bus_schedule:382",
+    "400": "bhiwani_bus_schedule:553",
+    "410": "bhiwani_bus_schedule:329",
+    "417": "bhiwani_bus_schedule:587",
+    "425": "bhiwani_bus_schedule:369",
+    "542": "chandigarh_bus_schedule:766",
+    "678": "chandigarh_bus_schedule:755",
+    "688": "chandigarh_bus_schedule:762",
+    "723": "chandigarh_bus_schedule:747",
+    "733": "ambala_bus_schedule:120",
+    "761": "chandigarh_bus_schedule:757",
+    "773": "ambala_bus_schedule:100",
+    "821": "ambala_bus_schedule:135",
+    "823": "ambala_bus_schedule:137",
+    "824": "ambala_bus_schedule:140",
+    "835": "ambala_bus_schedule:156",
+    "851": "chandigarh_bus_schedule:636",
+    "853": "chandigarh_bus_schedule:638",
+    "854": "chandigarh_bus_schedule:639",
+    "855": "chandigarh_bus_schedule:642",
+    "856": "chandigarh_bus_schedule:650",
+    "857": "chandigarh_bus_schedule:652",
+    "858": "chandigarh_bus_schedule:653",
+    "931": "charkhi_dadri_bus_schedule:238",
+    "943": "charkhi_dadri_bus_schedule:178",
+    "944": "charkhi_dadri_bus_schedule:270",
+    "945": "charkhi_dadri_bus_schedule:272",
+    "963": "charkhi_dadri_bus_schedule:170",
+    "1070": "jhajjar_bus_schedule:1225",
+    "1082": "delhi_isbt_delhi_depot_bus_schedule:722",
+    "1085": "delhi_isbt_delhi_depot_bus_schedule:578",
+    "1109": "delhi_isbt_delhi_depot_bus_schedule:575",
+    "1114": "delhi_isbt_delhi_depot_bus_schedule:607",
+    "1117": "delhi_isbt_delhi_depot_bus_schedule:104",
+    "1118": "delhi_isbt_delhi_depot_bus_schedule:108",
+    "1119": "delhi_isbt_delhi_depot_bus_schedule:111",
+    "1120": "delhi_isbt_delhi_depot_bus_schedule:114",
+    "1122": "delhi_isbt_delhi_depot_bus_schedule:117",
+    "1123": "delhi_isbt_delhi_depot_bus_schedule:120",
+    "1125": "delhi_isbt_delhi_depot_bus_schedule:123",
+    "1126": "jhajjar_bus_schedule:2",
+    "1129": "delhi_isbt_delhi_depot_bus_schedule:133",
+    "1133": "delhi_isbt_delhi_depot_bus_schedule:150",
+    "1141": "delhi_isbt_delhi_depot_bus_schedule:195",
+    "1202": "delhi_isbt_delhi_depot_bus_schedule:255",
+    "1290": "delhi_isbt_delhi_depot_bus_schedule:3",
+    "1291": "delhi_isbt_delhi_depot_bus_schedule:5",
+    "1296": "delhi_isbt_delhi_depot_bus_schedule:442",
+    "1299": "delhi_isbt_delhi_depot_bus_schedule:20",
+    "1300": "delhi_isbt_delhi_depot_bus_schedule:23",
+    "1324": "delhi_isbt_delhi_depot_bus_schedule:36",
+    "1327": "delhi_isbt_delhi_depot_bus_schedule:50",
+    "1333": "delhi_isbt_delhi_depot_bus_schedule:549",
+    "1334": "delhi_isbt_delhi_depot_bus_schedule:551",
+    "1336": "delhi_isbt_delhi_depot_bus_schedule:557",
+    "1376": "delhi_isbt_delhi_depot_bus_schedule:251",
+    "1377": "delhi_isbt_delhi_depot_bus_schedule:252",
+    "1380": "delhi_isbt_delhi_depot_bus_schedule:264",
+    "1386": "delhi_isbt_delhi_depot_bus_schedule:281",
+    "1404": "delhi_isbt_delhi_depot_bus_schedule:343",
+    "1409": "delhi_isbt_delhi_depot_bus_schedule:356",
+    "1430": "delhi_isbt_delhi_depot_bus_schedule:744",
+    "1433": "delhi_isbt_delhi_depot_bus_schedule:758",
+    "1436": "delhi_isbt_delhi_depot_bus_schedule:768",
+    "1443": "delhi_isbt_delhi_depot_bus_schedule:807",
+    "1448": "delhi_isbt_delhi_depot_bus_schedule:822",
+    "1451": "delhi_isbt_delhi_depot_bus_schedule:825",
+    "1492": "fatehabad_bus_schedule:170",
+    "1499": "fatehabad_bus_schedule:178",
+    "1500": "fatehabad_bus_schedule:183",
+    "1513": "fatehabad_bus_schedule:28",
+    "1545": "sonipat_bus_schedule:423",
+    "1553": "sonipat_bus_schedule:474",
+    "1556": "sonipat_bus_schedule:511",
+    "1561": "sonipat_bus_schedule:478",
+    "1563": "gurugram_bus_schedule:534",
+    "1564": "gurugram_bus_schedule:538",
+    "1565": "gurugram_bus_schedule:539",
+    "1567": "gurugram_bus_schedule:542",
+    "1569": "gurugram_bus_schedule:563",
+    "1570": "gurugram_bus_schedule:569",
+    "1571": "gurugram_bus_schedule:577",
+    "1574": "gurugram_bus_schedule:540",
+    "1575": "gurugram_bus_schedule:547",
+    "1598": "gurugram_bus_schedule:5",
+    "1603": "gurugram_bus_schedule:10",
+    "1605": "gurugram_bus_schedule:14",
+    "1608": "gurugram_bus_schedule:16",
+    "1609": "gurugram_bus_schedule:18",
+    "1610": "gurugram_bus_schedule:19",
+    "1621": "gurugram_bus_schedule:41",
+    "1625": "gurugram_bus_schedule:45",
+    "1636": "gurugram_bus_schedule:43",
+    "1659": "gurugram_bus_schedule:292",
+    "1660": "gurugram_bus_schedule:90",
+    "1673": "gurugram_bus_schedule:535",
+    "1674": "gurugram_bus_schedule:25",
+    "1675": "gurugram_bus_schedule:23",
+    "1676": "gurugram_bus_schedule:151",
+    "1687": "gurugram_bus_schedule:552",
+    "1688": "gurugram_bus_schedule:558",
+    "1690": "gurugram_bus_schedule:58",
+    "1705": "gurugram_bus_schedule:67",
+    "1706": "gurugram_bus_schedule:80",
+    "1707": "gurugram_bus_schedule:82",
+    "1712": "gurugram_bus_schedule:149",
+    "1713": "gurugram_bus_schedule:158",
+    "1716": "gurugram_bus_schedule:35",
+    "1717": "gurugram_bus_schedule:93",
+    "1725": "gurugram_bus_schedule:135",
+    "1727": "gurugram_bus_schedule:532",
+    "1769": "hisar_bus_schedule:1614",
+    "1773": "hisar_bus_schedule:1616",
+    "1859": "hisar_bus_schedule:43",
+    "1865": "hisar_bus_schedule:70",
+    "1880": "hisar_bus_schedule:187",
+    "1889": "hisar_bus_schedule:204",
+    "1891": "hisar_bus_schedule:209",
+    "1892": "hisar_bus_schedule:213",
+    "1893": "hisar_bus_schedule:217",
+    "1894": "hisar_bus_schedule:219",
+    "1897": "hisar_bus_schedule:224",
+    "1898": "hisar_bus_schedule:225",
+    "1902": "hisar_bus_schedule:236",
+    "1907": "hisar_bus_schedule:253",
+    "1911": "hisar_bus_schedule:256",
+    "1913": "hisar_bus_schedule:257",
+    "1914": "hisar_bus_schedule:49",
+    "1941": "hisar_bus_schedule:404",
+    "1944": "hisar_bus_schedule:68",
+    "1947": "hisar_bus_schedule:76",
+    "1948": "hisar_bus_schedule:84",
+    "1955": "hisar_bus_schedule:7",
+    "1957": "hisar_bus_schedule:37",
+    "1960": "hisar_bus_schedule:51",
+    "1961": "hisar_bus_schedule:56",
+    "1962": "hisar_bus_schedule:58",
+    "1989": "hisar_bus_schedule:269",
+    "1990": "hisar_bus_schedule:299",
+    "1992": "hisar_bus_schedule:71",
+    "1993": "hisar_bus_schedule:88",
+    "2003": "hisar_bus_schedule:1",
+    "2004": "hisar_bus_schedule:3",
+    "2005": "hisar_bus_schedule:5",
+    "2011": "hisar_bus_schedule:966",
+    "2015": "hisar_bus_schedule:444",
+    "2019": "hisar_bus_schedule:519",
+    "2020": "hisar_bus_schedule:529",
+    "2025": "hisar_bus_schedule:363",
+    "2029": "hisar_bus_schedule:196",
+    "2033": "palwal_bus_schedule:9",
+    "2158": "jhajjar_bus_schedule:343",
+    "2160": "jhajjar_bus_schedule:653",
+    "2161": "jhajjar_bus_schedule:665",
+    "2163": "jhajjar_bus_schedule:697",
+    "2164": "jhajjar_bus_schedule:706",
+    "2169": "jhajjar_bus_schedule:793",
+    "2176": "jhajjar_bus_schedule:655",
+    "2181": "jhajjar_bus_schedule:841",
+    "2190": "jhajjar_bus_schedule:352",
+    "2242": "jind_bus_schedule:104",
+    "2246": "jind_bus_schedule:121",
+    "2252": "jind_bus_schedule:202",
+    "2253": "jind_bus_schedule:203",
+    "2255": "jind_bus_schedule:208",
+    "2257": "jind_bus_schedule:211",
+    "2259": "jind_bus_schedule:213",
+    "2262": "jind_bus_schedule:216",
+    "2264": "jind_bus_schedule:217",
+    "2266": "jind_bus_schedule:219",
+    "2268": "jind_bus_schedule:220",
+    "2270": "jind_bus_schedule:224",
+    "2272": "jind_bus_schedule:225",
+    "2274": "jind_bus_schedule:228",
+    "2275": "jind_bus_schedule:229",
+    "2276": "jind_bus_schedule:231",
+    "2277": "jind_bus_schedule:234",
+    "2278": "jind_bus_schedule:235",
+    "2289": "jind_bus_schedule:53",
+    "2291": "jind_bus_schedule:71",
+    "2292": "jind_bus_schedule:72",
+    "2293": "jind_bus_schedule:77",
+    "2294": "jind_bus_schedule:78",
+    "2295": "jind_bus_schedule:83",
+    "2298": "jind_bus_schedule:425",
+    "2301": "jind_bus_schedule:452",
+    "2303": "jind_bus_schedule:722",
+    "2304": "jind_bus_schedule:737",
+    "2324": "jind_bus_schedule:241",
+    "2329": "jind_bus_schedule:256",
+    "2400": "kaithal_bus_schedule:297",
+    "2402": "kaithal_bus_schedule:333",
+    "2403": "kaithal_bus_schedule:18",
+    "2423": "kaithal_bus_schedule:481",
+    "2456": "panchkula_bus_schedule:243",
+    "2463": "panchkula_bus_schedule:246",
+    "2465": "panchkula_bus_schedule:265",
+    "2473": "karnal_bus_schedule:6",
+    "2474": "karnal_bus_schedule:4",
+    "2476": "karnal_bus_schedule:79",
+    "2478": "karnal_bus_schedule:15",
+    "2485": "karnal_bus_schedule:225",
+    "2488": "karnal_bus_schedule:230",
+    "2494": "karnal_bus_schedule:255",
+    "2497": "karnal_bus_schedule:9",
+    "2498": "karnal_bus_schedule:10",
+    "2501": "karnal_bus_schedule:13",
+    "2519": "karnal_bus_schedule:8",
+    "2521": "karnal_bus_schedule:17",
+    "2522": "karnal_bus_schedule:19",
+    "2523": "karnal_bus_schedule:21",
+    "2524": "karnal_bus_schedule:24",
+    "2525": "karnal_bus_schedule:27",
+    "2528": "karnal_bus_schedule:35",
+    "2531": "karnal_bus_schedule:97",
+    "2532": "karnal_bus_schedule:98",
+    "2603": "rewari_bus_schedule:283",
+    "2604": "rewari_bus_schedule:284",
+    "2655": "kurukshetra_bus_schedule:32",
+    "2660": "kurukshetra_bus_schedule:38",
+    "2669": "kurukshetra_bus_schedule:26",
+    "2670": "kurukshetra_bus_schedule:1",
+    "2697": "bhiwani_bus_schedule:914",
+    "2703": "bhiwani_bus_schedule:944",
+    "2738": "narnaul_bus_schedule:435",
+    "2739": "narnaul_bus_schedule:436",
+    "2750": "narnaul_bus_schedule:405",
+    "2825": "narnaul_bus_schedule:296",
+    "2833": "narnaul_bus_schedule:40",
+    "2851": "narnaul_bus_schedule:35",
+    "2880": "narnaul_bus_schedule:122",
+    "2882": "narnaul_bus_schedule:233",
+    "2885": "narnaul_bus_schedule:248",
+    "2904": "narnaul_bus_schedule:124",
+    "2910": "jind_bus_schedule:1010",
+    "2911": "jind_bus_schedule:1011",
+    "2912": "jind_bus_schedule:1000",
+    "2913": "jind_bus_schedule:1012",
+    "2914": "jind_bus_schedule:1013",
+    "2920": "jind_bus_schedule:55",
+    "2964": "palwal_bus_schedule:61",
+    "2965": "palwal_bus_schedule:54",
+    "2967": "palwal_bus_schedule:1",
+    "2969": "palwal_bus_schedule:5",
+    "2977": "palwal_bus_schedule:25",
+    "2978": "palwal_bus_schedule:13",
+    "2979": "palwal_bus_schedule:14",
+    "2980": "palwal_bus_schedule:47",
+    "2982": "palwal_bus_schedule:15",
+    "2983": "palwal_bus_schedule:51",
+    "2986": "palwal_bus_schedule:11",
+    "2989": "palwal_bus_schedule:60",
+    "2996": "palwal_bus_schedule:90",
+    "2997": "palwal_bus_schedule:52",
+    "2999": "palwal_bus_schedule:56",
+    "3003": "panchkula_bus_schedule:6",
+    "3004": "panchkula_bus_schedule:32",
+    "3006": "panchkula_bus_schedule:99",
+    "3012": "panchkula_bus_schedule:17",
+    "3062": "panchkula_bus_schedule:5",
+    "3065": "panchkula_bus_schedule:139",
+    "3081": "panipat_bus_schedule:52",
+    "3084": "panipat_bus_schedule:49",
+    "3095": "panipat_bus_schedule:36",
+    "3096": "panipat_bus_schedule:38",
+    "3112": "panipat_bus_schedule:34",
+    "3117": "panipat_bus_schedule:11",
+    "3119": "panipat_bus_schedule:20",
+    "3121": "panipat_bus_schedule:31",
+    "3126": "panipat_bus_schedule:57",
+    "3149": "panipat_bus_schedule:104",
+    "3150": "panipat_bus_schedule:105",
+    "3152": "panipat_bus_schedule:106",
+    "3232": "kurukshetra_bus_schedule:389",
+    "3293": "nuh_bus_schedule:1",
+    "3315": "rewari_bus_schedule:131",
+    "3316": "rewari_bus_schedule:133",
+    "3317": "rewari_bus_schedule:135",
+    "3334": "rewari_bus_schedule:166",
+    "3336": "rewari_bus_schedule:199",
+    "3337": "rewari_bus_schedule:200",
+    "3353": "rewari_bus_schedule:1",
+    "3356": "rewari_bus_schedule:23",
+    "3358": "rewari_bus_schedule:224",
+    "3365": "rewari_bus_schedule:15",
+    "3375": "rewari_bus_schedule:169",
+    "3378": "rewari_bus_schedule:196",
+    "3402": "rohtak_bus_schedule:256",
+    "3408": "rohtak_bus_schedule:255",
+    "3411": "rohtak_bus_schedule:1",
+    "3412": "rohtak_bus_schedule:2",
+    "3418": "rohtak_bus_schedule:13",
+    "3436": "rohtak_bus_schedule:98",
+    "3444": "rohtak_bus_schedule:119",
+    "3445": "rohtak_bus_schedule:122",
+    "3447": "rohtak_bus_schedule:136",
+    "3450": "rohtak_bus_schedule:324",
+    "3453": "rohtak_bus_schedule:351",
+    "3455": "rohtak_bus_schedule:244",
+    "3456": "rohtak_bus_schedule:245",
+    "3457": "rohtak_bus_schedule:254",
+    "3458": "rohtak_bus_schedule:257",
+    "3459": "rohtak_bus_schedule:258",
+    "3467": "rohtak_bus_schedule:941",
+    "3469": "rohtak_bus_schedule:972",
+    "3470": "rohtak_bus_schedule:975",
+    "3471": "rohtak_bus_schedule:1010",
+    "3482": "rohtak_bus_schedule:545",
+    "3485": "rohtak_bus_schedule:249",
+    "3518": "rohtak_bus_schedule:948",
+    "3523": "rohtak_bus_schedule:268",
+    "3525": "rohtak_bus_schedule:277",
+    "3586": "narnaul_bus_schedule:796",
+    "3665": "sirsa_bus_schedule:152",
+    "3666": "sirsa_bus_schedule:153",
+    "3668": "sirsa_bus_schedule:156",
+    "3671": "sirsa_bus_schedule:161",
+    "3674": "sirsa_bus_schedule:164",
+    "3678": "sirsa_bus_schedule:173",
+    "3729": "sirsa_bus_schedule:351",
+    "3757": "sirsa_bus_schedule:165",
+    "3758": "sirsa_bus_schedule:174",
+    "3766": "sirsa_bus_schedule:184",
+    "3767": "sirsa_bus_schedule:185",
+    "3769": "sirsa_bus_schedule:198",
+    "3786": "sirsa_bus_schedule:188",
+    "3799": "sonipat_bus_schedule:2",
+    "3800": "sonipat_bus_schedule:5",
+    "3802": "sonipat_bus_schedule:7",
+    "3845": "sonipat_bus_schedule:98",
+    "3852": "sonipat_bus_schedule:4",
+    "3853": "sonipat_bus_schedule:6",
+    "3854": "sonipat_bus_schedule:23",
+    "3856": "sonipat_bus_schedule:29",
+    "3907": "bhiwani_bus_schedule:660",
+    "3909": "bhiwani_bus_schedule:615",
+    "3910": "bhiwani_bus_schedule:678",
+    "3914": "bhiwani_bus_schedule:692",
+    "3928": "yamunanagar_bus_schedule:366",
+    "3935": "yamunanagar_bus_schedule:376",
+    "3937": "yamunanagar_bus_schedule:380",
+    "3938": "yamunanagar_bus_schedule:381",
+    "3939": "yamunanagar_bus_schedule:382",
+    "3940": "yamunanagar_bus_schedule:383",
+    "3941": "yamunanagar_bus_schedule:384",
+    "3942": "yamunanagar_bus_schedule:386",
+    "3946": "yamunanagar_bus_schedule:397",
+    "3981": "yamunanagar_bus_schedule:147",
+    "4008": "yamunanagar_bus_schedule:128",
+    "4013": "yamunanagar_bus_schedule:144",
+    "4014": "yamunanagar_bus_schedule:146"
+  },
+  "review": [
+    {
+      "trip": 13,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "trip": 114,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        12
+      ]
+    },
+    {
+      "trip": 297,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 353,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "trip": 458,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "trip": 515,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "trip": 618,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "trip": 630,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "trip": 640,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "trip": 743,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "trip": 758,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        13
+      ]
+    },
+    {
+      "trip": 762,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "trip": 771,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "trip": 796,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "trip": 800,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2
+      ]
+    },
+    {
+      "trip": 864,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12
+      ]
+    },
+    {
+      "trip": 874,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12
+      ]
+    },
+    {
+      "trip": 944,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        7
+      ]
+    },
+    {
+      "trip": 959,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 968,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 987,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 988,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 994,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 1119,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "trip": 1140,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "trip": 1164,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 1198,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        4,
+        5,
+        9
+      ]
+    },
+    {
+      "trip": 1225,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 1232,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "trip": 1307,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "trip": 1327,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "trip": 1353,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 1502,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "trip": 1682,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "trip": 1868,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "trip": 1870,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 1920,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "trip": 1925,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2
+      ]
+    },
+    {
+      "trip": 1957,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11
+      ]
+    },
+    {
+      "trip": 2050,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "trip": 2131,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "trip": 2137,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        5
+      ]
+    },
+    {
+      "trip": 2161,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "trip": 2175,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 2308,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 2315,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 2317,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 2422,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        7,
+        9
+      ]
+    },
+    {
+      "trip": 2452,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13
+      ]
+    },
+    {
+      "trip": 2503,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "trip": 2541,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "trip": 2562,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "trip": 2580,
+      "reason": "overnight-service-days",
+      "stopNumbers": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "trip": 2615,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3
+      ]
+    },
+    {
+      "trip": 2619,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 2677,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 2687,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 2737,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        5,
+        6
+      ]
+    },
+    {
+      "trip": 2778,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 2780,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 2807,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        3,
+        5,
+        8
+      ]
+    },
+    {
+      "trip": 2820,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "trip": 2822,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 2830,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        13,
+        14
+      ]
+    },
+    {
+      "trip": 2865,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 2889,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        6
+      ]
+    },
+    {
+      "trip": 2895,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2
+      ]
+    },
+    {
+      "trip": 2907,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "trip": 2936,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "trip": 2963,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "trip": 2983,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "trip": 3086,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "trip": 3129,
+      "reason": "overnight-service-days",
+      "stopNumbers": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "trip": 3138,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "trip": 3169,
+      "reason": "no-unambiguous-timed-start"
+    },
+    {
+      "trip": 3400,
+      "reason": "marked-not-operational"
+    },
+    {
+      "trip": 3549,
+      "reason": "unparsed-stop-times",
+      "stopNumbers": [
+        10
+      ]
+    },
+    {
+      "trip": 3634,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "trip": 3640,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        3
+      ]
+    },
+    {
+      "trip": 3646,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        3,
+        6,
+        8
+      ]
+    },
+    {
+      "trip": 3681,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "trip": 3682,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "trip": 3714,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "trip": 3775,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "trip": 3848,
+      "reason": "inconsistent-stop-times",
+      "stopNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "trip": 3889,
+      "reason": "no-unambiguous-timed-start"
+    }
+  ]
+}

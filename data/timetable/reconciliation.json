@@ -1,5 +1,5 @@
 {
-  "snapshotId": "4238ceaa331accc02003e6d65152ad98bae186f4d9eb658c2bf6afc698c831af",
+  "snapshotId": "a8965d97c8c8888aa6dea2881dbe752dc5a2ef68f3b193ec75e94b5c8e15b85e",
   "inputRows": 20195,
   "files": [
     {
@@ -337,7 +337,8 @@
       "parsedRows": 529
     }
   ],
-  "searchableServices": 20142,
+  "searchableServices": 31757,
+  "officialServices": 20142,
   "unresolvedRows": [
     {
       "id": "ambala_bus_schedule:448",

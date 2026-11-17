@@ -27,8 +27,9 @@ const documents = new Map(reconciliation.pdfs.map(pdf => {
 export function documentSources(services: BusRoute[]): DocumentSource[] {
   const sources = new Map<string, DocumentSource>();
   for (const service of services) {
+    if (service.android && !service.pdfPage) continue;
     const document = documents.get(service.sourceTimetable);
-    if (!document || !Number.isInteger(service.pdfPage) || service.pdfPage < 1 || service.pdfPage > document.pageCount) {
+    if (!document || !service.pdfPage || !Number.isInteger(service.pdfPage) || service.pdfPage < 1 || service.pdfPage > document.pageCount) {
       throw new Error(`Invalid document reference for service ${service.id}`);
     }
     sources.set(document.source.file, document.source);

@@ -1,5 +1,5 @@
 {
-  "snapshotId": "4238ceaa331accc02003e6d65152ad98bae186f4d9eb658c2bf6afc698c831af",
+  "snapshotId": "a8965d97c8c8888aa6dea2881dbe752dc5a2ef68f3b193ec75e94b5c8e15b85e",
   "previousServices": 1563,
   "previousRouteLabels": 138,
   "disappeared": [
@@ -28,20 +28,38 @@
     {
       "from": "Delhi",
       "to": "Ludhiana",
-      "services": 86,
-      "viaMatches": 37
+      "services": 117,
+      "viaMatches": 59
     },
     {
       "from": "Bhiwani",
       "to": "Delhi",
-      "services": 37,
+      "services": 65,
       "viaMatches": 1
     },
     {
       "from": "Bhiwani",
       "to": "Rohtak",
-      "services": 44,
-      "viaMatches": 44
+      "services": 85,
+      "viaMatches": 84
+    },
+    {
+      "from": "Bhiwani",
+      "to": "Faridabad",
+      "services": 3,
+      "viaMatches": 1
+    },
+    {
+      "from": "Bhiwani",
+      "to": "Mathura",
+      "services": 4,
+      "viaMatches": 1
+    },
+    {
+      "from": "Ballabgarh",
+      "to": "Mathura",
+      "services": 17,
+      "viaMatches": 14
     }
   ]
 }

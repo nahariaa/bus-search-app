@@ -1,6 +1,6 @@
 # Reviewed timetable snapshot
 
-The downloaded local PDFs are the source evidence. They are preserved in `source-pdfs/`, and all 25 CSVs are preserved byte-for-byte in `source/`. No live timetable API is involved. The snapshot describes these publications, rather than a claim that every listed bus still operates today.
+The downloaded depot PDFs and the pinned Haryana Roadways & Metro Info Android timetable are the source evidence. The PDFs are preserved in `source-pdfs/`, and all 25 CSVs are preserved byte-for-byte in `source/`. The raw Android files are in `android/`. The snapshot describes these publications. Current operation should be confirmed with the bus stand.
 
 ## Repeat the import
 
@@ -67,7 +67,15 @@ Display names, URL IDs, autocomplete and result labels share the registry. Case 
 
 Comma-separated and reviewed hyphen-separated via chains become exact place IDs. Multiword names stay intact; no substring or space-based splitting is used. Known single hyphenated places such as Kala-Amb, Raipur-Rani and Kheri-Chopta are handled as single places, and Sector-43 is protected during parsing. Ambiguous slash expressions/abbreviations are retained in the review queue. Only separately reviewed clear segments are exposed from ambiguous strings. Via stops never create origins or arrival times without a corresponding source departure record.
 
-Snapshot v2 appends the `viaDescriptionId` column. It indexes a deduplicated list of source route wording and reviewed road tags. The matcher continues to use `viaIds` alone. The original source cells and reconciliation history remain in the audit. Charkhi Dadri record 169 now displays 152D and Narnaul record 203 displays NH 152D.
+The `viaDescriptionId` column indexes a deduplicated list of source route wording and reviewed road tags. The matcher uses `viaIds` to find intermediate destinations. The original source cells and reconciliation history remain in the audit. Charkhi Dadri record 169 displays 152D and Narnaul record 203 displays NH 152D.
+
+## Android timetable
+
+Version 1.1.6 of the timetable was bundled with version 2.5.1 of the Android app. The bundled `busData.json` matched the app's public update file byte for byte. Its checksum, source URL, per-trip decisions and official cross-references are in `android/reconciliation.json`. The unmodified Android files retain fares, distances, raw stop names and times, availability notes, and the location directory.
+
+The importer links a trip to a PDF departure when boarding point, final destination, time and operator identify one compatible service and the app's ordered stop list corroborates the PDF's via sequence. It preserves the original PDF reference, wording, operator, service days and depot. Open PDF route conflicts and road-tag rows stay independently sourced. Other eligible trips retain separate Android references, including repeated observations.
+
+Snapshot v3 stores each accepted Android itinerary once and associates it with a departure through `androidTripIndex`. Search and dedicated pages use the same ordered stops. A stop with an explicit, consistent clock can serve as a boarding point for stops downstream. Untimed stops remain destinations. Inactive trips, unparsed times, backward-clock sequences and unclear overnight service days are tracked in the Android reconciliation. The full raw input stays available for review.
 
 Matching route/time/operator descriptions do not establish duplicate services. Repeated descriptions remain separately traceable; no duplicates have been confirmed or merged. No extra PDF service rows were recovered after the complete CSV/PDF reconciliation. Future recoveries and duplicate confirmations must preserve every source reference and appear separately from CSV-input accounting.
 

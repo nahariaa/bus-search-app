@@ -21,6 +21,7 @@ export default function PublishedDepartures({ journey }: { journey: RoutePage })
               <p className="mt-0.5 leading-snug sm:mt-0">
                 {route.typeOfService || 'Service type not published'} · {operatorLabel(route.operator)} · {route.serviceDays.length ? route.serviceDays.join(', ') : 'Days not published'}
               </p>
+              {route.android && !route.pdfPage && <p className="text-xs">Android timetable</p>}
               <TimetableSource route={route} source={sources.get(route.sourceTimetable)} className="text-sm" />
             </div>
           </div>

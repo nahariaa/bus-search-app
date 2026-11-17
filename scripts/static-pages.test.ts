@@ -30,13 +30,18 @@ test('every static journey has exactly the shared matcher records and displayed 
       const card = cards[index].replace(/<!--.*?-->/g, '');
       for (const fact of [service.id, service.departureTime, service.from, service.to, service.typeOfService || 'Service type not published',
         operatorLabel(service.operator), service.serviceDays.join(', ') || 'Days not published', service.sourceTimetable, service.operatingDepot || 'Not published',
-        `PDF page ${service.pdfPage}`, ...service.sourceRefs, ...(service.matchedVia ? [routeMatchLabel(service)] : [])]) {
+        ...(service.pdfPage ? [`PDF page ${service.pdfPage}`] : []), ...service.sourceRefs, ...(service.matchedVia ? [routeMatchLabel(service)] : [])]) {
         assert.ok(card.includes(escape(fact)), `${journey.path}: missing ${fact} on ${service.id}`);
       }
       if (service.via) assert.ok(card.includes(escape(service.via)));
-      const source = journey.sources.find(document => document.file === service.sourceTimetable)!;
-      if (source.versionStatus === 'byte-match') assert.ok(card.includes(`${source.officialUrl}#page=${service.pdfPage}`));
-      if (source.versionStatus === 'different-version') {
+      if (service.android) {
+        assert.ok(card.includes('Haryana Roadways &amp; Metro Info'));
+        assert.ok(card.includes(`Timetable ${service.android.version} · Trip ${service.android.tripNumber}`));
+      }
+      const source = journey.sources.find(document => document.file === service.sourceTimetable);
+      assert.equal(Boolean(source), Boolean(service.pdfPage));
+      if (source?.versionStatus === 'byte-match') assert.ok(card.includes(`${source.officialUrl}#page=${service.pdfPage}`));
+      if (source?.versionStatus === 'different-version') {
         assert.ok(card.includes('archived PDF page') && card.includes(`href="${source.officialUrl}"`));
         assert.ok(!card.includes(`${source.officialUrl}#page=`));
       }
@@ -48,7 +53,7 @@ test('selection fails clearly for unsupported journeys, invalid IDs and duplicat
   const first = routeManifest[0];
   for (const selections of [
     [{ ...first, fromId: 'yamunanagar', toId: 'shahabad' }],
-    [{ ...first, fromId: 'nuh', toId: 'panchkula', depotConnection: undefined }],
+    [{ ...first, fromId: 'nuh', toId: 'sonipat', depotConnection: undefined }],
     [{ ...first, toId: 'ludhiana', depotConnection: true }],
     [{ ...first, fromId: 'not-a-place' }],
     [{ ...first, fromId: 'singhu-border' }],
@@ -128,6 +133,21 @@ test('Delhi to Ludhiana static regression retains 00:40 at Kashmiri Gate towards
   assert.equal(katra.fromId, 'isbt-kashmiri-gate-delhi');
   assert.equal(katra.toId, 'katra');
   assert.equal(katra.matchedVia, 'Ludhiana');
+});
+
+test('the 04:30 Mathura bus appears on both dedicated pages with its ordered Android stops', () => {
+  for (const destination of ['faridabad', 'mathura']) {
+    const slug = `bhiwani-to-${destination}`;
+    const journey = routePages.find(page => page.slug === slug)!;
+    assert.ok(report.pages.find(page => page.path === journey.path).indexable);
+    const html = readFileSync(`dist${journey.path}.html`, 'utf8');
+    const card = html.split('data-service-id="bhiwani_bus_schedule:329"')[1].split('data-service-id="')[0];
+    assert.match(card, /04:30/);
+    assert.match(card, /Stops in travel order/);
+    assert.match(card, /Ballabgarh<\/span><time[^>]+>08:30<\/time>/);
+    assert.match(card, /Hodal<\/span><span aria-label="Time unavailable">/);
+    if (destination === 'faridabad') assert.match(card, /Towards Mathura · via Ballabgarh/);
+  }
 });
 
 test('hydration payloads are exactly the build matcher output and startup excludes search data', () => {

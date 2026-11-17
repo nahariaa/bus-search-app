@@ -10,6 +10,7 @@ import json
 import re
 import shutil
 from pathlib import Path
+from android_timetable import integrate_android
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data/timetable'
@@ -405,6 +406,9 @@ def main():
         repeats[signature].append(service['id'])
     duplicate_candidates = [ids for ids in repeats.values() if len(ids) > 1]
     write_json(DATA / 'review/repeated-service-candidates.json', duplicate_candidates, True)
+    official_services = len(services)
+    android_source, android_trips, android_report = integrate_android(DATA, registry, place, services)
+    write_json(DATA / 'android/reconciliation.json', android_report, True)
     for entry in registry.values():
         entry['aliases'] = sorted(set(entry['aliases']), key=lambda a: (key(a), a))
     evidence_index = collections.defaultdict(list)
@@ -423,20 +427,23 @@ def main():
         service['viaDescriptionId'] = via_descriptions.setdefault(descriptor, len(via_descriptions))
     columns = ['id', 'fromId', 'toId', 'viaIds', 'departureTime', 'typeOfService', 'operator', 'serviceDays',
                'sourceTimetable', 'operatingDepot', 'depotSource', 'pdfPage', 'sourceRefs', 'viaDescriptionId']
-    snapshot = {'version': 2, 'places': sorted(registry.values(), key=lambda p: p['id']),
+    snapshot = {'version': 3, 'places': sorted(registry.values(), key=lambda p: p['id']),
+                'androidSource': android_source, 'androidTrips': android_trips,
                 'viaDescriptions': list(via_descriptions),
-                'columns': columns, 'services': [[s[c] for c in columns] for s in services]}
+                'columns': [*columns, 'androidTripIndex'],
+                'services': [[s[c] for c in columns] + ([s['androidTripIndex']] if 'androidTripIndex' in s else [])
+                             for s in services]}
     snapshot_hash = hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()
     snapshot['id'] = snapshot_hash
     # Keep the large audit trail outside the browser bundle.
     write_json(ROOT / 'src/data/timetable.json', snapshot)
     write_json(DATA / 'audit.json', audits)
     write_json(DATA / 'reconciliation.json', {'snapshotId': snapshot_hash, 'inputRows': len(audits), 'files': file_counts,
-               'pdfs': manifest, 'searchableServices': len(services), 'unresolvedRows': unresolved,
+               'pdfs': manifest, 'searchableServices': len(services), 'officialServices': official_services, 'unresolvedRows': unresolved,
                'pdfRecoveryCandidates': recoveries, 'recoveredServices': 0, 'unparsedPdfRows': pdf_unparsed,
                'repeatedServiceGroups': len(duplicate_candidates), 'confirmedDuplicateServices': 0,
                'viaReview': [{'id': a['id'], 'pdfRef': a.get('pdfRef'), 'reasons': [i for i in a['issues'] if 'via' in i.lower()]} for a in audits if any('via' in i.lower() for i in a['issues'])]}, True)
-    print(json.dumps({'inputRows': len(audits), 'searchable': len(services), 'review': len(unresolved),
+    print(json.dumps({'inputRows': len(audits), 'searchable': len(services), 'official': official_services, 'review': len(unresolved),
                       'pdfRecoveryCandidates': len(recoveries), 'unparsedPdfRows': len(pdf_unparsed)}, indent=2))
 
 
