@@ -101,6 +101,6 @@ function JourneyPage({ summary }: { summary: RouteSummary }) {
         </li>)}
       </ul>}
     </nav>}
-    {journey && journey.services.length >= 10 && <Advertisement key={path} placement={path} />}
+    {hasPublishedDepartures && journey && journey.services.length >= 25 && <Advertisement path={path} position="routeBottom" />}
   </article>;
 }

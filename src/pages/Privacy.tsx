@@ -1,6 +1,18 @@
+import { useState } from 'react';
 import InformationPage from '@/components/InformationPage';
 import { CONTACT_EMAIL, CONTACT_EMAIL_LINK } from '@/lib/site';
-import { adsConfig } from '@/lib/ads';
+import { adsConfig, openAdPrivacyChoices } from '@/lib/ads';
+
+function PrivacyChoices() {
+  const [unavailable, setUnavailable] = useState(false);
+  return <>
+    <p><button type="button" onClick={() => setUnavailable(!openAdPrivacyChoices())}
+      className="min-h-11 rounded-sm font-medium text-blue-700 underline underline-offset-4">
+      Change privacy choices
+    </button></p>
+    {unavailable && <p role="status">Privacy choices could not open. Reload this page and try again.</p>}
+  </>;
+}
 
 const Privacy = () => (
   <InformationPage
@@ -8,7 +20,7 @@ const Privacy = () => (
     title="Privacy | HaryanaBus"
     description="How HaryanaBus handles timetable searches, hosting requests, browser storage, and enquiries sent by email."
     path="/privacy"
-    revised="2026-11-17"
+    revised="2026-11-25"
   >
     <h2>Timetable searches and browser history</h2>
     <p>
@@ -27,13 +39,22 @@ const Privacy = () => (
     </p>
 
     <h2>Cookies, analytics and ads</h2>
-    {adsConfig ? <p>
-      Selected timetable pages can show Google AdSense ads after the site receives advertising consent through
-      its consent manager. Google and its partners may use cookies and process device and request information
-      to select, deliver and measure ads. Use the site’s consent controls to change your choices.
-      See <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from partner sites</a>.
-      HaryanaBus uses no visitor analytics or third-party error reporting.
-    </p> : <p>
+    {adsConfig ? <>
+      <p>The homepage can show a Google AdSense display ad after the departure-city links, before Popular Routes.
+        Published route timetables with at least six departures can show an ad after the fifth departure.
+        Timetables with at least 25 departures can show a second ad after the timetable and related links.</p>
+      <p>OneTrust uses your IP address to determine which regional settings apply and stores your choices in
+        cookies. In regions using the Transparency and Consent Framework, including the EEA, UK and Switzerland,
+        ads require permission for Google Advertising Products and the required advertising purposes. In India
+        and other regions where those rules do not apply, ads require an active advertising choice in your
+        regional settings. You can change or withdraw permission below. Withdrawing permission removes ads
+        and stops new ad requests.</p>
+      <p>Google and other advertising partners may use cookies, device or browser identifiers, your IP address
+        and page information to select, deliver and personalize ads, measure their performance and detect
+        invalid traffic. HaryanaBus uses no separate visitor analytics or third-party error reporting.</p>
+      <p><a href="https://policies.google.com/technologies/partner-sites">How Google uses information from partner sites</a></p>
+      <PrivacyChoices />
+    </> : <p>
       The HaryanaBus application uses no cookies or persistent browser storage. Your browser may cache site files.
       HaryanaBus currently runs without ads, visitor analytics scripts or third-party error reporting. The site
       serves its own assets. If you follow an external link, the destination handles your visit under its own privacy practices.
