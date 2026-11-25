@@ -1,12 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
-import { adsConfig, initializePlacement, loadAdScript, placementInitialized, watchAdConsent, type AdPosition } from '@/lib/ads';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { adsConfig, getAdPrivacy, getInitialAdPrivacy, initializePlacement, loadAdScript, placementInitialized,
+  startAdConsent, subscribeAdPrivacy, watchAdConsent, type AdPosition } from '@/lib/ads';
+import IndiaAdChoices from './IndiaAdChoices';
 
-function AdPlacement({ client, placement, slot }: { client: string; placement: string; slot: string }) {
+function AdPlacement({ client, placement, slot, invite }: {
+  client: string; placement: string; slot: string; invite: boolean;
+}) {
   const [filled, setFilled] = useState(false);
+  const privacy = useSyncExternalStore(subscribeAdPrivacy, getAdPrivacy, getInitialAdPrivacy);
+  const showChoices = invite && privacy.region === 'india' && privacy.choice === null;
   const frame = useRef<HTMLElement>(null);
   const creative = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    void startAdConsent();
     const container = frame.current!;
     const target = creative.current!;
     let stop: (() => void) | undefined;
@@ -65,15 +72,21 @@ function AdPlacement({ client, placement, slot }: { client: string; placement: s
     return () => { unsubscribe(); stop?.(); };
   }, [client, placement, slot]);
 
-  return <aside ref={frame} data-ad-placement={placement} aria-label="Advertisement" aria-hidden={!filled}
-    className="mx-auto h-72 w-full max-w-3xl py-2 text-center">
+  return <aside ref={frame} data-ad-placement={placement}
+    aria-label={showChoices ? 'Advertising choices' : 'Advertisement'} aria-hidden={!(filled || showChoices)}
+    className="relative mx-auto h-72 w-full max-w-3xl py-2 text-center">
     <p className={`mb-2 text-xs text-slate-600 ${filled ? '' : 'invisible'}`}>Advertisement</p>
     <div ref={creative} className="h-[250px] w-full" />
+    {showChoices && <div className="absolute inset-0 grid place-items-center px-2">
+      <div className="max-w-sm rounded-lg border border-slate-300 bg-slate-50 p-4">
+        <IndiaAdChoices choice={null} compact />
+      </div>
+    </div>}
   </aside>;
 }
 
 export default function Advertisement({ position, path }: { position: AdPosition; path: string }) {
   const placement = `${path}:${position}`;
   return adsConfig ? <AdPlacement key={placement} placement={placement} client={adsConfig.client}
-    slot={adsConfig.slots[position]} /> : null;
+    slot={adsConfig.slots[position]} invite={position !== 'routeBottom'} /> : null;
 }

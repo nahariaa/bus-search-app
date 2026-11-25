@@ -2,10 +2,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
-import { startAdConsent } from './lib/ads';
 import './index.css';
-
-startAdConsent();
 
 const root = document.getElementById('root')!;
 const data = document.getElementById('page-journey')?.textContent;

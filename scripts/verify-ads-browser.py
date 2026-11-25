@@ -8,36 +8,28 @@ from playwright.sync_api import expect, sync_playwright
 
 PLACEMENT = '[data-ad-placement]'
 AD = 'ins.adsbygoogle'
-CMP_HOST = 'cdn.cookielaw.org'
 ADS_HOST = 'pagead2.googlesyndication.com'
 LONG_ROUTE = '/routes/chandigarh-to-jind'
 EXCLUSIONS = ['/cities/jind', '/cities/chandigarh', '/routes', '/about', '/privacy',
               '/routes/nuh-to-sonipat', '/missing', '/online-booking', '/search?from=jind&to=delhi']
 
-CMP_MOCK = """(() => {
-  const state = { country: 'IN', closed: false, advertising: false, success: true, tc: {},
-    ...window.mockCmpSettings };
+GOOGLE_CMP_MOCK = """(() => {
+  const state = { success: true, tc: {} };
   let tcfListener;
   window.mockPrivacyOpens = 0;
-  window.OneTrust = {
-    getGeolocationData: () => ({ country: state.country }),
-    IsAlertBoxClosedAndValid: () => state.closed,
-    ToggleInfoDisplay: () => window.mockPrivacyOpens += 1,
-  };
   window.__tcfapi = (command, version, callback) => {
-    if (command !== 'addEventListener' || version !== 2) throw new Error('Unexpected TCF registration');
+    if (command !== 'addEventListener' || version !== 2.2) throw new Error('Unexpected TCF registration');
     tcfListener = callback;
     callback(state.tc, state.success);
   };
   window.updateMockConsent = (updates) => {
     Object.assign(state, updates);
-    window.OnetrustActiveGroups = state.advertising ? ',C0001,C0004,' : ',C0001,';
-    if ('tc' in updates || 'success' in updates) tcfListener?.(state.tc, state.success);
-    window.dispatchEvent(new CustomEvent('OneTrustGroupsUpdated'));
+    tcfListener?.(state.tc, state.success);
   };
-  window.updateMockConsent({});
-  window.OptanonWrapper();
-  window.mockCmpReady = true;
+  window.googlefc.showRevocationMessage = () => { window.mockPrivacyOpens += 1; };
+  const queue = window.googlefc.callbackQueue;
+  queue.push = (...entries) => entries.forEach(entry => entry.CONSENT_API_READY());
+  queue.forEach(entry => entry.CONSENT_API_READY());
 })();"""
 
 ADS_MOCK = """window.mockAdSlots = [];
@@ -58,31 +50,38 @@ window.adsbygoogle.push = () => {
   }, 50);
 };"""
 
-TCF_GRANT = {'gdprApplies': True, 'cmpId': 28, 'cmpStatus': 'loaded',
+TCF_GRANT = {'gdprApplies': True, 'cmpStatus': 'loaded',
              'eventStatus': 'tcloaded', 'tcString': 'test-consent',
              'vendor': {'consents': {'755': True}}, 'purpose': {'consents': {'1': True, '3': True, '4': True}}}
-INDIA = {'tc': {'gdprApplies': False}, 'country': 'IN', 'closed': True, 'advertising': True}
 
 
-def intercept_context(browser, base, width=390, height=720, consent=None, outcome='filled', block_cmp=False):
+def intercept_context(browser, base, width=390, height=720, region='india', outcome='filled',
+                      block_cmp=False, gpc=False):
     context = browser.new_context(viewport={'width': width, 'height': height}, service_workers='block')
     requested = []
-    context.add_init_script(f'window.mockCmpSettings = {json.dumps(consent or {})};'
-                            f'window.mockAdOutcome = {json.dumps(outcome)};')
+    context.add_init_script(f'window.mockAdOutcome = {json.dumps(outcome)};')
+    if gpc:
+        context.add_init_script("Object.defineProperty(navigator, 'globalPrivacyControl', {value: true});")
 
     def intercept(route):
         target = urlsplit(route.request.url)
         if target.scheme == urlsplit(base).scheme and target.netloc == urlsplit(base).netloc:
-            route.continue_()
+            if target.path == '/api/ad-region':
+                requested.append(target.path)
+                if region == 'error':
+                    route.fulfill(status=503)
+                else:
+                    route.fulfill(json={'region': region})
+            else:
+                route.continue_()
             return
         requested.append(target.hostname)
         headers = {'access-control-allow-origin': '*', 'content-type': 'application/javascript'}
-        if target.hostname == CMP_HOST and target.path.endswith('/otSDKStub.js') and not block_cmp:
-            assert route.request.resource_type == 'script'
-            route.fulfill(body=CMP_MOCK, headers=headers)
-        elif target.hostname == ADS_HOST and target.path.endswith('/adsbygoogle.js') and outcome != 'blocked':
+        if target.hostname == ADS_HOST and target.path.endswith('/adsbygoogle.js') and outcome != 'blocked':
             assert target.query == 'client=ca-pub-3647722960213142'
-            route.fulfill(body=ADS_MOCK, headers=headers)
+            assert route.request.resource_type == 'script'
+            cmp = GOOGLE_CMP_MOCK if region == 'europe' and not block_cmp else ''
+            route.fulfill(body=ADS_MOCK + cmp, headers=headers)
         else:
             route.abort()
 
@@ -116,11 +115,9 @@ def assert_layout(page, selector, baseline):
 
 
 def verify_home(browser, base, width, outcome):
-    context, requested = intercept_context(browser, base, width=width, height=800,
-                                           consent={**INDIA, 'closed': False}, outcome=outcome)
+    context, requested = intercept_context(browser, base, width=width, height=800, outcome=outcome)
     page = context.new_page()
     page.goto(base, wait_until='networkidle')
-    page.wait_for_function('window.mockCmpReady')
     ad = page.locator(PLACEMENT)
     expect(ad).to_have_count(1)
     assert ad.evaluate("""ad => ad.previousElementSibling.getAttribute('aria-labelledby') === 'browse-cities'
@@ -130,10 +127,10 @@ def verify_home(browser, base, width, outcome):
     baseline = positions(page, controls)
     assert len(baseline) == 5, baseline
     watch_layout(page)
-    assert requested == [CMP_HOST]
+    expect(ad.get_by_role('button', name='Allow ads')).to_be_visible()
+    assert requested == ['/api/ad-region']
     with page.expect_request(lambda request: urlsplit(request.url).hostname == ADS_HOST):
-        page.evaluate("updateMockConsent({closed: true})")
-        ad.scroll_into_view_if_needed()
+        ad.get_by_role('button', name='Allow ads').click()
     if outcome != 'blocked':
         page.wait_for_function("window.mockAdSlots?.join() === '0000000001'")
     if outcome == 'filled':
@@ -161,8 +158,9 @@ def verify_search_and_privacy(page, base):
     expect(page.locator('[data-service-id="delhi_isbt_delhi_depot_bus_schedule:59"]')).to_be_visible()
     expect(page.locator(PLACEMENT)).to_have_count(0)
     page.goto(base + '/privacy', wait_until='networkidle')
-    page.get_by_role('button', name='Change privacy choices').click()
-    assert page.evaluate('window.mockPrivacyOpens') == 1
+    expect(page.get_by_role('button', name='Allow ads')).to_have_attribute('aria-pressed', 'true')
+    page.get_by_role('button', name='Keep ads off').click()
+    expect(page.get_by_role('status').filter(has_text='Ads are off.')).to_be_visible()
 
 
 def verify_route(browser, base, width, outcome, journeys):
@@ -171,7 +169,6 @@ def verify_route(browser, base, width, outcome, journeys):
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.goto(base + LONG_ROUTE, wait_until='networkidle')
-    page.wait_for_function('window.mockCmpReady')
     inline, bottom = page.locator(PLACEMENT).all()
     rows = 'li[data-service-id]'
     assert page.locator(rows).evaluate_all('(rows) => rows.map(row => row.dataset.serviceId)') == journeys[LONG_ROUTE]
@@ -188,8 +185,7 @@ def verify_route(browser, base, width, outcome, journeys):
     baseline = positions(page, rows)
 
     with page.expect_request(lambda request: urlsplit(request.url).hostname == ADS_HOST):
-        page.evaluate('state => updateMockConsent(state)', INDIA)
-        inline.scroll_into_view_if_needed()
+        inline.get_by_role('button', name='Allow ads').click()
     if outcome == 'blocked':
         expect(page.locator(AD)).to_have_count(0)
     else:
@@ -197,13 +193,15 @@ def verify_route(browser, base, width, outcome, journeys):
         if outcome == 'filled':
             expect(inline.locator('[data-mock-creative]')).to_be_visible()
             assert_layout(page, rows, baseline)
-            page.evaluate('updateMockConsent({advertising: false})')
+            preferences = context.new_page()
+            preferences.goto(base + '/privacy', wait_until='networkidle')
+            preferences.get_by_role('button', name='Keep ads off').click()
             expect(inline.locator(AD)).to_have_count(0)
             assert page.evaluate('adsbygoogle.pauseAdRequests') == 1
             bottom.scroll_into_view_if_needed()
             assert page.evaluate('mockAdSlots') == ['0000000002']
             assert_layout(page, rows, baseline)
-            page.evaluate('updateMockConsent({advertising: true})')
+            preferences.get_by_role('button', name='Allow ads').click()
             expect(bottom.locator('[data-mock-creative]')).to_be_visible()
         else:
             expect(inline.locator(AD)).to_have_count(0)
@@ -214,38 +212,37 @@ def verify_route(browser, base, width, outcome, journeys):
         expect(page.locator(AD)).to_have_count(0)
         expect(page.get_by_text('Advertisement', exact=True).first).to_be_hidden()
     else:
-        page.evaluate('updateMockConsent({advertising: false})')
+        preferences.get_by_role('button', name='Keep ads off').click()
         expect(bottom.locator(AD)).to_have_count(0)
     assert_layout(page, rows, baseline)
-    assert requested == [CMP_HOST, ADS_HOST] and not errors, (requested, errors)
+    assert requested.count(ADS_HOST) == 1 and set(requested) == {'/api/ad-region', ADS_HOST} and not errors, (requested, errors)
     context.close()
 
 
 def verify_consent(browser, base):
-    context, requested = intercept_context(browser, base, consent=INDIA)
-    page = context.new_page()
-    page.goto(base, wait_until='networkidle')
-    expect(page.locator(AD)).to_have_count(1)
-    assert requested == [CMP_HOST, ADS_HOST], requested
-    context.close()
-
     context, requested = intercept_context(browser, base)
     page = context.new_page()
     page.goto(base, wait_until='networkidle')
+    page.get_by_role('button', name='Keep ads off').click()
+    page.reload(wait_until='networkidle')
+    expect(page.get_by_role('button', name='Allow ads')).to_have_count(0)
+    expect(page.locator(AD)).to_have_count(0)
+    assert requested == ['/api/ad-region', '/api/ad-region'], requested
+    context.close()
+
+    context, requested = intercept_context(browser, base, region='europe')
+    page = context.new_page()
+    page.goto(base, wait_until='networkidle')
     page.locator(PLACEMENT).scroll_into_view_if_needed()
-    tcf_denials = [{'tcString': ''}, {'cmpId': 999}, {'cmpStatus': 'error'},
+    tcf_denials = [{'tcString': ''}, {'gdprApplies': False}, {'cmpStatus': 'error'},
                    {'vendor': {'consents': {'755': False}}},
                    {'purpose': {'consents': {'1': True, '3': True, '4': False}}}]
-    ineligible = [
-        {'tc': {}, 'advertising': True}, {**INDIA, 'country': ''}, {**INDIA, 'closed': False},
-        {**INDIA, 'advertising': False}, {**INDIA, 'success': False},
-        {**INDIA, 'tc': {'gdprApplies': False, 'cmpStatus': 'stub'}},
-        *[{'tc': {**TCF_GRANT, **denial}, 'country': 'DE'} for denial in tcf_denials],
-    ]
+    ineligible = [{'tc': {}}, {'tc': TCF_GRANT, 'success': False},
+                  *[{'tc': {**TCF_GRANT, **denial}} for denial in tcf_denials]]
     for state in ineligible:
         page.evaluate('state => updateMockConsent({success: true, ...state})', state)
         page.evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
-        assert requested == [CMP_HOST], (state, requested)
+        assert requested == ['/api/ad-region', ADS_HOST], (state, requested)
         assert page.locator(AD).count() == 0
     page.evaluate('tc => updateMockConsent({tc})', TCF_GRANT)
     expect(page.locator('[data-mock-creative]')).to_be_visible()
@@ -255,22 +252,29 @@ def verify_consent(browser, base):
                                                    'vendor': {'consents': {'755': False}}})
     expect(page.locator(AD)).to_have_count(0)
     assert page.evaluate('adsbygoogle.pauseAdRequests') == 1
-    assert requested == [CMP_HOST, ADS_HOST]
+    assert requested == ['/api/ad-region', ADS_HOST]
+    page.goto(base + '/privacy', wait_until='networkidle')
+    page.evaluate('tc => updateMockConsent({tc})', TCF_GRANT)
+    page.get_by_role('button', name='Change privacy choices').click()
+    assert page.evaluate('window.mockPrivacyOpens') == 1
     context.close()
 
-    context, requested = intercept_context(browser, base, consent=INDIA, block_cmp=True)
-    page = context.new_page()
-    page.goto(base, wait_until='networkidle')
-    page.locator(PLACEMENT).scroll_into_view_if_needed()
-    expect(page.locator(AD)).to_have_count(0)
-    assert requested == [CMP_HOST]
-    context.close()
+    for region, blocked, gpc in [('europe', True, False), (None, False, False),
+                                 ('error', False, False), ('india', False, True)]:
+        context, requested = intercept_context(browser, base, region=region, block_cmp=blocked, gpc=gpc)
+        page = context.new_page()
+        page.goto(base, wait_until='networkidle')
+        page.locator(PLACEMENT).scroll_into_view_if_needed()
+        expect(page.get_by_role('button', name='Allow ads')).to_have_count(0)
+        expect(page.locator(AD)).to_have_count(0)
+        assert requested == ([] if gpc else ['/api/ad-region', ADS_HOST] if blocked else ['/api/ad-region'])
+        context.close()
 
 
 def verify(base, enabled):
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(channel='chrome', headless=True)
-        context, requested = intercept_context(browser, base, consent=INDIA)
+        context, requested = intercept_context(browser, base)
         page = context.new_page()
         response = page.request.get(base + '/generated-pages.json')
         assert response.ok
@@ -287,7 +291,7 @@ def verify(base, enabled):
                 assert page.locator(AD).count() == 0
         if not enabled:
             assert not requested, requested
-            print('PASS: default build produced no CMP, ad requests or reserved placements.')
+            print('PASS: default build produced no consent or ad requests and no reserved placements.')
             return
         context.close()
 

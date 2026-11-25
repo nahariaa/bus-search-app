@@ -3,22 +3,18 @@ const slots = {
   routeInline: import.meta.env.VITE_ADSENSE_ROUTE_INLINE_SLOT,
   routeBottom: import.meta.env.VITE_ADSENSE_ROUTE_BOTTOM_SLOT,
 };
-const domainId = import.meta.env.VITE_ONETRUST_DOMAIN_ID;
-const advertisingGroup = import.meta.env.VITE_ONETRUST_AD_GROUP;
-const oneTrustCmpId = 28;
+const enableEuropeanAds = import.meta.env.VITE_ADSENSE_EEA_ENABLED === 'true';
+const indiaChoiceKey = 'haryanabus-advertising-choice-v1';
 
 export const adsConfig = import.meta.env.VITE_ADSENSE_ENABLED === 'true'
   && Object.values(slots).every(slot => /^\d{10}$/.test(slot ?? ''))
   && new Set(Object.values(slots)).size === 3
-  && /^[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}(?:-test)?$/i.test(domainId ?? '')
-  && /^C\d{4,}$/.test(advertisingGroup ?? '') && advertisingGroup !== 'C0001'
-  ? { client: 'ca-pub-3647722960213142', slots, domainId, advertisingGroup } : null;
+  ? { client: 'ca-pub-3647722960213142', slots } : null;
 
 export type AdPosition = keyof typeof slots;
 
 interface ConsentData {
   gdprApplies?: boolean;
-  cmpId?: number;
   cmpStatus?: string;
   eventStatus?: string;
   tcString?: string;
@@ -27,22 +23,40 @@ interface ConsentData {
 }
 
 type AdsWindow = Window & {
-  __tcfapi?: (command: 'addEventListener', version: 2,
+  __tcfapi?: (command: 'addEventListener', version: 2.2,
     callback: (data: ConsentData, success: boolean) => void) => void;
-  OneTrust?: {
-    getGeolocationData: () => { country?: string } | undefined;
-    IsAlertBoxClosedAndValid: () => boolean;
-    ToggleInfoDisplay: () => void;
+  googlefc?: {
+    callbackQueue: Array<{ CONSENT_API_READY: () => void }>;
+    showRevocationMessage?: () => void;
   };
-  OptanonWrapper?: () => void;
-  OnetrustActiveGroups?: string;
   adsbygoogle?: { push: (request: Record<string, never>) => unknown; pauseAdRequests?: number };
 };
 
+type IndiaChoice = 'granted' | 'denied' | null;
+type AdPrivacy =
+  | { region: 'pending' | 'unavailable' }
+  | { region: 'india'; choice: IndiaChoice }
+  | { region: 'europe'; ready: boolean };
+
+const initialAdPrivacy: AdPrivacy = { region: 'pending' };
+let privacy: AdPrivacy = initialAdPrivacy;
 let allowed = false;
-let cmpStarted = false;
-let cmpReady = false;
+let consentStarted = false;
 const consentListeners = new Set<(allowed: boolean) => void>();
+const privacyListeners = new Set<() => void>();
+
+export const getInitialAdPrivacy = (): AdPrivacy => initialAdPrivacy;
+export const getAdPrivacy = (): AdPrivacy => privacy;
+
+export function subscribeAdPrivacy(listener: () => void) {
+  privacyListeners.add(listener);
+  return () => { privacyListeners.delete(listener); };
+}
+
+function updatePrivacy(next: AdPrivacy) {
+  privacy = next;
+  for (const listener of privacyListeners) listener();
+}
 
 function updateConsent(next: boolean) {
   if (allowed === next) return;
@@ -58,87 +72,97 @@ export function watchAdConsent(listener: (allowed: boolean) => void) {
   return () => { consentListeners.delete(listener); };
 }
 
-export function startAdConsent() {
-  if (!adsConfig || cmpStarted) return;
-  cmpStarted = true;
-  const { advertisingGroup, domainId } = adsConfig;
-  const browser = window as AdsWindow;
-  let subscribed = false;
-  let regionalConsent: boolean | undefined;
-  let tcfConsent = false;
-
-  function readConsent() {
-    if ((navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true) {
-      updateConsent(false);
-      return;
-    }
-
-    if (regionalConsent !== false) {
-      updateConsent(regionalConsent === true && tcfConsent);
-      return;
-    }
-
-    try {
-      const cmp = browser.OneTrust;
-      const country = cmp?.getGeolocationData()?.country?.toUpperCase() ?? '';
-      const activeGroups = browser.OnetrustActiveGroups?.split(',');
-      updateConsent(Boolean(cmp && /^[A-Z]{2}$/.test(country) && !['XX', 'ZZ'].includes(country)
-        && cmp.IsAlertBoxClosedAndValid() === true && activeGroups?.includes(advertisingGroup)));
-    } catch {
-      updateConsent(false);
-    }
+function readIndiaChoice(): IndiaChoice {
+  try {
+    const saved = window.localStorage.getItem(indiaChoiceKey);
+    return saved === 'granted' || saved === 'denied' ? saved : null;
+  } catch {
+    return null;
   }
+}
 
-  browser.OptanonWrapper = () => {
-    cmpReady = typeof browser.OneTrust?.ToggleInfoDisplay === 'function';
-    if (!cmpReady || subscribed || !browser.__tcfapi) return;
-    subscribed = true;
+function applyIndiaChoice(choice: IndiaChoice) {
+  updatePrivacy({ region: 'india', choice });
+  updateConsent(choice === 'granted');
+}
+
+export function setIndiaAdChoice(choice: Exclude<IndiaChoice, null>) {
+  if (privacy.region !== 'india') return;
+  try {
+    window.localStorage.setItem(indiaChoiceKey, choice);
+  } catch {
+    // The choice still applies to this page if browser storage is unavailable.
+  }
+  applyIndiaChoice(choice);
+}
+
+function startGoogleConsent(client: string) {
+  const browser = window as AdsWindow;
+  const google = browser.googlefc ??= { callbackQueue: [] };
+  updatePrivacy({ region: 'europe', ready: false });
+  google.callbackQueue.push({ CONSENT_API_READY: () => {
+    const tcf = browser.__tcfapi;
+    if (!tcf) return;
     try {
-      browser.__tcfapi('addEventListener', 2, (data, success) => {
-        const verified = success === true && data
-          && (data.cmpStatus === undefined || data.cmpStatus === 'loaded')
-          && (data.cmpId === undefined || data.cmpId === oneTrustCmpId);
-        const requiresTcf = verified && data.cmpId === oneTrustCmpId
-          && data.gdprApplies === true && data.cmpStatus === 'loaded';
-        if (requiresTcf && regionalConsent === true && data.eventStatus === 'cmpuishown') return;
-
-        regionalConsent = verified ? data.gdprApplies : undefined;
-        tcfConsent = Boolean(requiresTcf
+      tcf('addEventListener', 2.2, (data, success) => {
+        const verified = success === true && data?.gdprApplies === true && data.cmpStatus === 'loaded';
+        if (verified && data.eventStatus === 'cmpuishown') return;
+        updatePrivacy({ region: 'europe', ready: verified && typeof browser.googlefc?.showRevocationMessage === 'function' });
+        updateConsent(Boolean(verified
           && (data.eventStatus === 'tcloaded' || data.eventStatus === 'useractioncomplete')
           && data.tcString?.trim() && data.vendor?.consents?.[755] === true
-          && [1, 3, 4].every(purpose => data.purpose?.consents?.[purpose] === true));
-        readConsent();
+          && [1, 3, 4].every(purpose => data.purpose?.consents?.[purpose] === true)));
       });
     } catch {
-      regionalConsent = undefined;
       updateConsent(false);
     }
-  };
-  window.addEventListener('OneTrustGroupsUpdated', readConsent);
-  window.addEventListener('OTConsentApplied', readConsent);
+  } });
 
-  // The published OneTrust SDK supplies the TCF API and the regional choices.
-  const script = document.createElement('script');
-  script.src = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
-  script.async = true;
-  script.dataset.domainScript = domainId;
-  script.addEventListener('error', () => {
-    cmpReady = false;
-    regionalConsent = undefined;
+  // Google's AdSense tag delivers the published message. Unit requests stay paused
+  // until the TCF listener observes an affirmative choice.
+  void loadAdScript(client).catch(() => {
     updateConsent(false);
-  }, { once: true });
-  document.head.append(script);
+    updatePrivacy({ region: 'unavailable' });
+  });
+}
+
+export async function startAdConsent() {
+  if (!adsConfig || consentStarted) return;
+  consentStarted = true;
+  if ((navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true) {
+    updatePrivacy({ region: 'unavailable' });
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/ad-region', { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+    if (response.ok) {
+      const { region } = await response.json();
+      if (region === 'india') {
+        applyIndiaChoice(readIndiaChoice());
+        window.addEventListener('storage', event => {
+          if (event.key === indiaChoiceKey || event.key === null) applyIndiaChoice(readIndiaChoice());
+        });
+        return;
+      }
+      if (region === 'europe' && enableEuropeanAds) {
+        startGoogleConsent(adsConfig.client);
+        return;
+      }
+    }
+  } catch {
+    // Failed or unknown region information leaves advertising off.
+  }
+  updatePrivacy({ region: 'unavailable' });
 }
 
 export function openAdPrivacyChoices() {
-  const cmp = (window as AdsWindow).OneTrust;
-  if (!cmpReady || !cmp) return false;
-  try {
-    cmp.ToggleInfoDisplay();
-    return true;
-  } catch {
-    return false;
-  }
+  if (privacy.region !== 'europe' || !privacy.ready) return false;
+  const google = (window as AdsWindow).googlefc;
+  if (!google?.showRevocationMessage) return false;
+  updateConsent(false);
+  google.callbackQueue.push({ CONSENT_API_READY: () => google.showRevocationMessage?.() });
+  return true;
 }
 
 let scriptLoad: Promise<void> | undefined;
@@ -156,7 +180,7 @@ export function loadAdScript(client: string): Promise<void> {
       reject(new Error('AdSense script timed out'));
     }, 8000);
     script.addEventListener('load', () => { window.clearTimeout(timeout); resolve(); }, { once: true });
-    script.addEventListener('error', () => { window.clearTimeout(timeout); reject(new Error('AdSense script failed')); }, { once: true });
+    script.addEventListener('error', () => { window.clearTimeout(timeout); script.remove(); reject(new Error('AdSense script failed')); }, { once: true });
     document.head.append(script);
   });
   return scriptLoad;
