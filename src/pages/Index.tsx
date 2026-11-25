@@ -1,4 +1,5 @@
 import BusSearchForm from '@/components/BusSearchForm';
+import Advertisement from '@/components/Advertisement';
 import PopularRoutes from '@/components/PopularRoutes';
 import SEO from '@/components/SEO';
 import { Card, CardContent } from '@/components/ui/card';
@@ -38,6 +39,7 @@ const Index = () => (
           <li><Link to="/routes" className="inline-block rounded-lg border bg-white px-4 py-2 text-blue-700 underline underline-offset-4">All depot connections</Link></li>
         </ul>
       </section>
+      <Advertisement path="/" position="home" />
       <PopularRoutes />
       <section className="mt-6 space-y-2 border-t pt-4 text-sm text-slate-700" aria-labelledby="passenger-help">
         <h2 id="passenger-help" className="text-lg font-semibold text-slate-950">Timetable sources and passenger help</h2>
