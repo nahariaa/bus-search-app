@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
+import IndiaAdChoices from '@/components/IndiaAdChoices';
 import InformationPage from '@/components/InformationPage';
 import { CONTACT_EMAIL, CONTACT_EMAIL_LINK } from '@/lib/site';
-import { adsConfig, openAdPrivacyChoices } from '@/lib/ads';
+import { adsConfig, getAdPrivacy, getInitialAdPrivacy, openAdPrivacyChoices, startAdConsent,
+  subscribeAdPrivacy } from '@/lib/ads';
 
 function PrivacyChoices() {
   const [unavailable, setUnavailable] = useState(false);
+  const privacy = useSyncExternalStore(subscribeAdPrivacy, getAdPrivacy, getInitialAdPrivacy);
+  useEffect(() => { void startAdConsent(); }, []);
+  if (privacy.region === 'india') return <IndiaAdChoices choice={privacy.choice} />;
+  if (privacy.region === 'pending') return <p role="status">Loading advertising choices…</p>;
+  if (privacy.region !== 'europe' || !privacy.ready) return <p role="status">Advertising choices are unavailable for this visit.</p>;
   return <>
     <p><button type="button" onClick={() => setUnavailable(!openAdPrivacyChoices())}
       className="min-h-11 rounded-sm font-medium text-blue-700 underline underline-offset-4">
@@ -43,12 +50,11 @@ const Privacy = () => (
       <p>The homepage can show a Google AdSense display ad after the departure-city links, before Popular Routes.
         Published route timetables with at least six departures can show an ad after the fifth departure.
         Timetables with at least 25 departures can show a second ad after the timetable and related links.</p>
-      <p>OneTrust uses your IP address to determine which regional settings apply and stores your choices in
-        cookies. In regions using the Transparency and Consent Framework, including the EEA, UK and Switzerland,
-        ads require permission for Google Advertising Products and the required advertising purposes. In India
-        and other regions where those rules do not apply, ads require an active advertising choice in your
-        regional settings. You can change or withdraw permission below. Withdrawing permission removes ads
-        and stops new ad requests.</p>
+      <p>HaryanaBus uses the approximate country provided by Vercel to choose which advertising controls apply.
+        In India, HaryanaBus stores your advertising choice in this browser and requests ads only after you
+        choose to allow them. Where enabled in the EEA, UK and Switzerland, Google Privacy &amp; messaging asks
+        for permission and stores the choice. You can change or withdraw permission below. Turning ads off
+        removes existing ads and stops new ad requests.</p>
       <p>Google and other advertising partners may use cookies, device or browser identifiers, your IP address
         and page information to select, deliver and personalize ads, measure their performance and detect
         invalid traffic. HaryanaBus uses no separate visitor analytics or third-party error reporting.</p>
