@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import type { RoutePage } from '@/lib/route-pages';
 import { operatorLabel, routeMatchLabel } from '@/lib/route-label';
-import { adsConfig } from '@/lib/ads';
 import Advertisement from './Advertisement';
 import TimetableSource from './TimetableSource';
 
@@ -30,9 +29,9 @@ export default function PublishedDepartures({ journey }: { journey: RoutePage })
               </div>
             </div>
           </li>
-          {adsConfig && index === 4 && journey.services.length >= 6 && <li role="presentation">
+          {index === 4 && journey.services.length >= 6 &&
             <Advertisement path={journey.path} position="routeInline" />
-          </li>}
+          }
         </Fragment>
       ))}
     </ul>

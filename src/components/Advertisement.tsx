@@ -1,27 +1,35 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { adsConfig, getAdPrivacy, getInitialAdPrivacy, initializePlacement, loadAdScript, placementInitialized,
-  startAdConsent, subscribeAdPrivacy, watchAdConsent, type AdPosition } from '@/lib/ads';
-import IndiaAdChoices from './IndiaAdChoices';
+import { adScriptFailed, adsConfig, getAdPrivacy, getInitialAdPrivacy, initializePlacement, loadAdScript,
+  placementInitialized, startAdConsent, subscribeAdPrivacy, watchAdConsent, watchAdScriptFailure,
+  type AdPosition } from '@/lib/ads';
 
-function AdPlacement({ client, placement, slot, invite }: {
-  client: string; placement: string; slot: string; invite: boolean;
+function AdSlot({ client, placement, slot, pending, inList }: {
+  client: string; placement: string; slot: string; pending: boolean; inList: boolean;
 }) {
-  const [filled, setFilled] = useState(false);
-  const privacy = useSyncExternalStore(subscribeAdPrivacy, getAdPrivacy, getInitialAdPrivacy);
-  const showChoices = invite && privacy.region === 'india' && privacy.choice === null;
+  const [status, setStatus] = useState<'empty' | 'filled' | 'collapsed'>(() =>
+    placementInitialized(placement) || adScriptFailed ? 'collapsed' : 'empty');
   const frame = useRef<HTMLElement>(null);
   const creative = useRef<HTMLDivElement>(null);
+  const collapsed = status === 'collapsed';
 
   useEffect(() => {
-    void startAdConsent();
-    const container = frame.current!;
-    const target = creative.current!;
+    const container = frame.current;
+    const target = creative.current;
+    if (collapsed || !container || !target) return;
+
     let stop: (() => void) | undefined;
+    const fail = () => {
+      stop?.();
+      stop = undefined;
+      // Removing space below the viewport cannot move visible passenger content.
+      const belowViewport = container.getBoundingClientRect().top >= document.documentElement.clientHeight;
+      setStatus(belowViewport ? 'collapsed' : 'empty');
+    };
     const unsubscribe = watchAdConsent(allowed => {
       stop?.();
       stop = undefined;
-      setFilled(false);
-      if (!allowed || placementInitialized(placement) || !('IntersectionObserver' in window)) return;
+      setStatus('empty');
+      if (!allowed || adScriptFailed || placementInitialized(placement) || !('IntersectionObserver' in window)) return;
 
       let active = true;
       let element: HTMLModElement | undefined;
@@ -49,17 +57,16 @@ function AdPlacement({ client, placement, slot, invite }: {
           status = new MutationObserver(() => {
             if (ad.dataset.adStatus === 'filled') {
               window.clearTimeout(fillTimeout);
-              setFilled(true);
+              setStatus('filled');
             } else if (ad.dataset.adStatus === 'unfilled') {
-              removeCreative();
-              setFilled(false);
+              fail();
             }
           });
           status.observe(ad, { attributes: true, attributeFilter: ['data-ad-status'] });
           target.append(ad);
-          if (initializePlacement(placement)) fillTimeout = window.setTimeout(removeCreative, 8000);
+          if (initializePlacement(placement)) fillTimeout = window.setTimeout(fail, 8000);
           else removeCreative();
-        }).catch(removeCreative);
+        }).catch(() => { if (active) fail(); });
       }, { rootMargin: '160px' });
       observer.observe(container);
 
@@ -69,24 +76,31 @@ function AdPlacement({ client, placement, slot, invite }: {
         removeCreative();
       };
     });
-    return () => { unsubscribe(); stop?.(); };
-  }, [client, placement, slot]);
+    const unsubscribeFailure = watchAdScriptFailure(fail);
+    return () => { unsubscribe(); unsubscribeFailure(); stop?.(); };
+  }, [client, collapsed, placement, slot]);
 
-  return <aside ref={frame} data-ad-placement={placement}
-    aria-label={showChoices ? 'Advertising choices' : 'Advertisement'} aria-hidden={!(filled || showChoices)}
-    className="relative mx-auto h-72 w-full max-w-3xl py-2 text-center">
+  if (collapsed) return null;
+  const filled = status === 'filled';
+  const aside = <aside ref={frame} data-ad-placement={placement} data-ad-pending={pending && !inList ? true : undefined}
+    aria-label="Advertisement" aria-hidden={!filled} className="mx-auto h-72 w-full max-w-3xl py-2 text-center">
     <p className={`mb-2 text-xs text-slate-600 ${filled ? '' : 'invisible'}`}>Advertisement</p>
     <div ref={creative} className="h-[250px] w-full" />
-    {showChoices && <div className="absolute inset-0 grid place-items-center px-2">
-      <div className="max-w-sm rounded-lg border border-slate-300 bg-slate-50 p-4">
-        <IndiaAdChoices choice={null} compact />
-      </div>
-    </div>}
   </aside>;
+  return inList ? <li role="presentation" data-ad-pending={pending || undefined}>{aside}</li> : aside;
+}
+
+function AdPlacement({ client, path, position, slot }: {
+  client: string; path: string; position: AdPosition; slot: string;
+}) {
+  const privacy = useSyncExternalStore(subscribeAdPrivacy, getAdPrivacy, getInitialAdPrivacy);
+  useEffect(() => { void startAdConsent(); }, []);
+  if (privacy.region === 'unavailable' || privacy.choice === 'denied') return null;
+  return <AdSlot client={client} placement={`${path}:${position}`} slot={slot}
+    pending={privacy.region === 'pending'} inList={position === 'routeInline'} />;
 }
 
 export default function Advertisement({ position, path }: { position: AdPosition; path: string }) {
-  const placement = `${path}:${position}`;
-  return adsConfig ? <AdPlacement key={placement} placement={placement} client={adsConfig.client}
-    slot={adsConfig.slots[position]} invite={position !== 'routeBottom'} /> : null;
+  return adsConfig ? <AdPlacement key={`${path}:${position}`} path={path} position={position}
+    client={adsConfig.client} slot={adsConfig.slots[position]} /> : null;
 }
