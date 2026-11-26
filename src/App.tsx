@@ -7,10 +7,12 @@ import { publicRoutes } from './routes';
 import RouteTimetable from './pages/RouteTimetable';
 import DepartureCity from './pages/DepartureCity';
 import { InitialJourney } from './lib/public-timetables';
+import { adsConfig, earlyAdOptOutScript } from './lib/ads';
 import type { RoutePage } from './lib/route-pages';
 
 export default function App({ initialJourney }: { initialJourney?: RoutePage }) {
   return <InitialJourney.Provider value={initialJourney}>
+      {adsConfig && <script dangerouslySetInnerHTML={{ __html: earlyAdOptOutScript }} />}
       <Toaster />
       <Routes>
         <Route element={<SiteLayout />}>

@@ -5,8 +5,10 @@ const googleConsentCountries = new Set([
 ]);
 
 export function GET(request: Request): Response {
-  const country = request.headers.get('x-vercel-ip-country');
-  const region = country === 'IN' ? 'india' : country && googleConsentCountries.has(country) ? 'europe' : null;
+  const country = request.headers.get('x-vercel-ip-country')?.trim().toUpperCase();
+  const region = !country ? null
+    : googleConsentCountries.has(country) ? 'europe'
+    : country === 'IN' ? 'india' : 'other';
   return Response.json({ region }, {
     headers: { 'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex' },
   });
